@@ -33,3 +33,6 @@ class Measurements(db.Model):
         
     def __repr__(self):
         return '<Type: %s\nValue: %s\nUser: %s>' % (self.mType, self.value, self.email)
+        
+db.create_all()
+db.session.commit()

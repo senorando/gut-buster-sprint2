@@ -23,8 +23,6 @@ db = flask_sqlalchemy.SQLAlchemy(app)
 db.init_app(app)
 db.app = app
 
-db.create_all()
-db.session.commit()
 
 @socketio.on("connect")
 def on_connect():
