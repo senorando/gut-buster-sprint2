@@ -9,22 +9,22 @@ from app import db
 
 class Users(db.Model):
     __table_args__ = {'extend_existing': True}
-    email = db.Column(db.String(50), primary_key=True)
+    id = db.Column(db.String(50), primary_key=True)
     name = db.Column(db.String(30))
     measurements = db.relationship('Measurements', backref = 'users')
     
     def __init__(self, email, name):
-        self.email = email
+        self.id = email
         self.name = name
         
     def __repr__(self):
-        return '<Email: %s\nName: %s>' % (self.email, self.name)
+        return '<Email: %s\nName: %s>' % (self.id, self.name)
         
 class Measurements(db.Model):
     __table_args__ = {'extend_existing': True}
     mType = db.Column(db.String(20), primary_key=True)
     value = db.Column(db.Integer)
-    email = db.Column(db.String(50), db.ForeignKey('email'))
+    email = db.Column(db.String(50), db.ForeignKey('users.id'))
     
     def __init__(self, mType, value, email):
         self.mType = mType
