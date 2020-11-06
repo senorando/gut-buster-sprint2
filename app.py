@@ -3,19 +3,14 @@ from dotenv import load_dotenv
 import os, flask, flask_sqlalchemy, flask_socketio, datetime, pytz
 from flask import request
 from sqlalchemy import func
-
 import models
 #import calories_count
-
-app = flask.Flask(__name__)
 
 app = flask.Flask(__name__)
 
 socketio = flask_socketio.SocketIO(app)
 socketio.init_app(app, cors_allowed_origins="*")
 
-PORT = 8080
-IP = "0.0.0.0"
 
 DOTENV_PATH = join(dirname(__file__), "sql.env")
 load_dotenv(DOTENV_PATH)
@@ -43,7 +38,10 @@ def on_disconnect():
 def index():
     return flask.render_template("home.html")
 
-if __name__ == "__main__":
+if __name__ == '__main__': 
     socketio.run(
-        app, host=os.getenv("IP", IP), port=int(os.getenv("PORT", PORT)), debug=True
+        app,
+        host=os.getenv('IP', '0.0.0.0'),
+        port=int(os.getenv('PORT', 8080)),
+        debug=True
     )
