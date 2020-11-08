@@ -8,9 +8,13 @@ const clientId = '235867645579-gs14jqdef78eh8fads7d6ul1qv5gmf1r.apps.googleuserc
 
 export function Login() {
   const onSuccess = (res) => {
-    const user = res.profileObj;
-    console.log('|Login Success| currentUser: ', user);
-    Socket.emit('new google', (user));
+    let data = {
+            'name': res.profileObj.name,
+            'email': res.profileObj.email,
+            'imgUrl': res.profileObj.imageUrl
+        };
+    console.log('|Login Success| currentUser: ', data);
+    Socket.emit('google sign in', (data));
     
   };
   const onFailure = (res) => {

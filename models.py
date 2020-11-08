@@ -13,6 +13,7 @@ class Users(db.Model):
     name = db.Column(db.String(30))
     measurements = db.relationship('Measurements', backref = 'users')
     
+    # db.session.add(models.Users(email, name))
     def __init__(self, email, name):
         self.id = email
         self.name = name
@@ -22,10 +23,12 @@ class Users(db.Model):
         
 class Measurements(db.Model):
     __table_args__ = {'extend_existing': True}
-    mType = db.Column(db.String(20), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    mType = db.Column(db.String(20))
     value = db.Column(db.Integer)
     email = db.Column(db.String(50), db.ForeignKey('users.id'))
     
+    # db.session.add(models.Measurements(mType, value, email))
     def __init__(self, mType, value, email):
         self.mType = mType
         self.value = value

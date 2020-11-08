@@ -24,6 +24,15 @@ db.init_app(app)
 db.app = app
 
 
+@socketio.on('google sign in')
+def on_google_sign_in(data):
+    google_usr = { 
+        'name': data['name'],
+        'email': data['email']
+    }
+    db.session.add(models.Users( google_usr['email'], google_usr['name'] ))
+    db.session.commit()
+
 @socketio.on("connect")
 def on_connect():
     print('\nConnected')
