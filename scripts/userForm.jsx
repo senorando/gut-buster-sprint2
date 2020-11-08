@@ -28,7 +28,7 @@ function handleSubmit(event) {
     ReactDOM.render(<profileContent/>, document.getElementById('content'));
 }
 
-export function userForm(){
+export function UserForm(){
   return(
         <form onSubmit={handleSubmit}>
             <h1>User Information</h1>

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import { NavBar } from './NavBar';
 
-
-import { Login } from './GoogleButton';
-import { Button } from './UserInfo';
-
-ReactDOM.render(<Login />, document.getElementById('content'));
+ReactDOM.render(<NavBar />, document.getElementById('content'));

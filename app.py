@@ -33,8 +33,16 @@ def on_disconnect():
     print('\nDisconnected')
 
 @app.route("/")
-def index():
+def home():
     return flask.render_template("home.html")
+    
+@app.route("/profile")
+def profile():
+    return flask.render_template("profile.html")
+
+@app.route("/foodsearch")
+def food_search():
+    return flask.render_template("foodSearch.html") 
 
 if __name__ == '__main__': 
     socketio.run(
