@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
-
 import { Socket } from './Socket';
 import { Button } from './UserInfo';
 import { Home } from './Home';
