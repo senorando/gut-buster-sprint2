@@ -49,6 +49,71 @@ def on_new_user(data):
     if not measurements['activityLevel'].isnumeric():
         badResponse += 'activity level'
         
+    weightInKgs =  measurements['weight'] / 2.2
+    heightInCentimeters = measurements['height'] * 2.54
+    if measurements['gender'].lower() == "men":
+        bmr = int((10 * weightInKgs) 
+        + (6.25 * heightInCentimeters ) - (5 * data['age'] ) + 5)
+    elif measurements['gender'].lower() =="women":
+        bmr = int((10 * weightInKgs) 
+        + (6.25 * heightInCentimeters ) - (5 * data['age'] ) - 161)
+    
+    print("Your Estimated Basal Metabolic Rate is " + str(bmr) + ".")
+    
+    
+    #daily calories needs
+    
+    if measurements['activityLevel'] == 1:
+        activityLevelIndex = 1.2
+    elif measurements['activityLevel'] == 2:
+        activityLevelIndex = 1.375
+    elif measurements['activityLevel'] == 3:
+        activityLevelIndex = 1.46
+    elif measurements['activityLevel'] == 4:
+        activityLevelIndex = 1.725
+    elif measurements['activityLevel'] == 5:
+        activityLevelIndex = 1.9
+    
+    dailyCaloriesNeeded = int(bmr * activityLevelIndex)
+    print("Based on the BMR to maintain your current weight you need: " + str(dailyCaloriesNeeded) + " calories a day ")
+    
+    calories=dailyCaloriesNeeded
+    
+    calories_from_protein = int(.4 * calories)
+    calories_in_protein = int(calories_from_protein / 4)
+    calories_from_carbs = int(.4 * calories)
+    calories_in_carbs = int(calories_from_carbs / 4)
+    calories_from_fat = int(.2 * calories)
+    calories_in_fat =int(calories_from_fat / 9)
+    
+    print("Calories from Protein: " + str(calories_from_protein))
+    print("Grams of Protein: " + str(calories_in_protein))
+    print("Calories from Carbs: " + str(calories_from_carbs))
+    print("Grams of Carbs: " + str(calories_in_carbs))
+    print("Calories from Fat: " + str(calories_from_fat))
+    print("Grams of Fat: " + str(calories_in_fat))
+    
+    
+    #calculate fat loss / gain
+    # 1 lb pf fat has 3500 calories to lose .5 lbs a week, divide 3,500 in half and then divide by 7
+    halfAPoundaWeek_calories =int(calories - int((3500 / 2) / 7 ))
+    print("\n")
+    print("To lose .5 lb of fat a week your daily calories needs to drop to:  " + str(halfAPoundaWeek_calories) + ". ")
+
+    calories_from_protein = int(.4 * halfAPoundaWeek_calories)
+    calories_in_protein = int(calories_from_protein / 4)
+    calories_from_carbs = int(.4 * halfAPoundaWeek_calories)
+    calories_in_carbs = int(calories_from_carbs / 4)
+    calories_from_fat = int(.2 * halfAPoundaWeek_calories)
+    calories_in_fat =int(calories_from_fat / 9)
+
+    print("Calories from Protein: " + str(calories_from_protein))
+    print("Grams of Protein: " + str(calories_in_protein))
+    print("Calories from Carbs: " + str(calories_from_carbs))
+    print("Grams of Carbs: " + str(calories_in_carbs))
+    print("Calories from Fat: " + str(calories_from_fat))
+    print("Grams of Fat: " + str(calories_in_fat))
+    
     if len(badResponse) >= 4:
        
         db.session.add(models.Users(googleUsr['email'], googleUsr['name'], measurements['height'], measurements['age'], measurements['gender'], measurements['activityLevel']))
