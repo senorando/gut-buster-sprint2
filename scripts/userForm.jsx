@@ -33,7 +33,7 @@ export function UserForm(){
             <label for="age">Age:</label>
             <input type="number"  id="age"  name="age"/><br></br>
              <label for="height">Height:</label>
-             <input type="number" id="height_inches" placeholder="ft"  name="height"/> ex: 5.10 feet <br></br>
+             <input type="number" id="height_inches" placeholder="ft"  name="height"/> ex: 5.10 feet ~= 60 inches <br></br>
              <label for="weight">Weight:</label>
              <input type="number" id="weight"  placeholder="lbs" /> lbs<br></br>
              <label for="gender">Gender:</label>
