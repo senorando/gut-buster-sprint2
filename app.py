@@ -49,26 +49,14 @@ def on_new_user(data):
     if not measurements['activityLevel'].isnumeric():
         badResponse += 'activity level'
         
-    if len(badResponse) <= 4:
+    if len(badResponse) >= 4:
        
-        db.session.add(models.Users(googleUsr['email'], googleUsr['name']))
+        db.session.add(models.Users(googleUsr['email'], googleUsr['name'], measurements['height'], measurements['age'], measurements['gender'], measurements['activityLevel']))
         db.session.commit()
         
-        # Adds form info into db
-        db.session.add(models.Measurements('HEIGHT', measurements['height'], googleUsr['email']))
+        db.session.add(models.Weight(measurements['weight'], googleUsr['email']))
         db.session.commit()
         
-        db.session.add(models.Measurements('WEIGHT', measurements['weight'], googleUsr['email']))
-        db.session.commit()
-        
-        db.session.add(models.Measurements('AGE', measurements['age'], googleUsr['email']))
-        db.session.commit()
-        
-        db.session.add(models.Measurements('GENDER', measurements['gender'], googleUsr['email']))
-        db.session.commit()
-        
-        db.session.add(models.Measurements('ACTIVITY_LEVEL', measurements['activityLevel'], googleUsr['email']))
-        db.session.commit()
         print(
             "Created db Entry for "
             + googleUsr["name"]
