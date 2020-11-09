@@ -26,11 +26,11 @@ db.app = app
 @socketio.on('new user input')
 def on_new_user(data):
     measurements = {
-        'height': 'TODO',
-        'weight': 'TODO',
-        'age': 'TODO',
-        'gender': 'TODO',
-        'activityLevel': 'TODO'
+        'height': data['height_inch'],
+        'weight': data['weight'],
+        'age': data['age'],
+        'gender': data['gender'],
+        'activityLevel': data['activityLevel']
     }
     googleUsr = {
         'name': data['name'],
