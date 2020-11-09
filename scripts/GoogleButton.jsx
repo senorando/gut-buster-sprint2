@@ -4,7 +4,7 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { Socket } from './Socket';
 
 
-const clientId = '235867645579-gs14jqdef78eh8fads7d6ul1qv5gmf1r.apps.googleusercontent.com';
+const clientId = '235867645579-njgvhgfemvt05oh0hoj0eotb98dslr47.apps.googleusercontent.com';
 
 export function Login() {
   const onSuccess = (res) => {
