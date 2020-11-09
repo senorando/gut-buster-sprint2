@@ -23,15 +23,79 @@ db = flask_sqlalchemy.SQLAlchemy(app)
 db.init_app(app)
 db.app = app
 
-
-@socketio.on('google sign in')
-def on_google_sign_in(data):
-    google_usr = { 
+@socketio.on('new user')
+def on_new_user(data):
+    measurements = {
+        'height': 'TODO',
+        'weight': 'TODO',
+        'age': 'TODO',
+        'gender': 'TODO',
+        'activityLevel': 'TODO'
+    }
+    googleUsr = {
         'name': data['name'],
         'email': data['email']
     }
-    db.session.add(models.Users( google_usr['email'], google_usr['name'] ))
-    db.session.commit()
+    badResponse = 'Bad '
+    if not measurements['height'].isnumeric():
+        badResponse += 'height, '
+    if not measurements['weight'].isnumeric():
+        badResponse += 'weight, '
+    if not measurements['age'].isnumeric():
+        badResponse += 'age, '
+    if not measurements['gender'].lower() == 'man' or measurements['gender'].lower() == 'woman':
+        print(measurements['gender'].lower())
+        badResponse += 'gender, '
+    if not measurements['activityLevel'].isnumeric():
+        badResponse += 'activity level'
+        
+    if len(badResponse) <= 4:
+       
+        db.session.add(models.Users(googleUsr['email'], googleUsr['name']))
+        db.session.commit()
+        
+        # Adds form info into db
+        db.session.add(models.Measurements('HEIGHT', measurements['height'], googleUsr['email']))
+        db.session.commit()
+        
+        db.session.add(models.Measurements('WEIGHT', measurements['weight'], googleUsr['email']))
+        db.session.commit()
+        
+        db.session.add(models.Measurements('AGE', measurements['age'], googleUsr['email']))
+        db.session.commit()
+        
+        db.session.add(models.Measurements('GENDER', measurements['gender'], googleUsr['email']))
+        db.session.commit()
+        
+        db.session.add(models.Measurements('ACTIVITY_LEVEL', measurements['activityLevel'], googleUsr['email']))
+        db.session.commit()
+        print(
+            "Created db Entry for "
+            + googleUsr["name"]
+            + " with email "
+            + googleUsr["email"]
+        )
+        socketio.emit('success login', googleUsr)
+    else:
+        print(badResponse)
+        socketio.emit('fail login', {
+            'response': badResponse
+        })
+
+@socketio.on('google sign in')
+def on_google_sign_in(data):
+    googleUsr = { 
+        'name': data['name'],
+        'email': data['email']
+    }
+    if db.session.query(models.Users.id).filter_by(id = googleUsr['email']).scalar() is None:
+        print('New User: ' + googleUsr['name'])
+        socketio.emit('new form', { 
+            'response': 'User must fill in form'
+            })
+    else:
+        print("Welcome Back! " + googleUsr["name"])
+        socketio.emit('success login', googleUsr )
 
 @socketio.on("connect")
 def on_connect():

@@ -25,7 +25,7 @@ class Measurements(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     mType = db.Column(db.String(20))
-    value = db.Column(db.Integer)
+    value = db.Column(db.Text)
     email = db.Column(db.String(50), db.ForeignKey('users.id'))
     
     # db.session.add(models.Measurements(mType, value, email))
