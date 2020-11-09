@@ -100,20 +100,34 @@ def on_new_user(data):
     print("\n")
     print("To lose .5 lb of fat a week your daily calories needs to drop to:  " + str(halfAPoundaWeek_calories) + ". ")
 
-    calories_from_protein = int(.4 * halfAPoundaWeek_calories)
-    calories_in_protein = int(calories_from_protein / 4)
-    calories_from_carbs = int(.4 * halfAPoundaWeek_calories)
-    calories_in_carbs = int(calories_from_carbs / 4)
-    calories_from_fat = int(.2 * halfAPoundaWeek_calories)
-    calories_in_fat =int(calories_from_fat / 9)
+    calories_from_protein_reduced = int(.4 * halfAPoundaWeek_calories)
+    calories_in_protein_reduced = int(calories_from_protein / 4)
+    calories_from_carbs_reduced = int(.4 * halfAPoundaWeek_calories)
+    calories_in_carbs_reduced = int(calories_from_carbs / 4)
+    calories_from_fat_reduced = int(.2 * halfAPoundaWeek_calories)
+    calories_in_fat_reduced =int(calories_from_fat / 9)
 
-    print("Calories from Protein: " + str(calories_from_protein))
-    print("Grams of Protein: " + str(calories_in_protein))
-    print("Calories from Carbs: " + str(calories_from_carbs))
-    print("Grams of Carbs: " + str(calories_in_carbs))
-    print("Calories from Fat: " + str(calories_from_fat))
-    print("Grams of Fat: " + str(calories_in_fat))
-     #possible socket to client statinghow much protein/carbs/fat they need to loose weight
+    print("Calories from Protein: " + str(calories_from_protein_reduced))
+    print("Grams of Protein: " + str(calories_in_protein_reduced))
+    print("Calories from Carbs: " + str(calories_from_carbs_reduced))
+    print("Grams of Carbs: " + str(calories_in_carbs_reduced))
+    print("Calories from Fat: " + str(calories_from_fat_reduced))
+    print("Grams of Fat: " + str(calories_in_fat_reduced))
+     #possible socket to client stating how much protein/carbs/fat they need to loose weight
+    
+    
+    #To fetch the recepies from API getting the variable ready
+    MaxCalories = dailyCaloriesNeeded #calories to maintain weight
+    MinCalories = halfAPoundaWeek_calories #calories to loose 0.5 lb of a week
+    
+    MaxProtein = calories_from_protein
+    MinProtein = calories_from_protein_reduced
+    
+    MaxCarbs = calories_from_carbs
+    MinCarbs = calories_from_carbs_reduced
+    
+    MaxFat = calories_from_fat
+    MinFat = calories_from_fat_reduced
     
     
     if len(badResponse) >= 4:
