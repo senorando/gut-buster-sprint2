@@ -59,7 +59,7 @@ def on_new_user(data):
         + (6.25 * heightInCentimeters ) - (5 * data['age'] ) - 161)
     
     print("Your Estimated Basal Metabolic Rate is " + str(bmr) + ".")
-    
+    #possible socket to client stating bmr
     
     #daily calories needs
     
@@ -76,7 +76,7 @@ def on_new_user(data):
     
     dailyCaloriesNeeded = int(bmr * activityLevelIndex)
     print("Based on the BMR to maintain your current weight you need: " + str(dailyCaloriesNeeded) + " calories a day ")
-    
+    #possible socket to client stating daily calorie needs
     calories=dailyCaloriesNeeded
     
     calories_from_protein = int(.4 * calories)
@@ -92,7 +92,7 @@ def on_new_user(data):
     print("Grams of Carbs: " + str(calories_in_carbs))
     print("Calories from Fat: " + str(calories_from_fat))
     print("Grams of Fat: " + str(calories_in_fat))
-    
+    #possible socket to client statinghow much protein/carbs/fat they need to maintain weight
     
     #calculate fat loss / gain
     # 1 lb pf fat has 3500 calories to lose .5 lbs a week, divide 3,500 in half and then divide by 7
@@ -113,6 +113,8 @@ def on_new_user(data):
     print("Grams of Carbs: " + str(calories_in_carbs))
     print("Calories from Fat: " + str(calories_from_fat))
     print("Grams of Fat: " + str(calories_in_fat))
+     #possible socket to client statinghow much protein/carbs/fat they need to loose weight
+    
     
     if len(badResponse) >= 4:
        
