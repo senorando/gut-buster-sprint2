@@ -1,26 +1,53 @@
-import React from "react";
-import { Login } from "./GoogleButton";
+import React, { useState } from "react";
+
+import { Socket } from './Socket';
+import { Login, Logout } from './GoogleButton';
+import { UserForm } from "./userForm";
+import { HomeCont } from './HomeCont';
 
 export function Home() {
+  const [currentUser, setUser] = useState({
+      name: '', email: '', sid: ''
+  });
+  const [isLoggingIn, setStatus] = useState(false);
+  const [isLoggedIn, setLogin] = useState(false);
+  console.log('Login status: ' + isLoggedIn);
+  
+  Socket.on('success login', (data) => {
+      if (data.sid === Socket.id) {
+          setUser((prevState) => ({
+            name: data.name,
+            email: data.email,
+            sid: data.sid,
+          }));
+          setLogin((prevLogin) => true);
+          setStatus((prevStatus) => false);
+        }
+  });
+  Socket.off('success login', '');
+  Socket.on('is logging in', (data) => {
+    console.log(data);
+    setStatus((prevStatus) => true);
+  });
+  Socket.off('is logging in', '');
+  
   return (
-    <div>
-        <div> Gut Buster </div>
-        <div>
-            <h3>Welcome to the Gut Buster </h3>
-            <p>
-                We aim to provide healthy food instructions,<br></br>
-                diet plans and deliver a live chat accessible from the browser.<br></br>
-                The  web app will provide a social login to allow users to easily identify themselves,<br></br>
-                and feature a Comment/Discussion attitude, through that people can communicate with each other .
-            </p>
-        </div>
-        <div>
-            <h1>Login with Google OAuth!</h1>
-        </div>
-        <div>
-            <Login />
-        </div>
-       </div>
+    <div id = 'Home'>
+        { isLoggingIn?
+            <div id = 'UserForm'>
+                <UserForm />
+            </div>
+            :
+            <div id = 'HomeContent'>
+                <HomeCont currentUser = { currentUser } />
+                { isLoggedIn?
+                  <Logout />
+                  :
+                  <Login />
+                }
+            </div>
+        }
+    </div>
     );
 }
     

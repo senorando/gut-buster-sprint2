@@ -34,7 +34,8 @@ def on_new_user(data):
     }
     googleUsr = {
         'name': data['name'],
-        'email': data['email']
+        'email': data['email'],
+        'sid': request.sid
     }
     badResponse = 'Bad '
     if not measurements['height'].isnumeric():
@@ -155,13 +156,13 @@ def on_new_user(data):
 def on_google_sign_in(data):
     googleUsr = { 
         'name': data['name'],
-        'email': data['email']
+        'email': data['email'],
+        'sid': request.sid
     }
     if db.session.query(models.Users.id).filter_by(id = googleUsr['email']).scalar() is None:
         print('New User: ' + googleUsr['name'])
-        socketio.emit('new form', { 
-            'response': 'User must fill in form'
-            })
+        socketio.emit('is logging in', 'User is attempting to login')
+        socketio.emit('new form', googleUsr)
     else:
         print("Welcome Back! " + googleUsr["name"])
         socketio.emit('success login', googleUsr )
