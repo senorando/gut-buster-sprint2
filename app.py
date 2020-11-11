@@ -26,7 +26,7 @@ db.app = app
 @socketio.on('new user input')
 def on_new_user(data):
     measurements = {
-        'height': data['height_inch'],
+        'height': data['height'],
         'weight': data['weight'],
         'age': data['age'],
         'gender': data['gender'],
@@ -38,6 +38,9 @@ def on_new_user(data):
         'sid': request.sid
     }
     badResponse = 'Bad '
+    #if not isinstance(measurements['height'],float):
+      #  badResponse += 'height, '      height needs to be in float in db
+    
     if not measurements['height'].isnumeric():
         badResponse += 'height, '
     if not measurements['weight'].isnumeric():
@@ -49,30 +52,44 @@ def on_new_user(data):
         badResponse += 'gender, '
     if not measurements['activityLevel'].isnumeric():
         badResponse += 'activity level'
-        
-    weightInKgs =  measurements['weight'] / 2.2
-    heightInCentimeters = measurements['height'] * 2.54
+    
+    
+    print(type(measurements['weight'])) 
+    print(type(measurements['height'])) 
+    print(type(measurements['age'])) 
+    
+    WeightInLbs = float(measurements['weight'])
+    HeightInInches = float(measurements['height'])
+    Age = float(measurements['age'])
+    
+     
+    print(type(WeightInLbs)) 
+    print(type(HeightInInches)) 
+    
+    weightInKgs =  WeightInLbs / 2.2
+    heightInCentimeters = HeightInInches * 2.54
+    
     if measurements['gender'].lower() == "men":
         bmr = int((10 * weightInKgs) 
-        + (6.25 * heightInCentimeters ) - (5 * data['age'] ) + 5)
+        + (6.25 * heightInCentimeters ) - (5 * Age ) + 5)
     elif measurements['gender'].lower() =="women":
         bmr = int((10 * weightInKgs) 
-        + (6.25 * heightInCentimeters ) - (5 * data['age'] ) - 161)
+        + (6.25 * heightInCentimeters ) - (5 * Age ) - 161)
     
     print("Your Estimated Basal Metabolic Rate is " + str(bmr) + ".")
     #possible socket to client stating bmr
     
     #daily calories needs
     
-    if measurements['activityLevel'] == 1:
+    if measurements['activityLevel'] == "1":
         activityLevelIndex = 1.2
-    elif measurements['activityLevel'] == 2:
+    elif measurements['activityLevel'] == "2":
         activityLevelIndex = 1.375
-    elif measurements['activityLevel'] == 3:
+    elif measurements['activityLevel'] == "3":
         activityLevelIndex = 1.46
-    elif measurements['activityLevel'] == 4:
+    elif measurements['activityLevel'] == "4":
         activityLevelIndex = 1.725
-    elif measurements['activityLevel'] == 5:
+    elif measurements['activityLevel'] == "5":
         activityLevelIndex = 1.9
     
     dailyCaloriesNeeded = int(bmr * activityLevelIndex)

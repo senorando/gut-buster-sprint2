@@ -42,7 +42,7 @@ function handleSubmit(event) {
             <label>Age:</label>
             <input type="number"  id="age"  name="age"/><br></br>
              <label>Height:</label>
-             <input type="number" id="height_inches" placeholder="ft"  name="height"/> e.g. 5.10 Feet ~= 61.2 inches<br></br>
+             <input type="number" id="height_inches" placeholder="inches"  name="height"/> e.g. 5.10 Feet ~= 61.2 inches<br></br>
              <label>Weight:</label>
              <input type="number" id="weight"  placeholder="lbs" /> lbs<br></br>
              <label>Gender:</label>
