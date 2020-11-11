@@ -3,8 +3,8 @@ import { Socket } from './Socket';
 
 
 export function Profile() {
-    let weight=document.getElementById("weight");
-    let activityLevel=document.getElementById("ActivityLevel");
+    let weight=document.getElementById("weight").value;
+    let activityLevel=document.getElementById("ActivityLevel").value;
     Socket.emit('update user input',{
       'weight':weight,
       'activityLevel':activityLevel
