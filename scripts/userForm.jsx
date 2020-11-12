@@ -9,22 +9,52 @@ export function UserForm(){
     });
     Socket.off('new form',' ');
 function handleSubmit(event) {
-    let age = document.getElementById("age").value;
-    let height_inch=document.getElementById("height_inches").value;
-    let weight=document.getElementById("weight").value;
+    
+    if (document.getElementById("age").value == "" ){
+        
+        alert("Please enter a value for age")
+        
+    }
+    if (document.getElementById("height_feet").value == ""){
+        alert("Please enter a value for feet")
+    }
+   if (document.getElementById("height_inches").value == "" ){
+        alert("Please enter a value for inches")
+    }
+    if (document.getElementById("weight").value == ""  ){
+        alert("Please enter a value for weight")
+    
+    }
+    if (document.getElementById("gender").value == "0"){
+        alert("Please select your gender ");
+    }
+  
+    if (document.getElementById("GainLose").value == "0"){
+        alert("Please select your weight goals ");
+     
+    }
+     if (document.getElementById("weightPound").value == "" ){
+        alert("Please enter a value for how much weight you want to gain/lose ");
+    }
+    
+    if (document.getElementById("ActivityLevel").value == "0"){
+        alert("Please select an activity level option ");
+     
+    }
+   else{
+    let age = parseInt(document.getElementById("age").value);
+    let height_feet= parseInt(document.getElementById("height_feet").value);
+    let height_inch=parseInt(document.getElementById("height_inches").value);
+    let weight=parseFloat(document.getElementById("weight").value);
     let gender=document.getElementById("gender").value;
     let gainOrLose = document.getElementById("GainLose").value;
     let activityLevel=document.getElementById("ActivityLevel").value;
     
-    console.log("age",age);
-    console.log("hight",height_inch);
-    console.log("weight",weight);
-    console.log("gender",gender);
-    console.log("gainOrLose",gainOrLose);
-    console.log("activityLevel",activityLevel);
+    let height = (height_feet * 12 ) + height_inch;
+   
     Socket.emit('new user input',{
       'age': age,
-      'height':height_inch,
+      'height':height,
       'weight':weight,
       'gender':gender,
       'gainOrLose':gainOrLose,
@@ -32,6 +62,7 @@ function handleSubmit(event) {
       'name':newUsr.name,
       'email':newUsr.email
     });
+   }
     
     event.preventDefault();
 }
@@ -41,12 +72,14 @@ function handleSubmit(event) {
             <h1>User Information</h1>
             <label>Age:</label>
             <input type="number"  id="age"  name="age"/><br></br>
-             <label>Height:</label>
-             <input type="number" id="height_inches" placeholder="inches"  name="height"/> e.g. 5.10 Feet ~= 61.2 inches<br></br>
+             <label>Height :</label>
+             <input type="number" id="height_feet" placeholder="feet"  name="height"/> 
+             <input placeholder="inches" id="height_inches"/><br/>
              <label>Weight:</label>
              <input type="number" id="weight"  placeholder="lbs" /> lbs<br></br>
              <label>Gender:</label>
              <select id="gender">
+                 <option value="0"> Please select the gender</option>
                  <option value="men">Men</option>
                  <option value="women">Women</option>
 
@@ -54,27 +87,21 @@ function handleSubmit(event) {
              <br></br>
               <label>Do you want to lose  your weight or gain ?</label>
              <select id="GainLose">
+                 <option value="0">Please select your goal</option>
                  <option value="gain">Gain</option>
                  <option value="lose">Lose</option>
              </select><br></br>
              <p>How may pounds?
               <input type="number" id= "weightPound" placeholder="lbs"/> lbs 
             </p>
-            <p><li>
-                Activity Level: 
-                1 = Somewhat Active
-                2 = Exercise 1 - 3 times a week
-                3 = Exercise 4 - 5 times a week
-                4 = Daily Exercise or intense exercise 3 - 4 times a week
-                5 = Intense Exercise 6 times a week
-            </li> </p>
             <label>Activity Level:</label>
              <select id="ActivityLevel">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3">3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
+                 <option value="0"> Please select the option Below</option>
+                 <option value="1"> Somewhat Active</option>
+                 <option value="2"> Exercise 1 - 3 times a week</option>
+                 <option value="3"> Exercise 4 - 5 times a week</option>
+                 <option value="4"> Daily Exercise or intense exercise 3 - 4 times a week</option>
+                 <option value="5"> Intense Exercise 6 times a week</option>
              </select><br></br>
              <button type="submit" value="Submit">Submit</button>
         </form>
