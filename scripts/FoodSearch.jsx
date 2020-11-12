@@ -12,6 +12,16 @@ export function FoodSearch() {
        console.log('Sent the food ' + name + ' to server!');
     }
     
+    function getfoodresponse() {
+        React.useEffect(() => {
+            Socket.on('food response', (data) => {
+                console.log("Received addresses from server for food_name: " + data['name']);
+             
+            })
+        });
+    }
+   
+   getfoodresponse();
         
     return (
          <div>

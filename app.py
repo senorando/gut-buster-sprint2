@@ -30,9 +30,11 @@ def on_new_food_search(data):
         'food': data['food_search']
     }
     
+    
     food_response=foodsearch(food_name['food'])
     #print(food_response)
-  
+    
+    
     socketio.emit('food response',food_response)
     
 @socketio.on('new user input')
