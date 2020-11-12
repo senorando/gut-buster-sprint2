@@ -68,6 +68,7 @@ def on_new_user(data):
             + googleUsr["email"]
         )
     socketio.emit('success login', googleUsr)
+    socketio.emit('is not logging in', '')
     
      
 @socketio.on('google sign in')
