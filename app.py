@@ -5,7 +5,7 @@ from flask import request
 from sqlalchemy import func
 import models
 from calories_count import bmr_cal,daily_caloric_need,calculate_macro
-
+from spoonacular import foodsearch
 
 app = flask.Flask(__name__)
 
@@ -24,6 +24,17 @@ db = flask_sqlalchemy.SQLAlchemy(app)
 db.init_app(app)
 db.app = app
 
+@socketio.on('new food search')
+def on_new_food_search(data):
+    food_name = {
+        'food': data['food_search']
+    }
+    
+    food_response=foodsearch(food_name['food'])
+    #print(food_response)
+  
+    socketio.emit('food response',food_response)
+    
 @socketio.on('new user input')
 def on_new_user(data):
     measurements = {

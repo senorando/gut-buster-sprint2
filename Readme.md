@@ -7,3 +7,6 @@
   d) `npm install -g webpack`    
   e) `npm install --save-dev webpack`    
   f) `npm install socket.io-client --save` 
+
+2. Add key to sql.env
+  a) `export SPOONACULAR_KEY='your_key_here'`
