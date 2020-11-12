@@ -12,16 +12,26 @@ export function FoodSearch() {
        console.log('Sent the food ' + name + ' to server!');
     }
     
-    function getfoodresponse() {
+    const [food, setFoods] = React.useState([]);
+    const [ingredient, setIngredient] = React.useState([]);
+    const [prep, setPrep] = React.useState([]);
+    const [image, setImage] = React.useState([]);
+
+    function GetFoodResponse() {
         React.useEffect(() => {
             Socket.on('food response', (data) => {
-                console.log("Received addresses from server for food_name: " + data['name']);
-             
-            })
+                //console.log("Received addresses from server for food_name: " + data['name']);
+                let food_name = data['name'];
+                console.log(food_name);
+                setFoods(data['name']);
+                setIngredient(data['recepie_list']);
+                setPrep(data['preptime'] + " minutes prep time");
+                setImage(data['imageURL']);
         });
+    });
     }
    
-   getfoodresponse();
+   GetFoodResponse();
         
     return (
          <div>
@@ -31,6 +41,17 @@ export function FoodSearch() {
                   classNames="test-class"
                   onSearchClick={handleSubmit}
                 />
+            <div>{food} {prep}</div>
+            <img src= {image} alt = "image" />
+            <div>
+                <ol>
+                    {
+                        ingredient.map((ingredient, index) =>
+                        <dt key={index}>{ingredient}</dt>)
+                    }
+                </ol>
+            </div>
+            
         </div>
         
         );

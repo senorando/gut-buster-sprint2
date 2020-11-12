@@ -46,7 +46,8 @@ def foodsearch(name):
         'name' : title,
         'image' : image,
         'preptime' : preptime,
-        'recepie_list' : recepie_list
+        'recepie_list' : recepie_list,
+        'imageURL' : imageURL
     }   
            
     return food_detail;
