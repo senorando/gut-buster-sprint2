@@ -38,12 +38,16 @@ def on_new_user(data):
         'email': data['email'],
         'sid': request.sid
     }
-
+    
+  
+    
     bmr=bmr_cal(measurements['weight'],measurements['height'],measurements['age'],measurements['gender'])
 
     
+    
     print("Your Estimated Basal Metabolic Rate is " + str(bmr) + ".")
     #possible socket to client stating bmr
+    
     
     #daily calories needs
     calories=daily_caloric_need(bmr,measurements['activityLevel'])
@@ -52,6 +56,16 @@ def on_new_user(data):
     macros=calculate_macro(calories)
     print(macros)
    
+   
+   
+    profile_data={
+        'weight': data['weight'],
+        'activityLevel': data['activityLevel'],
+        'gainOrLose': data['gainOrLose'],
+        'MaxCalories': macros['MaxCalories']
+        
+    }
+    socketio.emit('profile details',profile_data)
     
     #To fetch the recepies from API getting the variable ready
        
