@@ -82,6 +82,7 @@ def on_new_user(data):
             + googleUsr["email"]
         )
     socketio.emit('success login', googleUsr)
+    socketio.emit('is not logging in', '')
     
      
 @socketio.on('google sign in')
@@ -98,6 +99,8 @@ def on_google_sign_in(data):
     else:
         print("Welcome Back! " + googleUsr["name"])
         socketio.emit('success login', googleUsr )
+
+@socketio.on('new food_search')
 
 @socketio.on("connect")
 def on_connect():

@@ -5,31 +5,21 @@ import { Login, Logout } from './GoogleButton';
 import { UserForm } from "./userForm";
 import { HomeCont } from './HomeCont';
 
-export function Home() {
-  const [currentUser, setUser] = useState({
-      name: '', email: '', sid: ''
-  });
-  const [isLoggingIn, setStatus] = useState(false);
-  const [isLoggedIn, setLogin] = useState(false);
-  console.log('Login status: ' + isLoggedIn);
+export function Home(props) {
+  const currentUser = props.currentUser;
+  const isLoggedIn = props.currentUser.isLoggedIn;
   
-  Socket.on('success login', (data) => {
-      if (data.sid === Socket.id) {
-          setUser((prevState) => ({
-            name: data.name,
-            email: data.email,
-            sid: data.sid,
-          }));
-          setLogin((prevLogin) => true);
-          setStatus((prevStatus) => false);
-        }
-  });
-  Socket.off('success login', '');
+  const [isLoggingIn, setStatus] = useState(false);
+  
   Socket.on('is logging in', (data) => {
     console.log(data);
     setStatus((prevStatus) => true);
   });
   Socket.off('is logging in', '');
+  Socket.on('is not logging in', (data) => {
+    setStatus((prevStatus) => false);
+  });
+  Socket.off('is not logging in', '');
   
   return (
     <div id = 'Home'>
