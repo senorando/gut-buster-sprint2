@@ -6,8 +6,8 @@ export function FoodSearch() {
     function handleSubmit(response) {
         console.log(response);
         let name = response;
-        Socket.emit('new search', {
-          'search': name,
+        Socket.emit('new food search', {
+          'food_search': name,
        });
        console.log('Sent the food ' + name + ' to server!');
     }

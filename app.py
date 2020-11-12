@@ -85,6 +85,8 @@ def on_google_sign_in(data):
         print("Welcome Back! " + googleUsr["name"])
         socketio.emit('success login', googleUsr )
 
+@socketio.on('new food_search')
+
 @socketio.on("connect")
 def on_connect():
     print('\nConnected')
