@@ -24,8 +24,8 @@ export function Profile(props) {
   function setDetails(){
       useEffect(() => {
             Socket.on('profile details',(data) => {
-                console.log("id:  " + data.id );
-                setProfileDetail((prevState) => ({...prevState,
+                console.log("id:  ", data.id );
+                setProfileDetail((prevState) => ({
                 height: data.height,
                 age: data.age,
                 gender: data.gender,
