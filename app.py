@@ -32,7 +32,7 @@ def on_new_food_search(data):
     
     
     food_response=foodsearch(food_name['food'])
-    print(food_response)
+    #print(food_response)
     
     
     socketio.emit('food response',food_response)
