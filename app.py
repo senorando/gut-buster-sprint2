@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os, flask, flask_sqlalchemy, flask_socketio, datetime, pytz
 from flask import request
 from sqlalchemy import func
-import models
+
 from calories_count import bmr_cal,daily_caloric_need,calculate_macro
 from spoonacular import foodsearch, mealplan
 
@@ -25,6 +25,7 @@ db.init_app(app)
 db.app = app
 db.create_all()
 db.session.commit()
+import models
 
 @socketio.on('new user input')
 def get_user_details(user_email):
