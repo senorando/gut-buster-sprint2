@@ -21,11 +21,13 @@ def mealplan(calorie):
     breakfast = json_body["meals"][0]["title"]
     lunch = json_body["meals"][1]["title"]
     dinner = json_body["meals"][2]["title"]
-
+    nutrients = json_body["nutrients"]
+    
     meal_plan = {
         'breakfast' : breakfast,
         'lunch' : lunch,
-        'dinner' : dinner
+        'dinner' : dinner,
+        'nutrients' : nutrients
     }
     
     return meal_plan;
