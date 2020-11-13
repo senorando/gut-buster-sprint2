@@ -16,6 +16,7 @@ export function FoodSearch() {
     const [ingredient, setIngredient] = React.useState([]);
     const [prep, setPrep] = React.useState([]);
     const [image, setImage] = React.useState([]);
+    const [calorie, setCalorie] = React.useState([]);
 
     function GetFoodResponse() {
         React.useEffect(() => {
@@ -27,6 +28,7 @@ export function FoodSearch() {
                 setIngredient(data['recepie_list']);
                 setPrep(data['preptime'] + " minutes prep time");
                 setImage(data['imageURL']);
+                setCalorie(data['calories'] + " calories");
         });
     });
     }
@@ -41,7 +43,9 @@ export function FoodSearch() {
                   classNames="test-class"
                   onSearchClick={handleSubmit}
                 />
-            <div>{food} {prep}</div>
+            <div>{food}</div>
+            <div>{calorie}</div>
+            <div>{prep}</div>
             <img src= {image} alt = "image" />
             <div>
                 <ol>

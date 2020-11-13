@@ -22,8 +22,7 @@ def foodsearch(name):
     title = json_body["results"][0]["title"]
     preptime = json_body["results"][0]["readyInMinutes"]
     meal_id = json_body["results"][0]["id"]
-    source_URL = json_body["results"][0]["sourceUrl"]
-    
+
     imageid = image.split("-")[-1]
     imageid1 = imageid.split(".")
     imageURL1 = "https://spoonacular.com/recipeImages/" + str(imageid1[0])
@@ -35,19 +34,25 @@ def foodsearch(name):
     json_body1 = response1.json()
     ingredient = json_body1["extendedIngredients"]
     recepie_list =[]
-    recepie_len = len(recepie_list)
-    
+
     for item in ingredient:
         key1 = "name"
         if key1 in item:
             recepie_list.append(item['name'])
    
+    calorie_URL1 = "https://api.spoonacular.com/recipes/guessNutrition?title=" + str(title)
+    calorie_URL = calorie_URL1 + "&apiKey={}".format(spoonacular_key)
+    response2 = requests.get(calorie_URL)
+    json_body2 = response2.json()
+    calories = json_body2["calories"]['value']
+
     food_detail={
         'name' : title,
         'image' : image,
         'preptime' : preptime,
         'recepie_list' : recepie_list,
-        'imageURL' : imageURL
+        'imageURL' : imageURL,
+        'calories' : calories
     }   
            
     return food_detail;
