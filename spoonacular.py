@@ -10,6 +10,26 @@ load_dotenv(DOTENV_PATH)
 
 spoonacular_key = os.environ['SPOONACULAR_KEY']
 
+def mealplan(calorie):
+    url1 = "https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories="
+    url2 = "&apiKey={}"
+    url3 = url1 + str(calorie) + url2 
+    url = url3.format(spoonacular_key)
+    
+    response = requests.get(url)
+    json_body = response.json()
+    breakfast = json_body["meals"][0]["title"]
+    lunch = json_body["meals"][1]["title"]
+    dinner = json_body["meals"][2]["title"]
+
+    meal_plan = {
+        'breakfast' : breakfast,
+        'lunch' : lunch,
+        'dinner' : dinner
+    }
+    
+    return meal_plan;
+
 def foodsearch(name):
     url1 = "https://api.spoonacular.com/recipes/search?query="
     url2 = "&apiKey={}"

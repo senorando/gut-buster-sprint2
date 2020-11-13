@@ -5,7 +5,7 @@ from flask import request
 from sqlalchemy import func
 import models
 from calories_count import bmr_cal,daily_caloric_need,calculate_macro
-from spoonacular import foodsearch
+from spoonacular import foodsearch, mealplan
 
 app = flask.Flask(__name__)
 
@@ -93,6 +93,8 @@ def on_new_user(data):
     macros=calculate_macro(calories)
     print(macros)
    
+    meals=mealplan(calories)
+    print(meals)
    
    
     profile_data={
