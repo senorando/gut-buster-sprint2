@@ -65,14 +65,13 @@ export function Profile(props) {
     
     
   setDetails();
-  set_height()
   console.log("profileDetail", profileDetail);
     
 return (
         <div>
                 <h1> User Profile </h1>
                 <h2> User name : { currentUser.name }</h2><br></br>
-                <label>Height: {Height}</label><br></br>
+                <label>Height: {profileDetail.height}</label><br></br>
                 <label>Age:{ profileDetail.age }</label><br></br>
                 <label>Gender:{ profileDetail.gender }</label><br></br>
                 <label>Activity Level:{ profileDetail.activityLevel }</label><br></br>
