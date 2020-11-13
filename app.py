@@ -23,6 +23,30 @@ app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
 db = flask_sqlalchemy.SQLAlchemy(app)
 db.init_app(app)
 db.app = app
+db.create_all()
+db.session.commit()
+
+@socketio.on('new user input')
+def get_user_details(user_email):
+    db_users=[\
+        db_user for db_user\
+        in db.session.query(models.Users).all()
+        ]
+    for user in db_users:
+        if(user.id == user_email):
+            current_user=user
+            break
+    
+    print("current_user",current_user)
+    print("current_user[height]",current_user.height)
+    user_details = {
+        'id':current_user.id,
+        'height': current_user.height,
+        'age': current_user.age,
+        'gender':current_user.gender,
+        'activityLevel': current_user.activityLevel,
+    }
+    socketio.emit('profile details', user_details)
 
 @socketio.on('new food search')
 def on_new_food_search(data):
@@ -78,7 +102,7 @@ def on_new_user(data):
         'MaxCalories': macros['MaxCalories']
         
     }
-    socketio.emit('profile details',profile_data)
+    
     
     #To fetch the recepies from API getting the variable ready
        
@@ -96,6 +120,10 @@ def on_new_user(data):
         )
     socketio.emit('success login', googleUsr)
     socketio.emit('is not logging in', '')
+    get_user_details(googleUsr['email'])
+    
+# @socketio.on ()
+#     socketio.emit('is editing','')
     
      
 @socketio.on('google sign in')
@@ -112,6 +140,7 @@ def on_google_sign_in(data):
     else:
         print("Welcome Back! " + googleUsr["name"])
         socketio.emit('success login', googleUsr )
+        get_user_details(googleUsr['email'])
 
 @socketio.on('new food_search')
 
@@ -136,6 +165,7 @@ def food_search():
     return flask.render_template("foodSearch.html") 
 
 if __name__ == '__main__': 
+    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True,
     socketio.run(
         app,
         host=os.getenv('IP', '0.0.0.0'),
