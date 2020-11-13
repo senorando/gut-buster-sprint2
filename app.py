@@ -27,7 +27,7 @@ db.create_all()
 db.session.commit()
 import models
 
-@socketio.on('new user input')
+
 def get_user_details(user_email):
     db_users=[\
         db_user for db_user\
@@ -37,7 +37,9 @@ def get_user_details(user_email):
         if(user.id == user_email):
             current_user=user
             break
-    
+    macros=db.session.query(models.Macros).filter_by(email=current_user.id).scalar()
+    meals=db.session.query(models.Meals).filter_by(email=current_user.id).scalar()
+
     print("current_user",current_user)
     print("current_user[height]",current_user.height)
     user_details = {
@@ -46,9 +48,24 @@ def get_user_details(user_email):
         'age': current_user.age,
         'gender':current_user.gender,
         'activityLevel': current_user.activityLevel,
+        'bmr' : macros.bmr,
+        'maxCal' : macros.max_cal,
+        'maxProt' : macros.max_prot,
+        'maxCarb' : macros.max_carb,
+        'maxFat' : macros.max_fat,
+        'breakfastMeal' : meals.breakfast,
+        'lunchMeal' : meals.lunch,
+        'dinnerMeal' : meals.dinner,
+        'calMeal' : meals.meal_cal,
+        'carbMeal' : meals.meal_carb,
+        'protMeal' : meals.meal_prot,
+        'fatMeal' : meals.meal_fat
     }
     socketio.emit('profile details', user_details)
+    print(user_details)
 
+    
+    
 @socketio.on('new food search')
 def on_new_food_search(data):
     food_name = {
@@ -57,9 +74,6 @@ def on_new_food_search(data):
     
     
     food_response=foodsearch(food_name['food'])
-    #print(food_response)
-    
-    
     socketio.emit('food response',food_response)
     
 @socketio.on('new user input')
@@ -76,28 +90,14 @@ def on_new_user(data):
         'email': data['email'],
         'sid': request.sid
     }
-    
-  
-    
     bmr=bmr_cal(measurements['weight'],measurements['height'],measurements['age'],measurements['gender'])
-
-    
-    
     print("Your Estimated Basal Metabolic Rate is " + str(bmr) + ".")
-    #possible socket to client stating bmr
-    
-    
-    #daily calories needs
     calories=daily_caloric_need(bmr,measurements['activityLevel'])
-    
     print(calories)
     macros=calculate_macro(calories)
     print(macros)
-   
     meals=mealplan(calories)
     print(meals)
-   
-   
     profile_data={
         'weight': data['weight'],
         'activityLevel': data['activityLevel'],
@@ -106,12 +106,17 @@ def on_new_user(data):
         
     }
     
-    
     #To fetch the recepies from API getting the variable ready
-       
+    
     db.session.add(models.Users(googleUsr['email'], googleUsr['name'], measurements['height'], measurements['age'], measurements['gender'], measurements['activityLevel']))
     db.session.commit()
-        
+
+    db.session.add(models.Macros(bmr, macros['MaxCalories'], macros['MinCalories'], macros['MaxProtein'], macros['MinProtein'], macros['MaxCarbs'], macros['MinCarbs'], macros['MaxFat'], macros['MinFat'], googleUsr['email']))
+    db.session.commit()
+    
+    db.session.add(models.Meals(meals['breakfast'], meals['lunch'], meals['dinner'], meals['nutrients']['calories'], meals['nutrients']['carbohydrates'], meals['nutrients']['protein'], meals['nutrients']['fat'], googleUsr['email']))
+    db.session.commit()
+
     db.session.add(models.Weight(measurements['weight'], googleUsr['email']))
     db.session.commit()
         
@@ -124,9 +129,6 @@ def on_new_user(data):
     socketio.emit('success login', googleUsr)
     socketio.emit('is not logging in', '')
     get_user_details(googleUsr['email'])
-    
-# @socketio.on ()
-#     socketio.emit('is editing','')
     
      
 @socketio.on('google sign in')
