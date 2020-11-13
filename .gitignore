@@ -1,5 +1,2 @@
 sql.env
 __pycache__/
-node_modules
-/static/script.js
-
