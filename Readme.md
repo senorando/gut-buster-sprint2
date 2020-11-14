@@ -21,17 +21,11 @@ iii. Created the conditional rendering on the home and profile pages
 iv. Managed current user on each client via sockets  
 v. Cleaned up React by putting most of the HTML in components  
 
-***
-
 2. Jinal Patel *jsp88*  
 i.
 
-***
-
 3. Nisarg Patel *np575*  
 i. 
-
-***
 
 4. Oreoluwa Akeredolu *atorisemofe*  
 i. Initialized app.py  
