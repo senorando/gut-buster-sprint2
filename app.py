@@ -78,6 +78,7 @@ def on_new_food_search(data):
     
 @socketio.on('new user input')
 def on_new_user(data):
+    
     measurements = {
         'height': data['height'],
         'weight': data['weight'],
