@@ -46,7 +46,7 @@ export function FoodSearch() {
             <div>{food}</div>
             <div>{calorie}</div>
             <div>{prep}</div>
-            <img src= {image} alt = "image" />
+            <img src= {image}/>
             <div>
                 <ol>
                     {

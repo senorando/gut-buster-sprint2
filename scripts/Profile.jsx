@@ -10,8 +10,6 @@ export function Profile(props) {
     const isLoggingIn = props.isLoggingIn;
     const profileDetail = props.profileDetail;
     
-    console.log(isLoggingIn);
-    
     return (
         <div id = 'Profile'>
             { isLoggingIn?

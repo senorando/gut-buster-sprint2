@@ -19,7 +19,6 @@ export function NavBar() {
         height: '', age: '', gender: '', activityLevel: '',
   });
   const [isLoggingIn, setStatus] = useState(false);
-  console.log('NavBar: ' + isLoggingIn);
   
   function setCurrUser(){
     useEffect(() => {
