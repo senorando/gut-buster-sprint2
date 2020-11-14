@@ -63,8 +63,19 @@ def get_user_details(user_email):
     }
     socketio.emit('profile details', user_details)
     print(user_details)
-
+# def get_most_recent_weight(user_email, sid):
+#     recent = str(db.session.query(models.Weight).filter_by(email = user_email).first().weight)
+#     print('\nweight' + recent)
+#     socketio.emit('most recent weight', {
+#         'recentWeight': recent,
+#         'sid': sid
+#     })
     
+# @socketio.on('new entry')
+# def on_new_entry(data):
+#     db.session.add(models.Weight(data['weight'], data['email']))
+#     db.session.commit()
+#     get_most_recent_weight(data['email'], data['sid'])
     
 @socketio.on('new food search')
 def on_new_food_search(data):
@@ -75,7 +86,6 @@ def on_new_food_search(data):
     
     food_response=foodsearch(food_name['food'])
     socketio.emit('food response',food_response)
-    
 @socketio.on('new user input')
 def on_new_user(data):
     measurements = {
@@ -129,6 +139,7 @@ def on_new_user(data):
     socketio.emit('success login', googleUsr)
     socketio.emit('is not logging in', '')
     get_user_details(googleUsr['email'])
+    #get_most_recent_weight(googleUsr['email'], googleUsr['sid'])
     
      
 @socketio.on('google sign in')
@@ -140,12 +151,16 @@ def on_google_sign_in(data):
     }
     if db.session.query(models.Users.id).filter_by(id = googleUsr['email']).scalar() is None:
         print('New User: ' + googleUsr['name'])
-        socketio.emit('is logging in', 'User is attempting to login')
+        socketio.emit('is logging in', {
+            'res': 'User is attempting to login',
+            'sid': request.sid
+        })
         socketio.emit('new form', googleUsr)
     else:
         print("Welcome Back! " + googleUsr["name"])
         socketio.emit('success login', googleUsr )
         get_user_details(googleUsr['email'])
+        #get_most_recent_weight(googleUsr['email'], googleUsr['sid'])
 
 @socketio.on('new food_search')
 
