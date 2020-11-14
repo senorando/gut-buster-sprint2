@@ -25,7 +25,12 @@ v. Cleaned up React by putting most of the HTML in components
 i.
 
 3. Nisarg Patel *np575*  
-i. 
+i. Added jsx files for the flow of login/home/profile page.
+2. added logic for bmr and daily calorie needs based on fitness goal.
+3. Figured out possible socket to client for bmr/daily calorie needs and Added sockets to fetch the information through API.
+5. Fixed Backend logic and added input validation to the Userform.
+6. socket back the food search response to client and added tests for unmocked/mocked to increase coverage.
+
 
 4. Oreoluwa Akeredolu *atorisemofe*  
 i. Initialized app.py  
