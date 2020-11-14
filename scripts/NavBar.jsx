@@ -43,7 +43,19 @@ export function NavBar() {
             height: data.height,
             age: data.age,
             gender: data.gender,
-            activityLevel: data.activityLevel
+            activityLevel: data.activityLevel,
+            bmr: data.bmr,
+            maxCal: data.maxCal,
+            maxProt: data.maxProt,
+            maxCarb: data.maxCarb,
+            maxFat: data.maxFat,
+            breakfastMeal: data.breakfastMeal,
+            lunchMeal: data.lunchMeal,
+            dinnerMeal: data.dinnerMeal,
+            calMeal: data.calMeal,
+            carbMeal: data.carbMeal,
+            protMeal: data.protMeal,
+            fatMeal: data.fatMeal,
           }));
         }
       });
