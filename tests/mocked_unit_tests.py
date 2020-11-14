@@ -1,3 +1,8 @@
+'''mocked_unit_tests'''
+# pylint: disable=W0611
+# pylint: disable=C0413
+# pylint: disable=C0114
+
 import unittest
 import unittest.mock as mock
 from os.path import dirname, join
@@ -15,5 +20,4 @@ import app
 
 if __name__ == "__main__":
     unittest.main()
-
-
+    

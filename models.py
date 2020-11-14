@@ -1,4 +1,12 @@
-# models.py
+'''models.py'''
+# pylint: disable=W0612
+# pylint: disable=W0614
+# pylint: disable=W0611
+# pylint: disable=R0913
+# pylint: disable=C0116
+# pylint: disable=C0301
+# pylint: disable=C0303
+# pylint: disable=E1101
 import flask_sqlalchemy
 from sqlalchemy import create_engine, Column, Integer, String, Sequence, Float, PrimaryKeyConstraint, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
