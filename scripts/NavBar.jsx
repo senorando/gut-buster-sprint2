@@ -16,7 +16,7 @@ export function NavBar() {
       name: '', email: '', sid: '', isLoggedIn: false,
   });
   const [profileDetail, setProfileDetail] = useState({ 
-        height: '', age: '', gender: '', activityLevel: '',
+        height: '', weight: '', age: '', gender: '', activityLevel: '',
   });
   const [isLoggingIn, setStatus] = useState(false);
   
@@ -60,13 +60,23 @@ export function NavBar() {
         }
       });
       Socket.off('profile details','');
+      // Socket.on('most recent weight', (data) => {
+      //   if(data.sid === Socket.id){
+      //     setProfileDetail((prevState) => {
+      //       weight: data.weight;
+      //     });
+      //   }
+      // });
+      // Socket.off('most recent weight', '');
     });
   }
   function loginState(){
     useEffect(() => {
       Socket.on('is logging in', (data) => {
-        console.log(data);
-        setStatus((prevStatus) => true);
+        if(data.sid === Socket.id){
+          console.log(data.res);
+          setStatus((prevStatus) => true);
+        }
       });
       Socket.off('is logging in', '');
       Socket.on('is not logging in', (data) => {

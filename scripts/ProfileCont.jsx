@@ -15,16 +15,17 @@ export function ProfileCont(props){
             <div id = 'UserDetails'>
                 <h1> { currentUser.name } </h1><br/>
                 <label>Height: { profileDetail.height }</label><br/>
+                <label>Weight: TODO</label><br/>
                 <label>Age: { profileDetail.age }</label><br/>
                 <label>Gender: { profileDetail.gender }</label><br/>
                 <label>Activity Level: { profileDetail.activityLevel }</label><br/>
                 <label>BMR: { profileDetail.bmr }</label><br/>
                 { isEdit? 
                     <div id = 'UserForm'>
-                        <UpdateForm />
+                        <UpdateForm currentUser = { currentUser }/>
                     </div>
                     :
-                    <button onClick = { updateStatus }>Edit</button>
+                    <button onClick = { updateStatus }>Add New Weight Entry</button>
                 }
             </div>
             <div id = 'Macros'>
