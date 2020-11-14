@@ -8,18 +8,8 @@ import { HomeCont } from './HomeCont';
 export function Home(props) {
   const currentUser = props.currentUser;
   const isLoggedIn = props.currentUser.isLoggedIn;
-  
-  const [isLoggingIn, setStatus] = useState(false);
-  
-  Socket.on('is logging in', (data) => {
-    console.log(data);
-    setStatus((prevStatus) => true);
-  });
-  Socket.off('is logging in', '');
-  Socket.on('is not logging in', (data) => {
-    setStatus((prevStatus) => false);
-  });
-  Socket.off('is not logging in', '');
+  const isLoggingIn = props.isLoggingIn;
+  console.log(isLoggingIn)
   
   return (
     <div id = 'Home'>

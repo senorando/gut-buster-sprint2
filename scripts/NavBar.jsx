@@ -18,6 +18,8 @@ export function NavBar() {
   const [profileDetail, setProfileDetail] = useState({ 
         height: '', age: '', gender: '', activityLevel: '',
   });
+  const [isLoggingIn, setStatus] = useState(false);
+  
   function setCurrUser(){
     useEffect(() => {
       Socket.on('success login', (data) => {
@@ -48,8 +50,23 @@ export function NavBar() {
       Socket.off('profile details','');
     });
   }
+  function loginState(){
+    useEffect(() => {
+      Socket.on('is logging in', (data) => {
+        console.log(data);
+        setStatus((prevStatus) => true);
+      });
+      Socket.off('is logging in', '');
+      Socket.on('is not logging in', (data) => {
+        setStatus((prevStatus) => false);
+      });
+      Socket.off('is not logging in', '');
+    });
+  }
+  
   setCurrUser();
   setDetails();
+  loginState();
   return (
     <Router>
       <div>
@@ -68,13 +85,13 @@ export function NavBar() {
         <hr />
         <Switch>
           <Route exact path="/">
-            <Home currentUser = { currentUser } />
+            <Home currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
           </Route>
           <Route path="/profile">
-            <Profile currentUser = { currentUser } profileDetail = { profileDetail } />
+            <Profile currentUser = { currentUser } profileDetail = { profileDetail } isLoggingIn = { isLoggingIn }/>
           </Route>
           <Route path="/foodsearch">
-            <FoodSearch currentUser = { currentUser } />
+            <FoodSearch currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
           </Route>
         </Switch>
       </div>
