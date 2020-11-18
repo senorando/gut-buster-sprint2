@@ -27,7 +27,7 @@ export function FoodSearch() {
                 setFoods(data['name']);
                 setIngredient(data['recepie_list']);
                 setPrep(data['preptime'] + " minutes prep time");
-                setImage(data['imageURL']);
+                setImage(data['image_url']);
                 setCalorie(data['calories'] + " calories");
         });
     });
