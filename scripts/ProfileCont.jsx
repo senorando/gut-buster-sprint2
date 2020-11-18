@@ -4,18 +4,26 @@ import { UpdateForm } from './UpdateForm';
 import { Socket } from './Socket';
 
 export function ProfileCont(props){
+    console.log(props);
     const currentUser = props.currentUser;
     const [isEdit, setStatus] = useState(false);
     const profileDetail = props.profileDetail;
+    const userWeight = props.userWeight;
     function updateStatus() {
+        console.log('isEdit: ' + isEdit);
         setStatus((prevStatus) => !isEdit);
     }
+    Socket.on('not editing', (data) => {
+        console.log(data);
+        setStatus(false);
+    });
+    Socket.off('not editing', '');
     return (
         <div>
             <div id = 'UserDetails'>
                 <h1> { currentUser.name } </h1><br/>
                 <label>Height: { profileDetail.height }</label><br/>
-                <label>Weight: TODO</label><br/>
+                <label>Weight: { userWeight[ userWeight.length - 1 ] }</label><br/>
                 <label>Age: { profileDetail.age }</label><br/>
                 <label>Gender: { profileDetail.gender }</label><br/>
                 <label>Activity Level: { profileDetail.activityLevel }</label><br/>

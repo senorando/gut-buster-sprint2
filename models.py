@@ -39,17 +39,18 @@ class Users(db.Model):
         
 class Weight(db.Model):
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.DateTime, primary_key=True)
     weight = db.Column(db.Integer)
     email = db.Column(db.String(50), db.ForeignKey('users.id'))
     
     # db.session.add(models.Weight(weight, email))
-    def __init__(self, weight, email):
+    def __init__(self, time, weight, email):
+        self.id = time
         self.weight = weight
         self.email = email
         
     def __repr__(self):
-        return '<Weight: %s\n User: %s>' % (self.weight, self.email)
+        return '<Time: %s\nWeight: %s\nUser: %s>' % (self.time, self.weight, self.email)
 
 class Macros(db.Model):
     __table_args__ = {'extend_existing': True}

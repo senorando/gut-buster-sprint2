@@ -16,8 +16,9 @@ export function NavBar() {
       name: '', email: '', sid: '', isLoggedIn: false,
   });
   const [profileDetail, setProfileDetail] = useState({ 
-        height: '', weight: '', age: '', gender: '', activityLevel: '',
+        height: '', age: '', gender: '', activityLevel: '',
   });
+  const [userWeight, setWeight] = useState([]);
   const [isLoggingIn, setStatus] = useState(false);
   
   function setCurrUser(){
@@ -60,14 +61,13 @@ export function NavBar() {
         }
       });
       Socket.off('profile details','');
-      // Socket.on('most recent weight', (data) => {
-      //   if(data.sid === Socket.id){
-      //     setProfileDetail((prevState) => {
-      //       weight: data.weight;
-      //     });
-      //   }
-      // });
-      // Socket.off('most recent weight', '');
+      Socket.on('most recent weight', (data) => {
+        if(data.sid === Socket.id){
+          console.log('data.weight: ' + data.weight);
+          setWeight(data.weight);
+        }
+      });
+      Socket.off('most recent weight', '');
     });
   }
   function loginState(){
@@ -91,32 +91,34 @@ export function NavBar() {
   loginState();
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="/foodsearch">Food Search</Link>
-          </li>
-        </ul>
-
-        <hr />
-        <Switch>
-          <Route exact path="/">
-            <Home currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
-          </Route>
-          <Route path="/profile">
-            <Profile currentUser = { currentUser } profileDetail = { profileDetail } isLoggingIn = { isLoggingIn }/>
-          </Route>
-          <Route path="/foodsearch">
-            <FoodSearch currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
-          </Route>
-        </Switch>
+      <div id = 'NavBar'>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link to="/foodsearch">Food Search</Link>
+              </li>
+            </ul>
       </div>
+          <hr />
+      <Switch>
+        <Route exact path="/">
+          <Home currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
+        </Route>
+        <Route path="/profile">
+          <Profile currentUser = { currentUser }
+                    userWeight = { userWeight } 
+                    profileDetail = { profileDetail } 
+                    isLoggingIn = { isLoggingIn }/>
+        </Route>
+        <Route path="/foodsearch">
+          <FoodSearch currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
+        </Route>
+      </Switch>
     </Router>
   );
 }

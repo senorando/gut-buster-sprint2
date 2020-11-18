@@ -1,0 +1,21 @@
+body {
+    background-color: #e2f7ff;
+}
+#NavBar {
+    font-family: Arial;
+}
+#Home {
+    font-family: Arial;
+}
+#Profile {
+    font-family: Arial;
+}
+#FoodSearch {
+    font-family: Arial;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+}

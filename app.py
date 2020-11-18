@@ -5,7 +5,7 @@
 # pylint: disable=W0612
 from os.path import join, dirname
 from dotenv import load_dotenv
-import os, flask, flask_sqlalchemy, flask_socketio
+import os, flask, flask_sqlalchemy, flask_socketio, datetime
 from flask import request
 from calories_count import bmr_cal, daily_caloric_need, calculate_macro
 from spoonacular import foodsearch, mealplan
@@ -29,7 +29,6 @@ db.app = app
 db.create_all()
 db.session.commit()
 import models
-
 
 def get_user_details(user_email):
     db_users = [db_user for db_user in db.session.query(models.Users).all()]
@@ -65,32 +64,30 @@ def get_user_details(user_email):
     print(user_details)
 
 
-# def get_most_recent_weight(user_email, sid):
-#     recent = str(db.session.query(models.Weight).filter_by(email = user_email).first().weight)
-#     print('\nweight' + recent)
-#     socketio.emit('most recent weight', {
-#         'recentWeight': recent,
-#         'sid': sid
-#     })
+def emit_all_user_weights(user_email, sid):
+    weights = []
+    for user_weight in db.session.query(models.Weight).filter_by(email = user_email).all():
+        weights.append(user_weight.weight)
+    socketio.emit('most recent weight', {
+        'weight': weights,
+        'sid': sid
+    })
 
-# @socketio.on('new entry')
-# def on_new_entry(data):
-#     db.session.add(models.Weight(data['weight'], data['email']))
-#     db.session.commit()
-#     get_most_recent_weight(data['email'], data['sid'])
-
+@socketio.on('new entry')
+def on_new_entry(data):
+    db.session.add(models.Weight(datetime.datetime.now(), data['weight'], data['email']))
+    db.session.commit()
+    socketio.emit('not editing', 'User is no longer editing')
+    emit_all_user_weights(data['email'], data['sid'])
 
 @socketio.on("new food search")
 def on_new_food_search(data):
     food_name = {"food": data["food_search"]}
-
     food_response = foodsearch(food_name["food"])
     socketio.emit("food response", food_response)
 
-
 @socketio.on("new user input")
 def on_new_user(data):
-
     measurements = {
         "height": data["height"],
         "weight": data["weight"],
@@ -105,22 +102,16 @@ def on_new_user(data):
         measurements["age"],
         measurements["gender"],
     )
-    print("Your Estimated Basal Metabolic Rate is " + str(bmr) + ".")
     calories = daily_caloric_need(bmr, measurements["activityLevel"])
-    print(calories)
     macros = calculate_macro(calories)
-    print(macros)
     meals = mealplan(calories)
-    print(meals)
     profile_data = {
         "weight": data["weight"],
         "activityLevel": data["activityLevel"],
         "gainOrLose": data["gainOrLose"],
         "MaxCalories": macros["MaxCalories"],
     }
-
     # To fetch the recepies from API getting the variable ready
-
     db.session.add(
         models.Users(
             google_usr["email"],
@@ -133,37 +124,35 @@ def on_new_user(data):
     )
     db.session.commit()
 
-    db.session.add(
-        models.Macros(
-            bmr,
-            macros["MaxCalories"],
-            macros["MinCalories"],
-            macros["MaxProtein"],
-            macros["MinProtein"],
-            macros["MaxCarbs"],
-            macros["MinCarbs"],
-            macros["MaxFat"],
-            macros["MinFat"],
-            google_usr["email"],
-        )
-    )
+    db.session.add(models.Macros(
+                                bmr,
+                                macros["MaxCalories"],
+                                macros["MinCalories"],
+                                macros["MaxProtein"],
+                                macros["MinProtein"],
+                                macros["MaxCarbs"],
+                                macros["MinCarbs"],
+                                macros["MaxFat"],
+                                macros["MinFat"],
+                                google_usr["email"],
+                        )
+                    )
     db.session.commit()
 
-    db.session.add(
-        models.Meals(
-            meals["breakfast"],
-            meals["lunch"],
-            meals["dinner"],
-            meals["nutrients"]["calories"],
-            meals["nutrients"]["carbohydrates"],
-            meals["nutrients"]["protein"],
-            meals["nutrients"]["fat"],
-            google_usr["email"],
-        )
-    )
+    db.session.add(models.Meals(
+                                meals["breakfast"],
+                                meals["lunch"],
+                                meals["dinner"],
+                                meals["nutrients"]["calories"],
+                                meals["nutrients"]["carbohydrates"],
+                                meals["nutrients"]["protein"],
+                                meals["nutrients"]["fat"],
+                                google_usr["email"],
+                        )
+                    )
     db.session.commit()
 
-    db.session.add(models.Weight(measurements["weight"], google_usr["email"]))
+    db.session.add(models.Weight(datetime.datetime.now(), measurements["weight"], google_usr["email"]))
     db.session.commit()
 
     print(
@@ -175,8 +164,7 @@ def on_new_user(data):
     socketio.emit("success login", google_usr)
     socketio.emit("is not logging in", "")
     get_user_details(google_usr["email"])
-    # get_most_recent_weight(google_usr['email'], google_usr['sid'])
-
+    emit_all_user_weights(google_usr['email'], google_usr['sid'])
 
 @socketio.on("google sign in")
 def on_google_sign_in(data):
@@ -194,19 +182,19 @@ def on_google_sign_in(data):
         print("Welcome Back! " + google_usr["name"])
         socketio.emit("success login", google_usr)
         get_user_details(google_usr["email"])
-        # get_most_recent_weight(google_usr['email'], google_usr['sid'])
+        emit_all_user_weights(google_usr['email'], google_usr['sid'])
 
 
-@socketio.on("new food_search")
+@socketio.on("google sign out")
+#def on_google_sign_out():
+    #Insert Sign Out Logic
 @socketio.on("connect")
 def on_connect():
     print("\nConnected")
 
-
 @socketio.on("disconnect")
 def on_disconnect():
     print("\nDisconnected")
-
 
 @app.route("/")
 def home():
@@ -221,7 +209,6 @@ def profile():
 @app.route("/foodsearch")
 def food_search():
     return flask.render_template("foodSearch.html")
-
 
 if __name__ == "__main__":
     # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True,

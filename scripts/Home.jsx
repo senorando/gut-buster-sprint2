@@ -9,8 +9,7 @@ export function Home(props) {
   const currentUser = props.currentUser;
   const isLoggedIn = props.currentUser.isLoggedIn;
   const isLoggingIn = props.isLoggingIn;
-  console.log(isLoggingIn)
-  
+  console.log(props);
   return (
     <div id = 'Home'>
         { isLoggingIn?
