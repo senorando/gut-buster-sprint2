@@ -7,13 +7,9 @@ export function UpdateForm(props) {
     
     function handleSubmit(event) {
         let weight = document.getElementById("weight").value;
-        let activityLevel = document.getElementById("ActivityLevel").value;
         
         if (weight == '' || weight == 'e'){
             alert('Please type in a valid weight');
-        }
-        if (activityLevel == '0'){
-            alert("Please select an activity level option");
         }
         else{
             weight = parseFloat(weight);

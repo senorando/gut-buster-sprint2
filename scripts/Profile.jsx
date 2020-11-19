@@ -9,6 +9,7 @@ export function Profile(props) {
     const currentUser = props.currentUser;
     const isLoggingIn = props.isLoggingIn;
     const profileDetail = props.profileDetail;
+    const userWeight = props.userWeight;
     
     return (
         <div id = 'Profile'>
@@ -18,7 +19,9 @@ export function Profile(props) {
                 </div>
                 :
                 <div id = 'ProfileContent'>
-                    <ProfileCont currentUser = { currentUser } profileDetail = { profileDetail }/>
+                    <ProfileCont currentUser = { currentUser } 
+                                    profileDetail = { profileDetail }
+                                    userWeight = { userWeight }/>
                     { currentUser.isLoggedIn?
                       <Logout />
                       :

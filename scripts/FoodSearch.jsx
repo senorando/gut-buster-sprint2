@@ -36,27 +36,23 @@ export function FoodSearch() {
    GetFoodResponse();
         
     return (
-         <div>
-            <div>Food Search</div>
+         <div id = 'FoodSearch'>
+            <h3>Food Search</h3>
             <SearchField
                   placeholder="Search..."
                   classNames="test-class"
                   onSearchClick={handleSubmit}
                 />
-            <div>{food}</div>
-            <div>{calorie}</div>
-            <div>{prep}</div>
+            <span>{food}</span>
+            <span>{calorie}</span>
+            <span>{prep}</span>
             <img src= {image}/>
-            <div>
-                <ol>
-                    {
-                        ingredient.map((ingredient, index) =>
-                        <dt key={index}>{ingredient}</dt>)
-                    }
-                </ol>
-            </div>
-            
+            <ol>
+                {
+                    ingredient.map((ingredient, index) =>
+                    <dt key={index}>{ingredient}</dt>)
+                }
+            </ol>
         </div>
-        
         );
 }
