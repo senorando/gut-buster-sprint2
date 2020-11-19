@@ -17,11 +17,16 @@ export function Profile(props) {
                     <UserForm />
                 </div>
                 :
-                <div id = 'ProfileContent'>
-                    <ProfileCont currentUser = { currentUser } 
-                                    profileDetail = { profileDetail }
-                                    userWeight = { userWeight }/>
-                </div>
+                currentUser.isLoggedIn?
+                    <div id = 'ProfileContent'>
+                        <ProfileCont currentUser = { currentUser } 
+                                        profileDetail = { profileDetail }
+                                        userWeight = { userWeight }/>
+                    </div>
+                    :
+                    <div id = 'ProfileContent'>
+                        <h3>Please login with Google in order to see your profile</h3>
+                    </div>
             }
         </div>
         );

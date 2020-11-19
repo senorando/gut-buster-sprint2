@@ -124,25 +124,23 @@ export function NavBar() {
   return (
     <Router>
       <div id = 'NavBar'>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link to="/foodsearch">Food Search</Link>
-              </li>
-              { currentUser.isLoggedIn?
-                <Logout />
-                :
-                 isLoggingIn?
-                  <span>Logging In</span>
-                  :
-                  <Login />
-              }
-            </ul>
+        <Link to="/">
+          <button id = 'NavButton'>Home</button>
+        </Link>
+        <Link to="/profile">
+          <button id = 'NavButton'>Profile</button>
+        </Link>
+        <Link to="/foodsearch">
+          <button id = 'NavButton'>Food Search</button>
+        </Link>
+        { currentUser.isLoggedIn?
+          <Logout />
+          :
+           isLoggingIn?
+            <span>Logging In</span>
+            :
+            <Login />
+        }
       </div>
           <hr />
       <Switch>
