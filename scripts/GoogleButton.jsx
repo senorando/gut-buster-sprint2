@@ -36,6 +36,7 @@ export function Login() {
 export function Logout() {
   const onSuccess = () => {
     alert('Successfully Logged Out!');
+    Socket.emit('google sign out', 'User has successfully logged out');
   };
   return (
     <div id="GoogleLogout">

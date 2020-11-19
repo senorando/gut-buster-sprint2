@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 
+import { Login, Logout} from './GoogleButton';
 import { Socket } from './Socket';
 import { Home } from "./Home";
 import { Profile } from "./Profile";
@@ -25,16 +26,47 @@ export function NavBar() {
     useEffect(() => {
       Socket.on('success login', (data) => {
         if (data.sid === Socket.id) {
-            setUser((prevState) => ({
-              name: data.name,
-              email: data.email,
-              sid: data.sid,
-              isLoggedIn: true,
-            }));
-          }
+          setUser((prevState) => ({
+            name: data.name,
+            email: data.email,
+            sid: data.sid,
+            isLoggedIn: true,
+          }));
+        }
       });
       Socket.off('success login', '');
-    });
+      Socket.on('success logout', (data) => {
+        if (data.sid === Socket.id) {
+          setUser((prevState) => ({
+            name: '',
+            email: '',
+            sid: data.sid,
+            isLoggedIn: false,
+          }));
+          setProfileDetail((prevState) => ({
+            height: '',
+            age: '',
+            gender: '',
+            activityLevel: '',
+            bmr: '',
+            maxCal: '',
+            maxProt: '',
+            maxCarb: '',
+            maxFat: '',
+            breakfastMeal: '',
+            lunchMeal: '',
+            dinnerMeal: '',
+            calMeal: '',
+            carbMeal: '',
+            protMeal: '',
+            fatMeal: '',
+          }));
+          setWeight([]);
+          console.log('You have successfully logged out!');
+        }
+      });
+      Socket.off('success logout', '');
+    }, []);
   }
   function setDetails(){
     useEffect(() => {
@@ -102,12 +134,21 @@ export function NavBar() {
               <li>
                 <Link to="/foodsearch">Food Search</Link>
               </li>
+              { currentUser.isLoggedIn?
+                <Logout />
+                :
+                 isLoggingIn?
+                  <span>Logging In</span>
+                  :
+                  <Login />
+              }
             </ul>
       </div>
           <hr />
       <Switch>
         <Route exact path="/">
-          <Home currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
+          <Home currentUser = { currentUser } 
+                isLoggingIn = { isLoggingIn }/>
         </Route>
         <Route path="/profile">
           <Profile currentUser = { currentUser }
@@ -116,7 +157,8 @@ export function NavBar() {
                     isLoggingIn = { isLoggingIn }/>
         </Route>
         <Route path="/foodsearch">
-          <FoodSearch currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
+          <FoodSearch currentUser = { currentUser } 
+                        isLoggingIn = { isLoggingIn }/>
         </Route>
       </Switch>
     </Router>

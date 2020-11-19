@@ -186,8 +186,11 @@ def on_google_sign_in(data):
 
 
 @socketio.on("google sign out")
-#def on_google_sign_out():
-    #Insert Sign Out Logic
+def on_google_sign_out(data):
+    print('\nUser with SID \'' + request.sid + '\' has successfully signed out')
+    socketio.emit('success logout', {
+        'sid': request.sid
+    })
 @socketio.on("connect")
 def on_connect():
     print("\nConnected")
