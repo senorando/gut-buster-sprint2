@@ -37,31 +37,73 @@ def get_user_details(user_email):
             current_user = user
             break
     macros = db.session.query(models.Macros).filter_by(email=current_user.id).scalar()
-    meals = db.session.query(models.Meals).filter_by(email=current_user.id).scalar()
 
     print("current_user", current_user)
     print("current_user[height]", current_user.height)
-    user_details = {
-        "id": current_user.id,
-        "height": current_user.height,
-        "age": current_user.age,
-        "gender": current_user.gender,
-        "activityLevel": current_user.activityLevel,
-        "bmr": macros.bmr,
-        "maxCal": macros.max_cal,
-        "maxProt": macros.max_prot,
-        "maxCarb": macros.max_carb,
-        "maxFat": macros.max_fat,
-        "breakfastMeal": meals.breakfast,
-        "lunchMeal": meals.lunch,
-        "dinnerMeal": meals.dinner,
-        "calMeal": meals.meal_cal,
-        "carbMeal": meals.meal_carb,
-        "protMeal": meals.meal_prot,
-        "fatMeal": meals.meal_fat,
-    }
-    socketio.emit("profile details", user_details)
-    print(user_details)
+    date = str(datetime.datetime.now().date())
+    lastlogin = str(db.session.query(models.Users.date).all())
+    lastlogin = lastlogin.replace('[(\'','')
+    lastlogin = lastlogin.replace('\',)]','')
+    print("last login", lastlogin)
+    login= "2020-11-20"
+    calories = str((db.session.query(models.Macros.max_cal).filter_by(email=current_user.id).all()))
+    calories = calories.replace('[(','')
+    calories = calories.replace(',)]','')
+    #print(calories)
+    if date > login:
+        newmeal = mealplan(calories)
+        meal = db.session.query(models.Meals).get(1)
+        meal.breakfast=newmeal["breakfast"],
+        meal.lunch=newmeal["lunch"],
+        meal.dinner=newmeal["dinner"],
+        meal.meal_cal=newmeal["nutrients"]["calories"],
+        meal.meal_carb=newmeal["nutrients"]["carbohydrates"],
+        meal.meal_prot=newmeal["nutrients"]["protein"],
+        meal.meal_fat=newmeal["nutrients"]["fat"],
+        meal.email=current_user.id,
+        db.session.commit()
+        user_details = {
+            "id": current_user.id,
+            "height": current_user.height,
+            "age": current_user.age,
+            "gender": current_user.gender,
+            "activityLevel": current_user.activityLevel,
+            "bmr": macros.bmr,
+            "maxCal": macros.max_cal,
+            "maxProt": macros.max_prot,
+            "maxCarb": macros.max_carb,
+            "maxFat": macros.max_fat,
+            "breakfastMeal": meal.breakfast,
+            "lunchMeal": meal.lunch,
+            "dinnerMeal": meal.dinner,
+            "calMeal": meal.meal_cal,
+            "carbMeal": meal.meal_carb,
+            "protMeal": meal.meal_prot,
+            "fatMeal": meal.meal_fat,
+        }
+        socketio.emit("profile details", user_details)
+    else:
+        meals = db.session.query(models.Meals).filter_by(email=current_user.id).scalar()
+        user_details = {
+            "id": current_user.id,
+            "height": current_user.height,
+            "age": current_user.age,
+            "gender": current_user.gender,
+            "activityLevel": current_user.activityLevel,
+            "bmr": macros.bmr,
+            "maxCal": macros.max_cal,
+            "maxProt": macros.max_prot,
+            "maxCarb": macros.max_carb,
+            "maxFat": macros.max_fat,
+            "breakfastMeal": meals.breakfast,
+            "lunchMeal": meals.lunch,
+            "dinnerMeal": meals.dinner,
+            "calMeal": meals.meal_cal,
+            "carbMeal": meals.meal_carb,
+            "protMeal": meals.meal_prot,
+            "fatMeal": meals.meal_fat,
+        }
+        socketio.emit("profile details", user_details)
 
 
 def emit_all_user_weights(user_email, sid):
@@ -88,6 +130,7 @@ def on_new_food_search(data):
 
 @socketio.on("new user input")
 def on_new_user(data):
+    date = str(datetime.datetime.now().date())
     measurements = {
         "height": data["height"],
         "weight": data["weight"],
@@ -120,6 +163,7 @@ def on_new_user(data):
             measurements["age"],
             measurements["gender"],
             measurements["activityLevel"],
+            date
         )
     )
     db.session.commit()
