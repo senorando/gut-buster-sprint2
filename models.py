@@ -129,7 +129,7 @@ class Chat(db.Model):
         
         
     def __repr__(self):
-        return '<Chat messages: %s>' % self.messages 
+        return '<Chat messages: %s>' % self.text
 
 db.create_all()
 db.session.commit()

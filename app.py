@@ -9,7 +9,7 @@ import os, flask, flask_sqlalchemy, flask_socketio, datetime
 from flask import request
 from calories_count import bmr_cal, daily_caloric_need, calculate_macro
 from spoonacular import foodsearch, mealplan
-
+MESSAGE_RECEIVED_CHANNEL = 'message received'
 app = flask.Flask(__name__)
 
 socketio = flask_socketio.SocketIO(app)
@@ -29,6 +29,35 @@ db.app = app
 db.create_all()
 db.session.commit()
 import models
+
+def emit_all_messages(channel):
+ 
+    db_messages = [ \
+        db_message for db_message \
+        in db.session.query(models.Chat).all()]
+    all_messages = []
+    for i in range(0, len(db_messages)):
+        msg = db_messages[i]
+        usr=db.session.query(models.Users).filter_by(id=msg.user_id).scalar()
+        print(msg)
+        print(usr)
+        if i > 0:
+            prev_msg = db_messages[i - 1].user_id
+        else:
+            prev_msg = 'none'
+        all_messages.append(
+            {
+                "name": usr.name,
+                "text": msg.text,
+                "time": msg.time,
+                "image": usr.imgUrl,
+                "email": usr.id,
+                "prev_email": prev_msg
+            }
+        )
+    print(all_messages)
+    socketio.emit(channel, {"allMessages": all_messages})
+
 
 def get_user_details(user_email):
     db_users = [db_user for db_user in db.session.query(models.Users).all()]
@@ -121,12 +150,23 @@ def on_new_entry(data):
     db.session.commit()
     socketio.emit('not editing', 'User is no longer editing')
     emit_all_user_weights(data['email'], data['sid'])
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
+@socketio.on('new text input')
+def on_new_message(data):
+    new_str=data["entry"]
+    time=datetime.datetime.now()
+    user_id= data["email"]
+    db.session.add(models.Chat(data["entry"],time,user_id))
+    db.session.commit()
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
+    
 @socketio.on("new food search")
 def on_new_food_search(data):
     food_name = {"food": data["food_search"]}
     food_response = foodsearch(food_name["food"])
     socketio.emit("food response", food_response)
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
 @socketio.on("new user input")
 def on_new_user(data):
@@ -138,7 +178,7 @@ def on_new_user(data):
         "gender": data["gender"],
         "activityLevel": int(data["activityLevel"][0]),
     }
-    google_usr = {"name": data["name"], "email": data["email"], "sid": request.sid}
+    google_usr = {"name": data["name"], "email": data["email"], "sid": request.sid,"imgUrl": data["imgUrl"]}
     bmr = bmr_cal(
         measurements["weight"],
         measurements["height"],
@@ -163,7 +203,8 @@ def on_new_user(data):
             measurements["age"],
             measurements["gender"],
             measurements["activityLevel"],
-            date
+            date,
+            google_usr["imgUrl"]
         )
     )
     db.session.commit()
@@ -209,10 +250,11 @@ def on_new_user(data):
     socketio.emit("is not logging in", "")
     get_user_details(google_usr["email"])
     emit_all_user_weights(google_usr['email'], google_usr['sid'])
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
 @socketio.on("google sign in")
 def on_google_sign_in(data):
-    google_usr = {"name": data["name"], "email": data["email"], "sid": request.sid}
+    google_usr = {"name": data["name"], "email": data["email"], "sid": request.sid,"imgUrl": data["imgUrl"]}
     if (
         db.session.query(models.Users.id).filter_by(id=google_usr["email"]).scalar()
         is None
@@ -227,6 +269,7 @@ def on_google_sign_in(data):
         socketio.emit("success login", google_usr)
         get_user_details(google_usr["email"])
         emit_all_user_weights(google_usr['email'], google_usr['sid'])
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
 
 @socketio.on("google sign out")
@@ -238,23 +281,28 @@ def on_google_sign_out(data):
 @socketio.on("connect")
 def on_connect():
     print("\nConnected")
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
 @socketio.on("disconnect")
 def on_disconnect():
     print("\nDisconnected")
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
 @app.route("/")
 def home():
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
     return flask.render_template("home.html")
 
 
 @app.route("/profile")
 def profile():
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
     return flask.render_template("profile.html")
 
 
 @app.route("/foodsearch")
 def food_search():
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
     return flask.render_template("foodSearch.html")
 
 if __name__ == "__main__":
