@@ -8,9 +8,9 @@ import {
 
 import { Login, Logout} from './GoogleButton';
 import { Socket } from './Socket';
-import { Home } from "./Home";
-import { Profile } from "./Profile";
-import { FoodSearch } from "./FoodSearch";
+import { Home } from "./Home/Home";
+import { Profile } from "./Profile/Profile";
+import { FoodSearch } from "./FoodSearch/FoodSearch";
 
 export function NavBar() {
   const [currentUser, setUser] = useState({

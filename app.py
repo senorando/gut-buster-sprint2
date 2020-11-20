@@ -295,6 +295,7 @@ def on_google_sign_out(data):
     socketio.emit('success logout', {
         'sid': request.sid
     })
+
 @socketio.on("connect")
 def on_connect():
     print("\nConnected")
