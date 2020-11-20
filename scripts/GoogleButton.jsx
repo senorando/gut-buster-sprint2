@@ -21,29 +21,25 @@ export function Login() {
     console.log('|Login Failed| res:', res);
   };
   return (
-    <div id="GoogleLogin">
-  
-      <GoogleLogin
-        clientId={clientId}
-        buttonText="Login"
-        onSuccess={onSuccess}
-        onFailure={onFailure}
-        cookiePolicy="single_host_origin"
-      />
-    </div>
+    <GoogleLogin
+      clientId={clientId}
+      buttonText="Login"
+      onSuccess={onSuccess}
+      onFailure={onFailure}
+      cookiePolicy="single_host_origin"
+    />
   );
 }
 export function Logout() {
   const onSuccess = () => {
     alert('Successfully Logged Out!');
+    Socket.emit('google sign out', 'User has successfully logged out');
   };
   return (
-    <div id="GoogleLogout">
-      <GoogleLogout
-        clientId={clientId}
-        buttonText="Logout"
-        onLogoutSuccess={onSuccess}
-      />
-    </div>
+    <GoogleLogout
+      clientId={clientId}
+      buttonText="Logout"
+      onLogoutSuccess={onSuccess}
+    />
   );
 }

@@ -23,16 +23,18 @@ class Users(db.Model):
     gender = db.Column(db.String(5))
     activityLevel = db.Column(db.Text)
     height = db.Column(db.Integer)
+    date = db.Column(db.String(12))
     weight = db.relationship('Weight', backref = 'users')
     
     # db.session.add(models.Users(email, name, age, gender, activityLevel))
-    def __init__(self, email, name, height, age, gender, activityLevel):
+    def __init__(self, email, name, height, age, gender, activityLevel, date):
         self.id = email
         self.name = name
         self.height = height
         self.age = age
         self.gender = gender
         self.activityLevel = activityLevel
+        self.date = date
         
     def __repr__(self):
         return '<Email: %s\nName: %s\nHeight: %s\nAge: %s\nGender: %s\nActivity Level: %s>' % (self.id, self.name, self.height, self.age, self.gender, self.activityLevel)

@@ -1,8 +1,12 @@
 import * as React from 'react';
+
+import { UserForm } from './userForm';
 import { Socket } from './Socket';
 import SearchField from "react-search-field";
 
-export function FoodSearch() {
+export function FoodSearch(props) {
+    const isLoggingIn = props.isLoggingIn;
+    
     function handleSubmit(response) {
         console.log(response);
         let name = response;
@@ -37,22 +41,30 @@ export function FoodSearch() {
         
     return (
          <div id = 'FoodSearch'>
-            <h3>Food Search</h3>
-            <SearchField
-                  placeholder="Search..."
-                  classNames="test-class"
-                  onSearchClick={handleSubmit}
-                />
-            <span>{food}</span>
-            <span>{calorie}</span>
-            <span>{prep}</span>
-            <img src= {image}/>
-            <ol>
-                {
-                    ingredient.map((ingredient, index) =>
-                    <dt key={index}>{ingredient}</dt>)
-                }
-            </ol>
+            { isLoggingIn?
+                <div id = 'UserForm'>
+                    <UserForm />
+                </div>
+                :
+                <div id = 'SearchContent'>
+                    <h3>Food Search</h3>
+                    <SearchField
+                          placeholder="Search..."
+                          classNames="test-class"
+                          onSearchClick={handleSubmit}
+                        />
+                    <span>{food}</span>
+                    <span>{calorie}</span>
+                    <span>{prep}</span>
+                    <img src= {image}/>
+                    <ol>
+                        {
+                            ingredient.map((ingredient, index) =>
+                            <dt key={index}>{ingredient}</dt>)
+                        }
+                    </ol>
+                </div>
+            }
         </div>
         );
 }

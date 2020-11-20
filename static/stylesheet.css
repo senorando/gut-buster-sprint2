@@ -2,19 +2,28 @@ body {
     background-color: #e2f7ff;
 }
 #NavBar {
-    font-family: Arial;
+    font-family: Roboto;
+}
+#NavButton {
+    background-color: rgb(255, 255, 255); 
+    color: rgba(0, 0, 0, 0.54); 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
+    padding: 0px; 
+    border-radius: 2px; 
+    border: 1px solid transparent;
+    cursor: default;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
 }
 #Home {
-    font-family: Arial;
+    font-family: Roboto, sans-serif;
 }
 #Profile {
     font-family: Arial;
 }
 #FoodSearch {
     font-family: Arial;
-}
-a {
-    text-decoration: none;
 }
 ul {
     list-style-type: none;

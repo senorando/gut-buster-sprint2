@@ -2,7 +2,6 @@ import React, {useState,useEffect} from 'react';
 
 import { ProfileCont } from './ProfileCont';
 import { UserForm } from './userForm';
-import { Login, Logout } from './GoogleButton';
 import { Socket } from './Socket';
 
 export function Profile(props) {
@@ -18,16 +17,16 @@ export function Profile(props) {
                     <UserForm />
                 </div>
                 :
-                <div id = 'ProfileContent'>
-                    <ProfileCont currentUser = { currentUser } 
-                                    profileDetail = { profileDetail }
-                                    userWeight = { userWeight }/>
-                    { currentUser.isLoggedIn?
-                      <Logout />
-                      :
-                      <Login />
-                    }
-                </div>
+                currentUser.isLoggedIn?
+                    <div id = 'ProfileContent'>
+                        <ProfileCont currentUser = { currentUser } 
+                                        profileDetail = { profileDetail }
+                                        userWeight = { userWeight }/>
+                    </div>
+                    :
+                    <div id = 'ProfileContent'>
+                        <h3>Please login with Google in order to see your profile</h3>
+                    </div>
             }
         </div>
         );

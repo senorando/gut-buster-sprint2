@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { Socket } from './Socket';
-import { Login, Logout } from './GoogleButton';
 import { UserForm } from "./userForm";
 import { HomeCont } from './HomeCont';
 
@@ -19,11 +18,6 @@ export function Home(props) {
             :
             <div id = 'HomeContent'>
                 <HomeCont currentUser = { currentUser } />
-                { isLoggedIn?
-                  <Logout />
-                  :
-                  <Login />
-                }
             </div>
         }
     </div>
