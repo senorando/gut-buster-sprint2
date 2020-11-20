@@ -1,12 +1,21 @@
 body {
-    background-color: #e2f7ff;
+    background-color: #cff2ff;
+}
+#AppHead {
+    text-align: center;
+    font-family: Arial;
+    margin-top: 25;
 }
 #NavBar {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    padding: 10 5 10 5;
+    margin-top: 100px;
 }
 #NavButton {
     background-color: rgb(255, 255, 255); 
     color: rgba(0, 0, 0, 0.54); 
+    width: 150;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
     padding: 0px; 
     border-radius: 2px; 
@@ -15,6 +24,8 @@ body {
     font: 400 13.3333px Arial;
     padding: 1px 6px;
     border-width: 2px;
+    margin-left: 50;
+    margin-right: 50;
 }
 #Home {
     font-family: Roboto, sans-serif;
@@ -27,4 +38,9 @@ body {
 }
 ul {
     list-style-type: none;
+}
+hr {
+    border: #5daecd 3px solid;
+    border-radius: 50px;
+    margin-bottom: 50px;
 }

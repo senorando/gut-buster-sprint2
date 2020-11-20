@@ -23,6 +23,9 @@ export function Login() {
   return (
     <GoogleLogin
       clientId={clientId}
+      render={renderProps => (
+        <button onClick={renderProps.onClick} disabled={renderProps.disabled} id = 'NavButton'>Login</button>
+      )}
       buttonText="Login"
       onSuccess={onSuccess}
       onFailure={onFailure}
@@ -38,6 +41,9 @@ export function Logout() {
   return (
     <GoogleLogout
       clientId={clientId}
+      render={renderProps => (
+        <button onClick={renderProps.onClick} disabled={renderProps.disabled} id = 'NavButton'>Logout</button>
+      )}
       buttonText="Logout"
       onLogoutSuccess={onSuccess}
     />
