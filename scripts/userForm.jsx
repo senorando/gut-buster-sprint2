@@ -60,7 +60,8 @@ function handleSubmit(event) {
       'gainOrLose':gainOrLose,
       'activityLevel':activityLevel,
       'name':newUsr.name,
-      'email':newUsr.email
+      'email':newUsr.email,
+      'imgUrl': newUsr.imgUrl,
     });
    }
     

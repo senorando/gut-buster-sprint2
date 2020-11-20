@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Chat } from './Chat';
 
 
 export function HomeCont(props) {
@@ -13,6 +14,7 @@ export function HomeCont(props) {
             The  web app will provide a social login to allow users to easily identify themselves,<br></br>
             and feature a Comment/Discussion attitude, through that people can communicate with each other .
         </p>
+        <Chat currentUser = { currentUser }/>
     </div>
     );
 }

@@ -25,9 +25,11 @@ class Users(db.Model):
     height = db.Column(db.Integer)
     date = db.Column(db.String(12))
     weight = db.relationship('Weight', backref = 'users')
+    imgUrl = db.Column(db.Text)
+    messages = db.relationship('Chat', backref = 'users')
     
     # db.session.add(models.Users(email, name, age, gender, activityLevel))
-    def __init__(self, email, name, height, age, gender, activityLevel, date):
+    def __init__(self, email, name, height, age, gender, activityLevel, date,imgUrl):
         self.id = email
         self.name = name
         self.height = height
@@ -35,6 +37,7 @@ class Users(db.Model):
         self.gender = gender
         self.activityLevel = activityLevel
         self.date = date
+        self.imgUrl= imgUrl
         
     def __repr__(self):
         return '<Email: %s\nName: %s\nHeight: %s\nAge: %s\nGender: %s\nActivity Level: %s>' % (self.id, self.name, self.height, self.age, self.gender, self.activityLevel)
@@ -111,6 +114,22 @@ class Meals(db.Model):
     def __repr__(self):
         return '<Breakfast: %s\n Lunch: %s\n Dinner: %s\n Meal Calories: %s\n Meal Carbs: %s\n Meal Protein: %s\n Meal Fat: %s\n User: %s>' % (self.breakfast,
         self.lunch, self.dinner, self.meal_cal, self.meal_carb, self.meal_prot, self.meal_fat, self.email)
+
+class Chat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text)
+    time = db.Column(db.Text)
+    user_id=db.Column(db.String(75),db.ForeignKey("users.id"))
+    
+   
+    def __init__(self, text,time,user_id):
+        self.text = text
+        self.time = time
+        self.user_id = user_id
+        
+        
+    def __repr__(self):
+        return '<Chat messages: %s>' % self.messages 
 
 db.create_all()
 db.session.commit()
