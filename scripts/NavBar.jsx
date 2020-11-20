@@ -21,7 +21,6 @@ export function NavBar() {
   });
   const [userWeight, setWeight] = useState([]);
   const [isLoggingIn, setStatus] = useState(false);
-  
   function setCurrUser(){
     useEffect(() => {
       Socket.on('success login', (data) => {
@@ -117,49 +116,63 @@ export function NavBar() {
       Socket.off('is not logging in', '');
     });
   }
-  
+  function failedLogin(){
+    useEffect(() => {
+      Socket.on('failed login', (data) => {
+          alert(data.res);
+      });
+      Socket.off('failed login', '');
+      
+    }, []);
+  }
   setCurrUser();
   setDetails();
   loginState();
+  failedLogin();
   return (
-    <Router>
-      <div id = 'NavBar'>
-        <Link to="/">
-          <button id = 'NavButton'>Home</button>
-        </Link>
-        <Link to="/profile">
-          <button id = 'NavButton'>Profile</button>
-        </Link>
-        <Link to="/foodsearch">
-          <button id = 'NavButton'>Food Search</button>
-        </Link>
-        { currentUser.isLoggedIn?
-          <Logout />
-          :
-           isLoggingIn?
-            <span>Logging In</span>
-            :
-            <Login />
-        }
+    <div id = 'App'>
+      <div id = 'AppHead'>
+        <h1>Gut Buster</h1>
       </div>
-          <hr />
-      <Switch>
-        <Route exact path="/">
-          <Home currentUser = { currentUser } 
-                isLoggingIn = { isLoggingIn }/>
-        </Route>
-        <Route path="/profile">
-          <Profile currentUser = { currentUser }
-                    userWeight = { userWeight } 
-                    profileDetail = { profileDetail } 
-                    isLoggingIn = { isLoggingIn }/>
-        </Route>
-        <Route path="/foodsearch">
-          <FoodSearch currentUser = { currentUser } 
-                        isLoggingIn = { isLoggingIn }/>
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <div id = 'NavBar'>
+          <Link to="/">
+            <button id = 'NavButton'>Home</button>
+          </Link>
+          <Link to="/profile">
+            <button id = 'NavButton'>Profile</button>
+          </Link>
+          <Link to="/foodsearch">
+            <button id = 'NavButton'>Food Search</button>
+          </Link>
+          { currentUser.isLoggedIn?
+            <Logout />
+            :
+             isLoggingIn?
+              <button id = 'NavButton'><i>Logging In</i></button>
+              :
+              <Login />
+          }
+        </div>
+            <hr />
+        <Switch>
+          <Route exact path="/">
+            <Home currentUser = { currentUser } 
+                  isLoggingIn = { isLoggingIn }/>
+          </Route>
+          <Route path="/profile">
+            <Profile currentUser = { currentUser }
+                      userWeight = { userWeight } 
+                      profileDetail = { profileDetail } 
+                      isLoggingIn = { isLoggingIn }/>
+          </Route>
+          <Route path="/foodsearch">
+            <FoodSearch currentUser = { currentUser } 
+                          isLoggingIn = { isLoggingIn }/>
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

@@ -58,6 +58,7 @@ def emit_all_messages(channel):
     print(all_messages)
     socketio.emit(channel, {"allMessages": all_messages})
 
+online_users = []
 
 def get_user_details(user_email):
     db_users = [db_user for db_user in db.session.query(models.Users).all()]
@@ -133,7 +134,6 @@ def get_user_details(user_email):
             "fatMeal": meals.meal_fat,
         }
         socketio.emit("profile details", user_details)
-
 
 def emit_all_user_weights(user_email, sid):
     weights = []
@@ -248,32 +248,49 @@ def on_new_user(data):
     )
     socketio.emit("success login", google_usr)
     socketio.emit("is not logging in", "")
+    online_users.append(google_usr)
     get_user_details(google_usr["email"])
     emit_all_user_weights(google_usr['email'], google_usr['sid'])
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
 @socketio.on("google sign in")
 def on_google_sign_in(data):
-    google_usr = {"name": data["name"], "email": data["email"], "sid": request.sid,"imgUrl": data["imgUrl"]}
-    if (
-        db.session.query(models.Users.id).filter_by(id=google_usr["email"]).scalar()
-        is None
-    ):
-        print("New User: " + google_usr["name"])
-        socketio.emit(
-            "is logging in", {"res": "User is attempting to login", "sid": request.sid}
-        )
-        socketio.emit("new form", google_usr)
-    else:
-        print("Welcome Back! " + google_usr["name"])
-        socketio.emit("success login", google_usr)
-        get_user_details(google_usr["email"])
-        emit_all_user_weights(google_usr['email'], google_usr['sid'])
+    google_usr = {"name": data["name"], "email": data["email"], "sid": request.sid, "imgUrl": data["imgUrl"]}
+    login_success = True
+    for user in online_users:
+            if user['email'] == google_usr['email']:
+                login_success = False
+                logged_usr = user
+                print('\nLogin Failed!\nUser with email \'' + google_usr['email'] + '\' is already logged in!')
+                res1 = ('Email: \'' + google_usr['email'] + '\' is already logged in!' 
+                        + 'If this isn\'t you, please change your password immediately')
+                res2 = ('Someone just tried to login as you! If you weren\'t aware of this, please change your password.')
+                socketio.emit('failed login', { 'res': res1 }, room = request.sid)
+                break
+    if login_success:
+        if (
+            db.session.query(models.Users.id).filter_by(id=google_usr["email"]).scalar()
+            is None
+        ):
+            print("New User: " + google_usr["name"])
+            socketio.emit(
+                "is logging in", {"res": "User is attempting to login", "sid": request.sid}
+            )
+            socketio.emit("new form", google_usr)
+        else:
+            print("Welcome Back! " + google_usr["name"])
+            online_users.append(google_usr)
+            socketio.emit("success login", google_usr)
+            get_user_details(google_usr["email"])
+            emit_all_user_weights(google_usr['email'], google_usr['sid'])
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
-
 
 @socketio.on("google sign out")
 def on_google_sign_out(data):
+    for user in online_users:
+        if user['sid'] == request.sid:
+            online_users.remove(user)
+            break
     print('\nUser with SID \'' + request.sid + '\' has successfully signed out')
     socketio.emit('success logout', {
         'sid': request.sid
@@ -285,6 +302,10 @@ def on_connect():
 
 @socketio.on("disconnect")
 def on_disconnect():
+    for user in online_users:
+        if user['sid'] == request.sid:
+            online_users.remove(user)
+            break
     print("\nDisconnected")
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
