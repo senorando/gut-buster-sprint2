@@ -28,7 +28,8 @@ export function MacrosChart(props) {
         };
     
     return (
-        <div id = 'MacrosChart'>
+        <div className = 'MacrosChart'>
+            <h3>Recommended Macros</h3><br/>
             <PieChart width={400} height={400}>
             <Pie
                 dataKey="Macros"

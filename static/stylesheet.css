@@ -11,27 +11,252 @@ body {
     text-align: center;
     padding: 10 5 10 5;
     margin-top: 100px;
+    appearance: button;
 }
 #NavButton {
     background-color: rgb(255, 255, 255); 
     color: rgba(0, 0, 0, 0.54); 
+    height: fit-content;
     width: 150;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
     padding: 0px; 
     border-radius: 2px; 
     border: 1px solid transparent;
     cursor: default;
-    font: 400 13.3333px Arial;
-    padding: 1px 6px;
+    font: 14px Arial;
+    padding: 5 5 5 5;
     border-width: 2px;
     margin-left: 50;
     margin-right: 50;
+    text-decoration: none;
+    appearance: button;
 }
-#Home {
+#NavButton:hover {
+    background-color: rgb(235 235 235); 
+    color: rgba(0, 0, 0, 0.54); 
+    height: fit-content;
+    width: 150;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
+    padding: 0px; 
+    border-radius: 2px; 
+    border: 1px solid transparent;
+    cursor: default;
+    font: 14px Arial;
+    padding: 5 5 5 5;
+    border-width: 2px;
+    margin-left: 50;
+    margin-right: 50;
+    text-decoration: none;
+    appearance: button;
+}
+#HomeContent {
     font-family: Roboto, sans-serif;
+}
+.Home {
+    float: left;
+    font-family: Roboto, sans-serif;
+    background-color: #5daecd;
+    height: fit-content;
+    width: fit-content;
+    border: 2px solid;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-left: auto;
+}
+.Home h3 {
+    text-align: center;
+    margin-top: 10;
+    margin-bottom: 15;
+    height: 0;
+}
+.Home p {
+    float: left;
+    height: 531px;
+    overflow-y: auto;
+    background-color: #ffffffd4;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid;
+    padding: 5px;
+    margin-bottom: 0;
+}
+#Profile_Pic {
+    width: 25;
+    border-radius: 50%;
+}
+#Chatbox {
+    float: right;
+    background-color: #FF9800;
+    width: fit-content;
+    border: 2px solid;
+    border-radius: 5px;
+    margin-right: 0;
+    margin-left: 25;
+}
+#Chatbox h3 {
+    text-align: center;
+    margin-top: 10;
+    margin-bottom: 15;
+    height: 0;
+}
+.TextInput input {
+    float: left;
+    background-color: #ffffff; 
+    height: 30px;
+    width: 240px;
+    padding: 5;
+    border: 1px ;
+    border-radius: 1px;
+}
+.TextInput button {
+    float: left;
+    background-color: rgb(235 235 235); 
+    height: 30px;
+    width: 50;
+    color: rgb(0 0 0 / 54%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;  
+    border-radius: px; 
+    border: 1px solid transparent;
+    font: 14px Arial;
+    padding: 5 5 5 5;
+    display: inline;
+}
+.TextInput input:disabled {
+    float: left;
+    background-color: #afafaf;
+    height: 30px;
+    width: 240px;
+    padding: 5;
+    border: 1px ;
+    border-radius: 1px;
+}
+.TextInput button:disabled {
+    float: left;
+    background-color: rgb(146 146 146); 
+    height: 30px;
+    width: 50;
+    color: rgb(0 0 0 / 54%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;  
+    border-radius: px; 
+    border: 1px solid transparent;
+    font: 14px Arial;
+    padding: 5 5 5 5;
+    display: inline;
+}
+#Message_List {
+    float: left;
+    height: 500px;
+    width: 280px;
+    overflow-y: auto;
+    background-color: #ffffffd4;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 5px;
+    margin-bottom: 0;
+}
+#MessageTextOdd {
+    text-align: left;
+    background-color: #ff9800a3;
+    color: black;
+    border-style: black solid;
+    padding: 15px 5px;
+    margin: 10px 0;
+}
+#MessageTextEven {
+    text-align: left;
+    background-color: #ff980052;
+    color: black;
+    border-style: black solid
+    border-radius: 25px;
+    padding: 15px 4px;
+    margin: 10px 0;
 }
 #Profile {
     font-family: Arial;
+}
+.UserDetails {
+    height: fit-content;
+    width: fit-content;
+    border: solid;
+    background-color: #ff9800;
+}
+.UserDetails h3{
+    text-align: center;
+    margin-top: 10;
+    margin-bottom: 15;
+    height: 0;
+}
+.UserDetails p {
+    width: 500px;
+    border-top: 1px solid;
+    background-color: #ffffffd4;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5;
+}
+.MacrosChart {
+    height: fit-content;
+    width: fit-content;
+    border: solid;
+    background-color: #ff9800;
+}
+.MacrosChart h3{
+    text-align: center;
+    margin-top: 10;
+    margin-bottom: 15;
+    height: 0;
+}
+.recharts-wrapper {
+    width: 500px;
+    border-top: 1px solid;
+    background-color: #ffffffd4;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5;
+}
+.RecommendedMeals {
+    float: right;
+    height: fit-content;
+    width: fit-content;
+    border: solid;
+    background-color: #ff9800;
+}
+.RecommendedMeals h3{
+    text-align: center;
+    margin-top: 10;
+    margin-bottom: 15;
+    height: 15;
+}
+.RecommendedMeals p {
+    width: 500px;
+    border-top: 1px solid;
+    background-color: #ffffffd4;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5;
+}
+.WeightGraph {
+    float: right;
+    height: fit-content;
+    width: fit-content;
+    border: solid;
+    background-color: #ff9800;
+}
+.WeightGraph h3{
+    text-align: center;
+    margin-top: 10;
+    margin-bottom: 15;
+    height: 15;
+}
+.WeightGraph p {
+    width: 500px;
+    border-top: 1px solid;
+    background-color: #ffffffd4;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5;
 }
 #FoodSearch {
     font-family: Arial;
@@ -42,5 +267,4 @@ ul {
 hr {
     border: #5daecd 3px solid;
     border-radius: 50px;
-    margin-bottom: 50px;
 }

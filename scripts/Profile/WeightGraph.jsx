@@ -15,7 +15,7 @@ export function WeightGraph(props) {
         { name: "weight7", Weight: userWeight[ userWeight.length - 1] },
     ];
     return (
-        <div id = 'WeightGraph'>
+        <div className = 'WeightGraph'>
             <h3>Graph of weight Difference</h3>
             <LineChart width={400} height={150} data={weight_data}>
                 <Line type="monotone" dataKey="Weight" stroke="#8884d8" strokeWidth={2}  labelLine={true} label/>

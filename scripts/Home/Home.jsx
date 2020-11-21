@@ -5,6 +5,7 @@ import { UserForm } from "../userForm";
 import { HomeCont } from './HomeCont';
 
 export function Home(props) {
+    console.log('Home: ' + props.location);
   const currentUser = props.currentUser;
   const isLoggedIn = props.currentUser.isLoggedIn;
   const isLoggingIn = props.isLoggingIn;
@@ -16,9 +17,7 @@ export function Home(props) {
                 <UserForm />
             </div>
             :
-            <div id = 'HomeContent'>
-                <HomeCont currentUser = { currentUser } />
-            </div>
+            <HomeCont currentUser = { currentUser } />
         }
     </div>
     );

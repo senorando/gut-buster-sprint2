@@ -21,17 +21,18 @@ export function Button(props) {
     }
     
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="bottom container">
+        <div id = "TextBox">
             { isLoggedIn?
-            <div>
-            <input id="text_input" placeholder="Enter a Text! "></input>
-            <button>Submit</button>
-            </div>
+            <form className = 'TextInput' onSubmit={handleSubmit}>
+                <input placeholder="Enter a Text! "></input>
+                <button>Send!</button>
+            </form>
             :
-            <h1>Please log in to chat</h1>
+            <form className = 'TextInput'>
+                <input placeholder="Login to send messages " disabled></input>
+                <button disabled>Send!</button>
+            </form>
             }
-            </div>
-        </form>
+        </div>
     );
 }

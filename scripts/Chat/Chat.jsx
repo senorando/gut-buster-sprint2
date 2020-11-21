@@ -6,29 +6,32 @@ import { Socket } from '../Socket';
 
 export function Chat(props) {
   const currentUser = props.currentUser;
-  const username = props.currentUser.name;
   const isLoggedIn = props.currentUser.isLoggedIn;
-  const [message, setMessage] = React.useState([]);
+  const [message, setMessage] = useState([]);
   
   function getNewMessage() {
-        React.useEffect(() => {
+        useEffect(() => {
             Socket.on('message received', (data) => {
                 console.log("Received messages from server: " + data['allMessages']);
                setMessage(data['allMessages']);
-            } )
-        });
+            });
+            Socket.off('message received', '');
+        }, []);
   }
   getNewMessage();
   return (
-    <div>
-        <h3>Live Chat Interaction: </h3>
-        <ul>
-        {
-          message.map((messages, index) =>  
-          <li key={index}><img src={messages.image} width="25" height="25"/> {messages.name}: {messages.text}</li>)
-        }
+    <div id = 'ChatBox'>
+        <h3>Live Chat</h3>
+        <ul id = 'Message_List'>
+        { message.map((messages, index) =>  
+            <li id = 'Message' key={index}>
+              <div id = {index % 2 === 1? 'MessageTextOdd' : 'MessageTextEven'}>
+                <img id = 'Profile_Pic' src={messages.image}/> {messages.name}: {messages.text}
+              </div>
+            </li>
+        )}
         </ul>
-         <Button currentUser = { currentUser } />
+        <Button currentUser = { currentUser } />
     </div>
     );
 }

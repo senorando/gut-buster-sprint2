@@ -321,7 +321,11 @@ def profile():
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
     return flask.render_template("profile.html")
 
-
+@app.route("/workout")
+def workout_log():
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
+    return flask.render_template("workout.html")
+    
 @app.route("/foodsearch")
 def food_search():
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)

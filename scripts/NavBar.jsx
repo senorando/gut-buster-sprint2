@@ -10,6 +10,7 @@ import { Login, Logout} from './GoogleButton';
 import { Socket } from './Socket';
 import { Home } from "./Home/Home";
 import { Profile } from "./Profile/Profile";
+import { Workout } from './WorkoutLog/Workout';
 import { FoodSearch } from "./FoodSearch/FoodSearch";
 
 export function NavBar() {
@@ -136,14 +137,17 @@ export function NavBar() {
       </div>
       <Router>
         <div id = 'NavBar'>
-          <Link to="/">
-            <button id = 'NavButton'>Home</button>
+          <Link  id = 'NavButton' to="/">
+            Home
           </Link>
-          <Link to="/profile">
-            <button id = 'NavButton'>Profile</button>
+          <Link id = 'NavButton' to="/profile">
+            Profile
           </Link>
-          <Link to="/foodsearch">
-            <button id = 'NavButton'>Food Search</button>
+          <Link id = 'NavButton' to="/workout">
+            Workout Log
+          </Link>
+          <Link id = 'NavButton' to="/foodsearch">
+            Food Search
           </Link>
           { currentUser.isLoggedIn?
             <Logout />
@@ -165,6 +169,10 @@ export function NavBar() {
                       userWeight = { userWeight } 
                       profileDetail = { profileDetail } 
                       isLoggingIn = { isLoggingIn }/>
+          </Route>
+           <Route path="/workout">
+            <Workout currentUser = { currentUser } 
+                          isLoggingIn = { isLoggingIn }/>
           </Route>
           <Route path="/foodsearch">
             <FoodSearch currentUser = { currentUser } 
