@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { UserForm } from '../userForm';
 import { Socket } from '../Socket';
@@ -12,18 +12,18 @@ export function FoodSearch(props) {
         let name = response;
         Socket.emit('new food search', {
           'food_search': name,
-       });
+        });
        console.log('Sent the food ' + name + ' to server!');
     }
     
-    const [food, setFoods] = React.useState([]);
-    const [ingredient, setIngredient] = React.useState([]);
-    const [prep, setPrep] = React.useState([]);
-    const [image, setImage] = React.useState([]);
-    const [calorie, setCalorie] = React.useState([]);
+    const [food, setFoods] = useState([]);
+    const [ingredient, setIngredient] = useState([]);
+    const [prep, setPrep] = useState([]);
+    const [image, setImage] = useState([]);
+    const [calorie, setCalorie] = useState([]);
 
     function GetFoodResponse() {
-        React.useEffect(() => {
+        useEffect(() => {
             Socket.on('food response', (data) => {
                 //console.log("Received addresses from server for food_name: " + data['name']);
                 let food_name = data['name'];
@@ -33,8 +33,9 @@ export function FoodSearch(props) {
                 setPrep(data['preptime'] + " minutes prep time");
                 setImage(data['image_url']);
                 setCalorie(data['calories'] + " calories");
-        });
-    });
+            });
+            Socket.off('food response', '');
+        }, []);
     }
    
    GetFoodResponse();
