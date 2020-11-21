@@ -31,7 +31,6 @@ db.session.commit()
 import models
 
 def emit_all_messages(channel):
- 
     db_messages = [ \
         db_message for db_message \
         in db.session.query(models.Chat).all()]
@@ -39,8 +38,6 @@ def emit_all_messages(channel):
     for i in range(0, len(db_messages)):
         msg = db_messages[i]
         usr=db.session.query(models.Users).filter_by(id=msg.user_id).scalar()
-        print(msg)
-        print(usr)
         if i > 0:
             prev_msg = db_messages[i - 1].user_id
         else:
@@ -55,7 +52,6 @@ def emit_all_messages(channel):
                 "prev_email": prev_msg
             }
         )
-    print(all_messages)
     socketio.emit(channel, {"allMessages": all_messages})
 
 online_users = []

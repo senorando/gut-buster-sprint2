@@ -103,7 +103,7 @@ body {
     float: left;
     background-color: #ffffff; 
     height: 30px;
-    width: 240px;
+    width: 310px;
     padding: 5;
     border: 1px ;
     border-radius: 1px;
@@ -125,7 +125,7 @@ body {
     float: left;
     background-color: #afafaf;
     height: 30px;
-    width: 240px;
+    width: 310px;
     padding: 5;
     border: 1px ;
     border-radius: 1px;
@@ -146,7 +146,7 @@ body {
 #Message_List {
     float: left;
     height: 500px;
-    width: 280px;
+    width: 350px;
     overflow-y: auto;
     background-color: #ffffffd4;
     padding-top: 5px;

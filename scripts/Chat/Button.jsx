@@ -24,7 +24,7 @@ export function Button(props) {
         <div id = "TextBox">
             { isLoggedIn?
             <form className = 'TextInput' onSubmit={handleSubmit}>
-                <input placeholder="Enter a Text! "></input>
+                <input id = 'text_input' placeholder="Enter a Text! "></input>
                 <button>Send!</button>
             </form>
             :

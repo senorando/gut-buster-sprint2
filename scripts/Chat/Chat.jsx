@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import { animateScroll } from 'react-scroll';
 
 import { Button } from './Button';
 import { Socket } from '../Socket';
@@ -9,6 +10,11 @@ export function Chat(props) {
   const isLoggedIn = props.currentUser.isLoggedIn;
   const [message, setMessage] = useState([]);
   
+  function scroll() {
+    animateScroll.scrollToBottom({
+      containerId: 'Message_List',
+    });
+  }
   function getNewMessage() {
         useEffect(() => {
             Socket.on('message received', (data) => {
@@ -18,6 +24,7 @@ export function Chat(props) {
             Socket.off('message received', '');
         }, []);
   }
+  useEffect(() => { scroll(); });
   getNewMessage();
   return (
     <div id = 'ChatBox'>
