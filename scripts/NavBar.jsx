@@ -72,6 +72,7 @@ export function NavBar() {
     useEffect(() => {
       Socket.on('profile details',(data) => {
         if (data.id == currentUser.email ) {
+          console.log(data);
           setProfileDetail((prevState) => ({
             height: data.height,
             age: data.age,

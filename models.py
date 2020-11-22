@@ -19,7 +19,7 @@ class Users(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.String(50), primary_key=True)
     name = db.Column(db.String(30))
-    age = db.Column(db.Text)
+    birthday = db.Column(db.DateTime)
     gender = db.Column(db.String(5))
     activityLevel = db.Column(db.Text)
     height = db.Column(db.Integer)
@@ -28,24 +28,24 @@ class Users(db.Model):
     imgUrl = db.Column(db.Text)
     messages = db.relationship('Chat', backref = 'users')
     
-    # db.session.add(models.Users(email, name, age, gender, activityLevel))
-    def __init__(self, email, name, height, age, gender, activityLevel, date,imgUrl):
+    # db.session.add(models.Users(email, name, birthday, gender, activityLevel))
+    def __init__(self, email, name, height, birthday, gender, activityLevel, date, imgUrl):
         self.id = email
         self.name = name
         self.height = height
-        self.age = age
+        self.birthday = birthday
         self.gender = gender
         self.activityLevel = activityLevel
         self.date = date
         self.imgUrl= imgUrl
         
     def __repr__(self):
-        return '<Email: %s\nName: %s\nHeight: %s\nAge: %s\nGender: %s\nActivity Level: %s>' % (self.id, self.name, self.height, self.age, self.gender, self.activityLevel)
+        return '<Email: %s\nName: %s\nHeight: %s\nBirthday: %s\nGender: %s\nActivity Level: %s>' % (self.id, self.name, self.height, self.birthday, self.gender, self.activityLevel)
         
 class Weight(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.DateTime, primary_key=True)
-    weight = db.Column(db.Integer)
+    weight = db.Column(db.Float)
     email = db.Column(db.String(50), db.ForeignKey('users.id'))
     
     # db.session.add(models.Weight(weight, email))

@@ -6,7 +6,6 @@ export function MacrosChart(props) {
     const profileDetail = props.profileDetail;
     
     const data = [
-                { name: "Max Calories", Macros: profileDetail.maxCal },
                 { name: "Max Protein", Macros: profileDetail.maxProt },
                 { name: "Max Carb", Macros: profileDetail.maxCarb },
                 { name: "Max Fat", Macros: profileDetail.maxFat },
@@ -29,7 +28,7 @@ export function MacrosChart(props) {
     
     return (
         <div className = 'MacrosChart'>
-            <h3>Recommended Macros</h3><br/>
+            <h3>Recommended Macros<br/>Max Calories: { profileDetail.maxCal }</h3>
             <PieChart width={400} height={400}>
             <Pie
                 dataKey="Macros"

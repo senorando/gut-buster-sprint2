@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 
 import { ProfileCont } from './ProfileCont';
-import { UserForm } from '../userForm';
+import { UserForm } from '../UserForm';
 import { Socket } from '../Socket';
 
 export function Profile(props) {

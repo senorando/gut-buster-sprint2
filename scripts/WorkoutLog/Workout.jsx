@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { UserForm } from '../userForm';
+import { UserForm } from '../UserForm';
 import { Socket } from '../Socket';
 
 export function Workout(props) {

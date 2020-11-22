@@ -24,7 +24,7 @@ export function Chat(props) {
             Socket.off('message received', '');
         }, []);
   }
-  useEffect(() => { scroll(); });
+  useEffect(() => { scroll(); }, []);
   getNewMessage();
   return (
     <div id = 'ChatBox'>

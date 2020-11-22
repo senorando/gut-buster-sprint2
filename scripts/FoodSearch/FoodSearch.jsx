@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { UserForm } from '../userForm';
+import { UserForm } from '../UserForm';
 import { Socket } from '../Socket';
 import SearchField from "react-search-field";
 
@@ -24,9 +24,7 @@ export function FoodSearch(props) {
 
     function GetFoodResponse() {
         useEffect(() => {
-            Socket.on('food response', (data) => {
-                //console.log("Received addresses from server for food_name: " + data['name']);
-                let food_name = data['name'];
+            Socket.on('food response', (data) => {let food_name = data['name'];
                 console.log(food_name);
                 setFoods(data['name']);
                 setIngredient(data['recepie_list']);

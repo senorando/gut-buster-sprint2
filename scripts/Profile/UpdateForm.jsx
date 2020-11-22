@@ -6,7 +6,7 @@ export function UpdateForm(props) {
     const currentUser = props.currentUser;
     
     function handleSubmit(event) {
-        let weight = document.getElementById("weight").value;
+        let weight = parseFloat(document.getElementById("weight").value);
         
         if (weight == '' || weight == 'e'){
             alert('Please type in a valid weight');
@@ -25,8 +25,7 @@ export function UpdateForm(props) {
     return (
         <form onSubmit={ handleSubmit }>
             <h3>Add a new entry</h3>
-            <label>Weight: </label>
-            <input type="number" id="weight"  placeholder="lbs" /> lbs<br/><br/>
+            Weight: <input type="float" id="weight"  placeholder="lbs" /> lbs<br/><br/>
             <button type="submit">Submit</button>
         </form>
     )

@@ -29,6 +29,7 @@ db.app = app
 db.create_all()
 db.session.commit()
 import models
+online_users = []
 
 def emit_all_messages(channel):
     db_messages = [ \
@@ -54,29 +55,23 @@ def emit_all_messages(channel):
         )
     socketio.emit(channel, {"allMessages": all_messages})
 
-online_users = []
+def calculate_age(birth_date):
+    today = datetime.datetime.now()
+    return int((today - birth_date).days / 365)
 
 def get_user_details(user_email):
-    db_users = [db_user for db_user in db.session.query(models.Users).all()]
-    for user in db_users:
-        if user.id == user_email:
-            current_user = user
-            break
+    current_user = db.session.query(models.Users).filter_by(id = user_email).scalar()
     macros = db.session.query(models.Macros).filter_by(email=current_user.id).scalar()
 
-    print("current_user", current_user)
-    print("current_user[height]", current_user.height)
     date = str(datetime.datetime.now().date())
-    lastlogin = str(db.session.query(models.Users.date).all())
+    lastlogin = str(current_user.date)
     lastlogin = lastlogin.replace('[(\'','')
     lastlogin = lastlogin.replace('\',)]','')
-    print("last login", lastlogin)
-    login= "2020-11-20"
-    calories = str((db.session.query(models.Macros.max_cal).filter_by(email=current_user.id).all()))
+    calories = str((db.session.query(models.Macros).filter_by(email=current_user.id).scalar().max_cal))
     calories = calories.replace('[(','')
     calories = calories.replace(',)]','')
-    #print(calories)
-    if date > login:
+    age = calculate_age(current_user.birthday)
+    if date > lastlogin:
         newmeal = mealplan(calories)
         meal = db.session.query(models.Meals).get(1)
         meal.breakfast=newmeal["breakfast"],
@@ -91,7 +86,7 @@ def get_user_details(user_email):
         user_details = {
             "id": current_user.id,
             "height": current_user.height,
-            "age": current_user.age,
+            "age": age,
             "gender": current_user.gender,
             "activityLevel": current_user.activityLevel,
             "bmr": macros.bmr,
@@ -113,7 +108,7 @@ def get_user_details(user_email):
         user_details = {
             "id": current_user.id,
             "height": current_user.height,
-            "age": current_user.age,
+            "age": age,
             "gender": current_user.gender,
             "activityLevel": current_user.activityLevel,
             "bmr": macros.bmr,
@@ -170,15 +165,18 @@ def on_new_user(data):
     measurements = {
         "height": data["height"],
         "weight": data["weight"],
-        "age": data["age"],
+        "birthday": data['birthday'],
         "gender": data["gender"],
         "activityLevel": int(data["activityLevel"][0]),
     }
+    birthday = datetime.datetime.strptime(measurements['birthday'], '%Y-%m-%d')
+    age = calculate_age(birthday)
+    print('\nAge: ' + str(age))
     google_usr = {"name": data["name"], "email": data["email"], "sid": request.sid,"imgUrl": data["imgUrl"]}
     bmr = bmr_cal(
         measurements["weight"],
         measurements["height"],
-        measurements["age"],
+        age,
         measurements["gender"],
     )
     calories = daily_caloric_need(bmr, measurements["activityLevel"])
@@ -190,13 +188,13 @@ def on_new_user(data):
         "gainOrLose": data["gainOrLose"],
         "MaxCalories": macros["MaxCalories"],
     }
-    # To fetch the recepies from API getting the variable ready
+    # To fetch the recipes from API getting the variable ready
     db.session.add(
         models.Users(
             google_usr["email"],
             google_usr["name"],
             measurements["height"],
-            measurements["age"],
+            birthday,
             measurements["gender"],
             measurements["activityLevel"],
             date,
@@ -205,8 +203,7 @@ def on_new_user(data):
     )
     db.session.commit()
 
-    db.session.add(models.Macros(
-                                bmr,
+    db.session.add(models.Macros(bmr,
                                 macros["MaxCalories"],
                                 macros["MinCalories"],
                                 macros["MaxProtein"],
@@ -220,8 +217,7 @@ def on_new_user(data):
                     )
     db.session.commit()
 
-    db.session.add(models.Meals(
-                                meals["breakfast"],
+    db.session.add(models.Meals(meals["breakfast"],
                                 meals["lunch"],
                                 meals["dinner"],
                                 meals["nutrients"]["calories"],
@@ -251,6 +247,7 @@ def on_new_user(data):
 
 @socketio.on("google sign in")
 def on_google_sign_in(data):
+    print('User is attempting to sign in...')
     google_usr = {"name": data["name"], "email": data["email"], "sid": request.sid, "imgUrl": data["imgUrl"]}
     login_success = True
     for user in online_users:
