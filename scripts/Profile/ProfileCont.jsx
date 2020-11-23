@@ -22,43 +22,41 @@ export function ProfileCont(props){
     });
     Socket.off('not editing', '');
     return (
-        <div>
-            <WeightGraph userWeight = { userWeight } />
-            <div className = 'UserDetails'>
-                <h3> { currentUser.name } </h3><br/>
-                <p>
-                    Height: { profileDetail.height } <br/>
-                    Weight: { userWeight[ userWeight.length - 1 ] } <br/>
-                    Age: { profileDetail.age } <br/>
-                    Gender: { profileDetail.gender } <br/>
-                    Activity Level: { profileDetail.activityLevel } <br/>
-                    BMR: { profileDetail.bmr } <br/>
-                </p>
-                { isEdit? 
-                    <div id = 'UserForm'>
+        <div id = 'ProfileContent'>
+            <div id = 'Left'>
+                <div className = 'UserDetails'>
+                    <h3> { currentUser.name } </h3><br/>
+                    <p>
+                        Height: { profileDetail.height } <br/>
+                        Weight: { userWeight[ userWeight.length - 1 ] } <br/>
+                        Age: { profileDetail.age } <br/>
+                        Gender: { profileDetail.gender } <br/>
+                        Activity Level: { profileDetail.activityLevel } <br/>
+                        BMR: { profileDetail.bmr } <br/>
+                    </p>
+                    { isEdit? 
                         <UpdateForm currentUser = { currentUser }/>
-                    </div>
-                    :
-                    <button onClick = { updateStatus }>Add New Weight Entry</button>
-                }
-            </div><br/>
-            <div className = 'RecommendedMeals'>
-                <h3>Recommended Meals based on your macros</h3>
-                <p>
-                    Breakfast: { profileDetail.breakfastMeal } <br/>
-                    Lunch: { profileDetail.lunchMeal } <br/>
-                    Dinner: { profileDetail.dinnerMeal } <br/>
-                    Total Calories: { profileDetail.calMeal } <br/>
-                    Total Protein: { profileDetail.protMeal } <br/>
-                    Total Carbs: { profileDetail.carbMeal } <br/>
-                    Total Fat: { profileDetail.fatMeal } <br/>
-                </p>
-            </div><br/>
-            <div id = 'Macros'>
+                        :
+                        <button onClick = { updateStatus }>Add New Weight Entry</button>
+                    }
+                </div>
                 <MacrosChart profileDetail = { profileDetail } />
-            </div><br/>
-            
-            
+            </div>
+            <div id = 'Right'>
+                <WeightGraph userWeight = { userWeight } />
+                <div className = 'RecommendedMeals'>
+                    <h3>Recommended Meals based on your macros</h3>
+                    <p>
+                        Breakfast: { profileDetail.breakfastMeal } <br/>
+                        Lunch: { profileDetail.lunchMeal } <br/>
+                        Dinner: { profileDetail.dinnerMeal } <br/>
+                        Total Calories: { profileDetail.calMeal } <br/>
+                        Total Protein: { profileDetail.protMeal } <br/>
+                        Total Carbs: { profileDetail.carbMeal } <br/>
+                        Total Fat: { profileDetail.fatMeal } <br/>
+                    </p>
+                </div>
+            </div>               
         </div>
     );
 }

@@ -30,13 +30,35 @@ export function Chat(props) {
     <div id = 'ChatBox'>
         <h3>Live Chat</h3>
         <ul id = 'Message_List'>
-        { message.map((messages, index) =>  
-            <li id = 'Message' key={index}>
-              <div id = {index % 2 === 1? 'MessageTextOdd' : 'MessageTextEven'}>
-                <img id = 'Profile_Pic' src={messages.image}/> {messages.name}: {messages.text}
-              </div>
-            </li>
-        )}
+          { message.map((message, index) => {
+            if( message.email === currentUser.email ){
+              return (
+                <li id = 'MessageSelf' key={index}>
+                  <span id = 'SelfText'>
+                    {message.text}
+                  </span><br/>
+                  <span id = "MessageTime">{ message.time }</span>
+              </li>
+              );
+            }
+            return (
+              <li id = 'MessageOthers' key={index}>
+                { message.email !== message.prev_email?
+                  <div id = 'MessageHead'><img id = 'Profile_Pic' src={message.image}/>
+                    <strong>{message.name}</strong>
+                  </div>
+                  :
+                  <div id = 'FakeHead'></div>
+                }
+                <div id = 'OthersCont'>
+                  <span id = 'OthersText'>
+                    {message.text}
+                  </span><br/>
+                  <span id = "MessageTime">{ message.time }</span>
+                </div>
+                </li>
+              ); 
+          })}
         </ul>
         <Button currentUser = { currentUser } />
     </div>

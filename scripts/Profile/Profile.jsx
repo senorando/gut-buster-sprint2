@@ -18,11 +18,9 @@ export function Profile(props) {
                 </div>
                 :
                 currentUser.isLoggedIn?
-                    <div id = 'ProfileContent'>
-                        <ProfileCont currentUser = { currentUser } 
-                                        profileDetail = { profileDetail }
-                                        userWeight = { userWeight }/>
-                    </div>
+                    <ProfileCont currentUser = { currentUser } 
+                                    profileDetail = { profileDetail }
+                                    userWeight = { userWeight }/>
                     :
                     <div id = 'ProfileContent'>
                         <h3>Please login with Google in order to see your profile</h3>

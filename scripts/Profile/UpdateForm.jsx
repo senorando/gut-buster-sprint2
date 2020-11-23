@@ -23,10 +23,12 @@ export function UpdateForm(props) {
     }
     
     return (
-        <form onSubmit={ handleSubmit }>
-            <h3>Add a new entry</h3>
-            Weight: <input type="float" id="weight"  placeholder="lbs" /> lbs<br/><br/>
-            <button type="submit">Submit</button>
-        </form>
+        <div id = 'UpdateForm'>
+            <h3>Add a new entry</h3><br/>
+            <form onSubmit={ handleSubmit }>
+                Weight: <input type="float" id="weight"  placeholder="lbs" /> lbs
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     )
 }

@@ -4,6 +4,7 @@ body {
 #AppHead {
     text-align: center;
     font-family: Arial;
+    width: 100%;
     margin-top: 25;
 }
 #NavBar {
@@ -50,20 +51,17 @@ body {
     appearance: button;
 }
 #UserForm {
-    float: left;
     font-family: Roboto, sans-serif;
     background-color: #5daecd;
     height: fit-content;
     width: fit-content;
     border: 2px solid;
     border-radius: 5px;
-    margin-right: 5px;
-    margin-left: auto;
 }
-#UserForm h3 {
+#UserForm h4 {
     text-align: center;
     margin-top: 10;
-    margin-bottom: 25;
+    margin-bottom: 40;
     height: 0;
 }
 #UserForm form {
@@ -79,6 +77,28 @@ body {
 }
 #HomeContent {
     font-family: Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+#ProfileContent {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+#WorkoutContent {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+#FoodSearchContent {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+#AboutContent {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
 }
 .Home {
     float: left;
@@ -87,9 +107,8 @@ body {
     height: fit-content;
     width: fit-content;
     border: 2px solid;
+    border-right: 1px solid;
     border-radius: 5px;
-    margin-right: 5px;
-    margin-left: auto;
 }
 .Home h3 {
     text-align: center;
@@ -100,6 +119,7 @@ body {
 .Home p {
     float: left;
     height: 531px;
+    width: 900px;
     overflow-y: auto;
     background-color: #ffffffd4;
     padding-top: 5px;
@@ -113,13 +133,12 @@ body {
     border-radius: 50%;
 }
 #Chatbox {
-    float: right;
+    float: left;
     background-color: #FF9800;
-    width: fit-content;
+    width: 360px;
     border: 2px solid;
+    border-left: 1px solid;
     border-radius: 5px;
-    margin-right: 0;
-    margin-left: 25;
 }
 #Chatbox h3 {
     text-align: center;
@@ -129,25 +148,25 @@ body {
 }
 .TextInput input {
     float: left;
-    background-color: #ffffff; 
+    background-color: #ffffff;
     height: 30px;
     width: 310px;
-    padding: 5;
-    border: 1px ;
+    padding: 15;
+    border: 1px;
     border-radius: 1px;
 }
 .TextInput button {
     float: left;
-    background-color: rgb(235 235 235); 
+    background-color: rgb(235 235 235);
     height: 30px;
     width: 50;
     color: rgb(0 0 0 / 54%);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;  
-    border-radius: px; 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
     border: 1px solid transparent;
     font: 14px Arial;
     padding: 5 5 5 5;
     display: inline;
+    margin: 0;
 }
 .TextInput input:disabled {
     float: left;
@@ -173,42 +192,53 @@ body {
 }
 #Message_List {
     float: left;
-    height: 500px;
-    width: 350px;
+    height: 504px;
+    width: 345px;
     overflow-y: auto;
     background-color: #ffffffd4;
     padding-top: 5px;
     padding-bottom: 5px;
     border-top: 1px solid;
     border-bottom: 1px solid;
-    padding: 5px;
+    padding: 5 10 5 5;
     margin-bottom: 0;
+    font-size: 12;
 }
-#MessageTextOdd {
+#MessageSelf {
+    text-align: right;
+    width: fit-content;
     text-align: left;
-    background-color: #ff9800a3;
+    background-color: #ffffff;
     color: black;
     border-style: black solid;
     padding: 15px 5px;
     margin: 10px 0;
+    margin-left: auto;
 }
-#MessageTextEven {
+#SelfText {
+    float: right;
+}
+#OthersCont {
+    width: fit-content;
     text-align: left;
-    background-color: #ff980052;
-    color: black;
+    background-color: #0008ffb0;
+    color: white;
     border-style: black solid
     border-radius: 25px;
     padding: 15px 4px;
     margin: 10px 0;
 }
-#Profile {
-    font-family: Arial;
+#MessageTime {
+    font-style: italic;
+    font-size: 10px;
 }
 .UserDetails {
-    height: 216;
+    float: left;
+    height: fit-content;
     width: fit-content;
     border: solid;
     background-color: #ff9800;
+    flex: 50%;
 }
 .UserDetails h3{
     text-align: center;
@@ -225,16 +255,13 @@ body {
     padding-bottom: 10px;
     padding-left: 5;
 }
-#UserForm form {
-    background-color: #ffeed4;
-    border: 2px solid;
-    position: absolute;
-}
 .MacrosChart {
+    float: left;
     height: fit-content;
     width: fit-content;
     border: solid;
     background-color: #ff9800;
+    flex: 50%;
 }
 .MacrosChart h3{
     text-align: center;
@@ -256,6 +283,7 @@ body {
     width: fit-content;
     border: solid;
     background-color: #ff9800;
+    flex: 50%;
 }
 .RecommendedMeals h3{
     text-align: center;
@@ -278,12 +306,12 @@ body {
     width: fit-content;
     border: solid;
     background-color: #ff9800;
+    flex: 50%;
 }
 .WeightGraph h3{
     text-align: center;
     margin-top: 10;
-    margin-bottom: 15;
-    height: 15;
+    height: 20;
 }
 .WeightGraph p {
     width: 500px;
@@ -318,6 +346,38 @@ hr {
 .food5{
     position: relative;
     left: 500px;
-    bottom: 610px;
-    
+    bottom: 610px;   
+}
+button {
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.54);
+    height: fit-content;
+    width: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+    padding: 0px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    cursor: default;
+    font: 14px Arial;
+    padding: 5 5 5 5;
+    border-width: 2px;
+    text-decoration: none;
+    appearance: button;
+    margin-right: 5;
+}
+button:hover {
+    background-color: rgb(235 235 235); 
+    color: rgba(0, 0, 0, 0.54); 
+    height: fit-content;
+    width: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
+    padding: 0px; 
+    border-radius: 2px; 
+    border: 1px solid transparent;
+    cursor: default;
+    font: 14px Arial;
+    padding: 5 5 5 5;
+    border-width: 2px;
+    text-decoration: none;
+    appearance: button;
 }

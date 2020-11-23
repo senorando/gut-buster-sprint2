@@ -104,34 +104,36 @@ export function UserForm(){
     }
     return(
       <div id = 'UserForm'>
-      <h4>Welcome { newUsr.name }!<br/>Please fill out the form below to get started</h4>
-        <form onSubmit={handleSubmit}>
-            Birthday: <input type="date"  id="birthday" name="birthday"/><br/>
-            Height: <input type="number" id="height_feet" placeholder="feet"  name="height"/>{ ' \' ' } 
-                    <input placeholder="inches" id="height_inches"/>{ ' \"' }<br/>
-            Weight: <input type="float" id="weight"  placeholder="lbs" /> lbs<br/>
-            Gender: <select id="gender">
-                        <option value="0">{'<-Please select your gender->'}</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+        <h4>Welcome { newUsr.name }!<br/>Please fill out the form below to get started</h4>
+        <div className = 'Form'>
+            <form onSubmit={handleSubmit}>
+                Birthday: <input type="date"  id="birthday" name="birthday"/><br/>
+                Height: <input type="number" id="height_feet" placeholder="feet"  name="height"/>{ ' \' ' } 
+                        <input placeholder="inches" id="height_inches"/>{ ' \"' }<br/>
+                Weight: <input type="float" id="weight"  placeholder="lbs" /> lbs<br/>
+                Gender: <select id="gender">
+                            <option value="0">{'<-Please select your gender->'}</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select><br/>
+                Please state your goals: <select id="GainLose">
+                            <option value="0">{'<-Please select your fitness goals->'}</option>
+                            <option value="gain">Gain Weight</option>
+                            <option value="lose">Lose Weight</option>
+                            <option value="maintain">Maintain Weight</option>
+                        </select><br/>
+                { '    ' }How many pounds? <input type="number" id= "weightPound" placeholder="lbs"/> lbs<br/>
+                Activity Level: <select id="ActivityLevel">
+                        <option value="0">{'<-Please select an activity level->'}</option>
+                        <option value="1"> Somewhat Active</option>
+                        <option value="2"> Exercise 1 - 3 times a week</option>
+                        <option value="3"> Exercise 4 - 5 times a week</option>
+                        <option value="4"> Daily Exercise or intense exercise 3 - 4 times a week</option>
+                        <option value="5"> Intense Exercise 6 times a week</option>
                     </select><br/>
-            Please state your goals: <select id="GainLose">
-                        <option value="0">{'<-Please select your fitness goals->'}</option>
-                        <option value="gain">Gain Weight</option>
-                        <option value="lose">Lose Weight</option>
-                        <option value="maintain">Maintain Weight</option>
-                    </select><br/>
-            { '    ' }How many pounds? <input type="number" id= "weightPound" placeholder="lbs"/> lbs<br/>
-            Activity Level: <select id="ActivityLevel">
-                    <option value="0">{'<-Please select an activity level->'}</option>
-                    <option value="1"> Somewhat Active</option>
-                    <option value="2"> Exercise 1 - 3 times a week</option>
-                    <option value="3"> Exercise 4 - 5 times a week</option>
-                    <option value="4"> Daily Exercise or intense exercise 3 - 4 times a week</option>
-                    <option value="5"> Intense Exercise 6 times a week</option>
-                </select><br/>
-            <button type="submit" value="Submit">Submit</button>
-        </form>
+                <button type="submit" value="Submit">Submit</button>
+            </form>
+        </div>
       </div>
         );
     }
