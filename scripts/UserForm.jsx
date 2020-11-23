@@ -113,8 +113,8 @@ export function UserForm(){
                 Weight: <input type="float" id="weight"  placeholder="lbs" /> lbs<br/>
                 Gender: <select id="gender">
                             <option value="0">{'<-Please select your gender->'}</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="Man">Male</option>
+                            <option value="Woman">Female</option>
                         </select><br/>
                 Please state your goals: <select id="GainLose">
                             <option value="0">{'<-Please select your fitness goals->'}</option>

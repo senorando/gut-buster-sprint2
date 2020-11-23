@@ -5,9 +5,9 @@ def bmr_cal(weight, height, age, gender):
 
     weight_in_kgs = weight / 2.2
     height_in_centimeters = height * 2.54
-    if gender.lower() == "male":
+    if gender.lower() == "man":
         bmr = int((10 * weight_in_kgs) + (6.25 * height_in_centimeters) - (5 * age) + 5)
-    elif gender.lower() == "female":
+    elif gender.lower() == "woman":
         bmr = int((10 * weight_in_kgs) + (6.25 * height_in_centimeters) - (5 * age) - 161)
     # protein and carbs should 40% of calories and fat should be 20%
     return bmr
