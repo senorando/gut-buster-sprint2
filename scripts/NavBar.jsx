@@ -103,6 +103,37 @@ export function NavBar() {
       Socket.off('most recent weight', '');
     });
   }
+  
+  function UserDetails(){
+    useEffect(() => {
+      Socket.on('User Details',(data) => {
+        console.log('h')
+        if (data.id == currentUser.email ) {
+          console.log(data);
+          setProfileDetail((prevState) => ({
+            height: data.height,
+            age: data.age,
+            gender: data.gender,
+            activityLevel: data.activityLevel,
+            bmr: data.bmr,
+            maxCal: data.maxCal,
+            maxProt: data.maxProt,
+            maxCarb: data.maxCarb,
+            maxFat: data.maxFat,
+            breakfastMeal: data.breakfastMeal,
+            lunchMeal: data.lunchMeal,
+            dinnerMeal: data.dinnerMeal,
+            calMeal: data.calMeal,
+            carbMeal: data.carbMeal,
+            protMeal: data.protMeal,
+            fatMeal: data.fatMeal,
+          }));
+        }
+      });
+      
+      
+    });
+  }
   function loginState(){
     useEffect(() => {
       Socket.on('is logging in', (data) => {
@@ -131,6 +162,7 @@ export function NavBar() {
   setDetails();
   loginState();
   failedLogin();
+  UserDetails();
   return (
     <div id = 'App'>
       <div id = 'AppHead'>
