@@ -29,7 +29,7 @@ export function MacrosChart(props) {
     return (
         <div className = 'MacrosChart'>
             <h3>Recommended Macros<br/>Max Calories: { profileDetail.maxCal }</h3>
-            <PieChart width={400} height={400}>
+            <PieChart width={500} height={500}>
                 <Pie
                     dataKey="Macros"
                     isAnimationActive={false}

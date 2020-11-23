@@ -75,6 +75,16 @@ body {
     padding: 5px;
     margin-bottom: 0;
 }
+#UpdateForm form {
+    text-align: center;
+    padding: 10px;
+    background-color: #ffeed4;
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+}
+#UpdateForm button {
+    margin-top: 5px;
+}
 #HomeContent {
     font-family: Roboto, sans-serif;
     display: flex;
@@ -232,8 +242,17 @@ body {
     font-style: italic;
     font-size: 10px;
 }
-.UserDetails {
+#Left {
     float: left;
+    width: 50%;
+}
+#Right {
+    float: right;
+    width: 50%
+}
+.UserDetails {
+    text-align: center;
+    float: right;
     height: fit-content;
     width: fit-content;
     border: solid;
@@ -247,6 +266,7 @@ body {
     height: 0;
 }
 .UserDetails p {
+    text-align: left;
     width: 500px;
     border-top: 1px solid;
     border-bottom: 1px solid;
@@ -254,9 +274,10 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 5;
+    margin-bottom: 0;
 }
 .MacrosChart {
-    float: left;
+    float: right;
     height: fit-content;
     width: fit-content;
     border: solid;
@@ -278,7 +299,7 @@ body {
     padding-left: 5;
 }
 .RecommendedMeals {
-    float: right;
+    float: left;
     height: fit-content;
     width: fit-content;
     border: solid;
@@ -301,7 +322,7 @@ body {
     padding-left: 5;
 }
 .WeightGraph {
-    float: right;
+    float: left;
     height: fit-content;
     width: fit-content;
     border: solid;

@@ -27,6 +27,7 @@ export function UpdateForm(props) {
             <h3>Add a new entry</h3><br/>
             <form onSubmit={ handleSubmit }>
                 Weight: <input type="float" id="weight"  placeholder="lbs" /> lbs
+                <br/>
                 <button type="submit">Submit</button>
             </form>
         </div>
