@@ -137,10 +137,67 @@ def emit_all_user_weights(user_email, sid):
 
 @socketio.on('new entry')
 def on_new_entry(data):
+    
     db.session.add(models.Weight(datetime.datetime.now(), data['weight'], data['email']))
     db.session.commit()
+ 
+    height_update = 0
+    age = 0
+    gender_update = ''
+    
+    user_email=data['email']
+    user_id= data['sid']
+    weight_update = data['weight']
+    user = db.session.query(models.Users).filter_by(id = user_email).scalar()
+    
+    height_update = user.height
+    birth = user.birthday
+    age= calculate_age(birth)
+    gender = user.gender
+    activityLevel = user.activityLevel
+    
+    
+    meal = db.session.query(models.Meals).filter_by(email = user_email).scalar()  
+  
+    bmr=bmr_cal(weight_update,height_update,age,gender)
+    print(bmr)
+    calories_need= daily_caloric_need(bmr,int(activityLevel))
+    print(calories_need)
+    macro_update = calculate_macro(calories_need)
+    print(macro_update)
+    
+    maxCal =macro_update['MaxCalories']
+    minCal =macro_update['MinCalories']
+    maxProtein =macro_update['MaxProtein']
+    minProtein =macro_update['MinProtein']
+    maxCarbs =macro_update['MaxCarbs']
+    maxFat =macro_update['MaxFat']
+    minFat =macro_update['MinFat']
+    
+    data = {
+            "id": user.id,
+            "height": height_update,
+            "age": age,
+            "gender": gender,
+            "activityLevel": activityLevel,
+            "bmr": bmr,
+            "maxCal": maxCal,
+            "maxProt": maxProtein,
+            "maxCarb": maxCarbs,
+            "maxFat": maxFat,
+            "breakfastMeal": meal.breakfast,
+            "lunchMeal": meal.lunch,
+            "dinnerMeal": meal.dinner,
+            "calMeal": meal.meal_cal,
+            "carbMeal": meal.meal_carb,
+            "protMeal": meal.meal_prot,
+            "fatMeal": meal.meal_fat,
+        }
+    
+    socketio.emit('User Details',data)
+    
     socketio.emit('not editing', 'User is no longer editing')
-    emit_all_user_weights(data['email'], data['sid'])
+    emit_all_user_weights(user_email, user_id)
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
 @socketio.on('new text input')

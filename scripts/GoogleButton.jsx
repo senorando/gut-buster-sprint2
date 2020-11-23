@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { Socket } from './Socket';
 
-const clientId = '665762907278-4khe1gncrp9k6j23jfgej1l6i17s61k7.apps.googleusercontent.com';
-//const clientId = '235867645579-njgvhgfemvt05oh0hoj0eotb98dslr47.apps.googleusercontent.com';
+//const clientId = '665762907278-4khe1gncrp9k6j23jfgej1l6i17s61k7.apps.googleusercontent.com';
+const clientId = '235867645579-njgvhgfemvt05oh0hoj0eotb98dslr47.apps.googleusercontent.com';
 
 export function Login() {
   const onSuccess = (res) => {
