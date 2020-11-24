@@ -211,8 +211,10 @@ def on_new_message(data):
     
 @socketio.on("new food search")
 def on_new_food_search(data):
+    current_user = db.session.query(models.Users).filter_by(id = data["user"]).scalar()
+    calorie = db.session.query(models.Macros).filter_by(email=current_user.id).scalar()
     food_name = {"food": data["food_search"]}
-    food_response = foodsearch(food_name["food"])
+    food_response = foodsearch(food_name["food"],calorie.max_carb)
     socketio.emit("food response", food_response)
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
