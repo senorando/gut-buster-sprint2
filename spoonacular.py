@@ -37,10 +37,10 @@ def mealplan(calorie):
     return meal_plan
 
 
-def foodsearch(name):
+def foodsearch(name, cal):
     url1 = "https://api.spoonacular.com/recipes/complexSearch?query="
-    url2 = "&addRecipeNutrition=true&apiKey={}"
-    url3 = url1 + name + url2
+    url2 = "&addRecipeNutrition=true&maxCalories="
+    url3 = url1 + str(name) + url2 + str(cal) + "&apiKey={}"
     url = url3.format(spoonacular_key)
 
     response = requests.get(url)
@@ -55,10 +55,8 @@ def foodsearch(name):
             image = item["id"]
             imageURL1 = "https://spoonacular.com/recipeImages/" + str(image)
             imageURL = imageURL1 + "-312x150.jpg"
-            food_detail[i] = [item["title"],item["readyInMinutes"],item["sourceUrl"],imageURL]
+            food_detail[i] = [item["title"],item["readyInMinutes"],item["sourceUrl"],imageURL, int(item["nutrition"]["nutrients"][0]["amount"])]
             i = i+1
             
         
-    #print(food_detail)
     return food_detail
-    
