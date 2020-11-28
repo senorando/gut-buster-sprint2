@@ -10,7 +10,7 @@ export function MacrosChart(props) {
                 { name: "Max Carb", Macros: profileDetail.maxCarb },
                 { name: "Max Fat", Macros: profileDetail.maxFat },
              ];
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({
         cx, cy, midAngle, innerRadius, outerRadius, percent, index,
@@ -29,6 +29,11 @@ export function MacrosChart(props) {
     return (
         <div className = 'MacrosChart'>
             <h3>Recommended Macros<br/>Max Calories: { profileDetail.maxCal }</h3>
+            <div className ="Canvasdiv"> 
+                <canvas className = "CanvasProt"/><lable> : Max Protein </lable> <br/>
+                <canvas className = "CanvasCarb"/><lable> : Max Carb </lable> <br/>
+                <canvas className = "CanvasFat"/><lable> : Max Fat </lable> <br/>
+            </div>
             <PieChart width={500} height={500}>
                 <Pie
                     dataKey="Macros"
