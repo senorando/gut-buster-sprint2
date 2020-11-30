@@ -21,6 +21,7 @@ export function NavBar() {
         height: '', age: '', gender: '', activityLevel: '',
   });
   const [userWeight, setWeight] = useState([]);
+  const [date,setDate] = useState([]);
   const [isLoggingIn, setStatus] = useState(false);
   function setCurrUser(){
     useEffect(() => {
@@ -48,6 +49,7 @@ export function NavBar() {
             age: '',
             gender: '',
             activityLevel: '',
+            goal_weight: '',
             bmr: '',
             maxCal: '',
             maxProt: '',
@@ -62,6 +64,7 @@ export function NavBar() {
             fatMeal: '',
           }));
           setWeight([]);
+          setDate([]);
           console.log('You have successfully logged out!');
         }
       });
@@ -78,6 +81,7 @@ export function NavBar() {
             age: data.age,
             gender: data.gender,
             activityLevel: data.activityLevel,
+            goal_weight: data.goal_weight,
             bmr: data.bmr,
             maxCal: data.maxCal,
             maxProt: data.maxProt,
@@ -98,6 +102,8 @@ export function NavBar() {
         if(data.sid === Socket.id){
           console.log('data.weight: ' + data.weight);
           setWeight(data.weight);
+          setDate(data.date);
+          console.log('data.date: ' + data.date);
         }
       });
       Socket.off('most recent weight', '');
@@ -115,6 +121,7 @@ export function NavBar() {
             age: data.age,
             gender: data.gender,
             activityLevel: data.activityLevel,
+            goal_weight: data.goal_weight,
             bmr: data.bmr,
             maxCal: data.maxCal,
             maxProt: data.maxProt,
@@ -200,6 +207,7 @@ export function NavBar() {
           <Route path="/profile">
             <Profile currentUser = { currentUser }
                       userWeight = { userWeight } 
+                      date = {date}
                       profileDetail = { profileDetail } 
                       isLoggingIn = { isLoggingIn }/>
           </Route>

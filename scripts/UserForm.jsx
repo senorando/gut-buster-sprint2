@@ -48,22 +48,14 @@ export function UserForm(){
             }
             count++;
         }   
-        if (document.getElementById("GainLose").value == "0"){
+        if (document.getElementById("GoalWeight").value == "" ){
             if(count == 0) {
-                response += 'Goals, ';
+                response += 'Goal Weight, ';
             }else {
-                response += 'goals, ';
+                response += 'goal weight, ';
             }
             count++;
-        }
-         if (document.getElementById("weightPound").value == "" ){
-            if(count == 0) {
-                response += 'Weight pound, ';
-            }else {
-                response += 'weight pound, ';
-            }
-            count++;
-        }       
+        } 
         if (document.getElementById("ActivityLevel").value == "0"){
             if(count == 0) {
                 response += 'Activity level, ';
@@ -83,7 +75,7 @@ export function UserForm(){
         let height_inch =parseInt(document.getElementById("height_inches").value);
         let weight = parseFloat(document.getElementById("weight").value);
         let gender = document.getElementById("gender").value;
-        let gainOrLose = document.getElementById("GainLose").value;
+        let goal_weight = parseFloat(document.getElementById("GoalWeight").value);
         let activityLevel = document.getElementById("ActivityLevel").value;
         
         let height = (height_feet * 12 ) + height_inch;
@@ -93,7 +85,7 @@ export function UserForm(){
           'height': height,
           'weight': weight,
           'gender': gender,
-          'gainOrLose': gainOrLose,
+          'goal_weight': goal_weight,
           'activityLevel': activityLevel,
           'name': newUsr.name,
           'email': newUsr.email,
@@ -113,17 +105,11 @@ export function UserForm(){
                 Weight: <input type="float" id="weight"  placeholder="lbs" /> lbs<br/>
                 Gender: <select id="gender">
                             <option value="0">{'<-Please select your gender->'}</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="Man">Male</option>
+                            <option value="Woman">Female</option>
                         </select><br/>
-                Please state your goals: <select id="GainLose">
-                            <option value="0">{'<-Please select your fitness goals->'}</option>
-                            <option value="gain">Gain Weight</option>
-                            <option value="lose">Lose Weight</option>
-                            <option value="maintain">Maintain Weight</option>
-                        </select><br/>
-                { '    ' }How many pounds? <input type="number" id= "weightPound" placeholder="lbs"/> lbs<br/>
-                Activity Level: <select id="ActivityLevel">
+               Goal Weight: <input type="float" id= "GoalWeight" placeholder="lbs"/> lbs<br/>
+               Activity Level: <select id="ActivityLevel">
                         <option value="0">{'<-Please select an activity level->'}</option>
                         <option value="1"> Somewhat Active</option>
                         <option value="2"> Exercise 1 - 3 times a week</option>

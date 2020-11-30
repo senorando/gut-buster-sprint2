@@ -11,7 +11,9 @@ export function ProfileCont(props){
     const [isEdit, setStatus] = useState(false);
     const profileDetail = props.profileDetail;
     const userWeight = props.userWeight;
-    
+    const date = props.date;
+    console.log("profile weight:", props.userWeight);
+    console.log("Date ", props.date);
     function updateStatus() {
         console.log('isEdit: ' + isEdit);
         setStatus((prevStatus) => !isEdit);
@@ -26,6 +28,7 @@ export function ProfileCont(props){
             <div id = 'Left'>
                 <div className = 'UserDetails'>
                     <h3> { currentUser.name } </h3><br/>
+                    <h3> Goal: {profileDetail.goal_weight} </h3> <br/>
                     <p>
                         Height: { profileDetail.height } <br/>
                         Weight: { userWeight[ userWeight.length - 1 ] } <br/>
@@ -43,7 +46,7 @@ export function ProfileCont(props){
                 <MacrosChart profileDetail = { profileDetail } />
             </div>
             <div id = 'Right'>
-                <WeightGraph userWeight = { userWeight } />
+                <WeightGraph userWeight = { props.userWeight } goal_weight= {profileDetail.goal_weight} date = {props.date} />
                 <div className = 'RecommendedMeals'>
                     <h3>Recommended Meals based on your macros</h3>
                     <p>

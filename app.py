@@ -89,6 +89,7 @@ def get_user_details(user_email):
             "age": age,
             "gender": current_user.gender,
             "activityLevel": current_user.activityLevel,
+            "goal_weight": current_user.goal_weight,
             "bmr": macros.bmr,
             "maxCal": macros.max_cal,
             "maxProt": macros.max_prot,
@@ -111,6 +112,7 @@ def get_user_details(user_email):
             "age": age,
             "gender": current_user.gender,
             "activityLevel": current_user.activityLevel,
+            "goal_weight": current_user.goal_weight,
             "bmr": macros.bmr,
             "maxCal": macros.max_cal,
             "maxProt": macros.max_prot,
@@ -128,11 +130,15 @@ def get_user_details(user_email):
 
 def emit_all_user_weights(user_email, sid):
     weights = []
+    date = []
     for user_weight in db.session.query(models.Weight).filter_by(email = user_email).all():
         weights.append(user_weight.weight)
+        date.append(str(user_weight.id)[0:10])
+        
     socketio.emit('most recent weight', {
         'weight': weights,
-        'sid': sid
+        'date' : date,
+        'sid': sid,
     })
 
 @socketio.on('new entry')
@@ -155,6 +161,7 @@ def on_new_entry(data):
     age= calculate_age(birth)
     gender = user.gender
     activityLevel = user.activityLevel
+    goal_weight = user.goal_weight
     
     
     meal = db.session.query(models.Meals).filter_by(email = user_email).scalar()  
@@ -180,6 +187,7 @@ def on_new_entry(data):
             "age": age,
             "gender": gender,
             "activityLevel": activityLevel,
+            "goal_weight": goal_weight,
             "bmr": bmr,
             "maxCal": maxCal,
             "maxProt": maxProtein,
@@ -211,8 +219,10 @@ def on_new_message(data):
     
 @socketio.on("new food search")
 def on_new_food_search(data):
+    current_user = db.session.query(models.Users).filter_by(id = data["user"]).scalar()
+    calorie = db.session.query(models.Macros).filter_by(email=current_user.id).scalar()
     food_name = {"food": data["food_search"]}
-    food_response = foodsearch(food_name["food"])
+    food_response = foodsearch(food_name["food"],calorie.max_carb)
     socketio.emit("food response", food_response)
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
@@ -225,6 +235,7 @@ def on_new_user(data):
         "birthday": data['birthday'],
         "gender": data["gender"],
         "activityLevel": int(data["activityLevel"][0]),
+        "goal_weight" : data["goal_weight"],
     }
     birthday = datetime.datetime.strptime(measurements['birthday'], '%Y-%m-%d')
     age = calculate_age(birthday)
@@ -242,7 +253,6 @@ def on_new_user(data):
     profile_data = {
         "weight": data["weight"],
         "activityLevel": data["activityLevel"],
-        "gainOrLose": data["gainOrLose"],
         "MaxCalories": macros["MaxCalories"],
     }
     # To fetch the recipes from API getting the variable ready
@@ -255,7 +265,8 @@ def on_new_user(data):
             measurements["gender"],
             measurements["activityLevel"],
             date,
-            google_usr["imgUrl"]
+            google_usr["imgUrl"],
+            measurements["goal_weight"],
         )
     )
     db.session.commit()

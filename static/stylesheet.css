@@ -321,6 +321,30 @@ body {
     padding-bottom: 15px;
     padding-left: 5;
 }
+.Canvasdiv{
+    text-align: left;
+}
+.CanvasProt{
+    border: 1px #0088FE;
+    background: #0088FE;
+    width: 50;
+    height: 10;
+    right:100px;
+} 
+.CanvasCarb{
+    border: 1px #00C49F;
+    background: #00C49F;
+    width: 50;
+    height: 10;
+    right:100px;
+} 
+.CanvasFat{
+    border: 1px #FFBB28;
+    background: #FFBB28;
+    width: 50;
+    height: 10;
+    right:100px;
+} 
 .WeightGraph {
     float: left;
     height: fit-content;
@@ -355,19 +379,19 @@ hr {
 .food3{
     position: relative;
     left: 500px;
-    bottom: 610px;
+    bottom: 665px;
     
 }
 .food4{
     position: relative;
     left: 500px;
-    bottom: 610px;
+    bottom: 665px;
     
 }
 .food5{
     position: relative;
     left: 500px;
-    bottom: 610px;   
+    bottom: 665px;   
 }
 button {
     background-color: rgb(255, 255, 255);
@@ -402,3 +426,4 @@ button:hover {
     text-decoration: none;
     appearance: button;
 }
+
