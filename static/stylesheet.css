@@ -1,6 +1,7 @@
 body {
     background-color: #cff2ff;
 }
+
 #AppHead {
     text-align: center;
     font-family: Arial;
@@ -89,7 +90,9 @@ body {
     font-family: Roboto, sans-serif;
     display: flex;
     justify-content: center;
+    background-image: url("GB.jpg");
 }
+
 #ProfileContent {
     font-family: Roboto, sans-serif;
     display: flex;
@@ -119,6 +122,9 @@ body {
     border: 2px solid;
     border-right: 1px solid;
     border-radius: 5px;
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+    background-position: 275px 450px;
 }
 .Home h3 {
     text-align: center;
@@ -427,3 +433,67 @@ button:hover {
     appearance: button;
 }
 
+.a1 p {
+  font-family: monospace, arial;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border: 2px solid #12718a;
+  border-radius: 6px;
+  background: #FF9800;
+  box-shadow: 0 10px 6px -6px #777;
+  transition: all .3s ease-in-out;
+}
+
+.a2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  min-height: 100vh;
+  color: #000000;
+}
+
+.team-intro {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-evenly;
+  grid-gap: 50px;
+  margin: 2rem;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border: 2px solid #12718a;
+  border-radius: 6px;
+  background: #34c6eb;
+  box-shadow: 0 10px 6px -6px #777;
+  transition: all .3s ease-in-out;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+}
+
+.team-member h4 {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.team-member p {
+  margin: 1rem;
+}

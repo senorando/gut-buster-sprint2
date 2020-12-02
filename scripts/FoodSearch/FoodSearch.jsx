@@ -111,6 +111,12 @@ export function FoodSearch(props) {
         
     return (
          <div id = 'FoodSearch'>
+            <img src={'../static/eat-right.png'} alt="Logo"
+                style={{float: 'right',
+                        position: 'relative',
+                        top: 150
+                        }}
+            />
             { isLoggingIn?
                 <div id = 'UserForm'>
                     <UserForm />

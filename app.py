@@ -387,6 +387,11 @@ def workout_log():
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
     return flask.render_template("workout.html")
     
+@app.route("/about")
+def about():
+    emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
+    return flask.render_template("about.html")
+    
 @app.route("/foodsearch")
 def food_search():
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
