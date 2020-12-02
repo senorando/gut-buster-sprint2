@@ -28,7 +28,7 @@ exercises = {
             {
                 'name': 'Machine-assisted Chest Dip',
                 'difficulty': 1,
-                'accessory_muscles': 'Pectoralis Major, Triceps,,Rhomboids,Teres Major',
+                'accessory_muscles': 'Pectoralis Major, Triceps, Rhomboids, Teres Major',
                 'utility': 'Basic',
                 'equipment': 'Chest Dip Machine',
             }, 
@@ -49,7 +49,7 @@ exercises = {
             {
                 'name': 'Cable Chest Press',
                 'difficulty': 1,
-                'accessory_muscles': 'Triceps, Short head, Biceps, Deltoid, Pectoralis Major',
+                'accessory_muscles': 'Triceps, Biceps, Deltoid, Pectoralis Major',
                 'utility': 'Basic',
                 'equipment': 'Chest Bench Press, Cable',
             }, 
@@ -63,7 +63,7 @@ exercises = {
             {
                 'name': 'Seated Cable Chest Flyes',
                 'difficulty': 2,
-                'accessory_muscles': 'Triceps, Short head, Biceps, Deltoid, Pectoralis Major',
+                'accessory_muscles': 'Triceps, Biceps, Deltoid, Pectoralis Major',
                 'utility': 'Auxilary',
                 'equipment': 'Cables, Bench, Chest fly Machine',
             },
@@ -121,7 +121,7 @@ exercises = {
              {
                 'name': 'Pike Push Ups',
                 'difficulty': 3,
-                'accessory_muscles': 'Triceps, Shoulders,Biceps',
+                'accessory_muscles': 'Triceps, Shoulders, Biceps',
                 'utility': 'Basic',
                 'equipment': 'Bench',
             },
@@ -297,14 +297,14 @@ exercises = {
             {
                 'name': 'Overhead Triceps Press',
                 'difficulty': 2,
-                'accessory_muscles': 'Medial Head,Triceps Branchii',
+                'accessory_muscles': 'Medial Head, Triceps Branchii',
                 'utility': 'Basic',
                 'equipment': 'Dumbbell',
             },
             {
                 'name': 'Triceps Push-Downs',
                 'difficulty': 1,
-                'accessory_muscles': 'Medial Head,Triceps Branchii, Arms',
+                'accessory_muscles': 'Medial Head, Triceps Branchii, Arms',
                 'utility': 'Basic',
                 'equipment': 'Bar, Cable Machine',
             }, 
@@ -392,7 +392,7 @@ exercises = {
             {
                 'name': 'Barbell Military Press',
                 'difficulty': 2,
-                'accessory_muscles': 'Pectoralis Major, Clavicular,Serratus Anterior',
+                'accessory_muscles': 'Pectoralis Major, Clavicular, Serratus Anterior',
                 'utility': 'Basic',
                 'equipment': 'Barbell',
             }, 
@@ -551,7 +551,7 @@ exercises = {
              {
                 'name': 'Seated Hip Adduction',
                 'difficulty': 1,
-                'accessory_muscles': 'Adductors, Hip,Pectineus, Gracilis',
+                'accessory_muscles': 'Adductors, Hip, Pectineus, Gracilis',
                 'utility': 'Auxiliary',
                 'equipment': 'Hip Adduction Machine',
             }
