@@ -122,7 +122,7 @@ body {
   
 }
 #SearchContent a {
-  color: white;
+  color: black;
 }
 #SearchContent a:hover {
   color: #7c8da2;
@@ -443,9 +443,7 @@ body {
     right:100px;
 } 
 
-#FoodSearch {
-    font-family: Arial;
-}
+
 ul {
     list-style-type: none;
 }
@@ -453,23 +451,7 @@ hr {
     border: #ac5049 1px solid;
     border-radius: 50px;
 }
-.food3{
-    position: relative;
-    left: 500px;
-    bottom: 665px;
-    
-}
-.food4{
-    position: relative;
-    left: 500px;
-    bottom: 665px;
-    
-}
-.food5{
-    position: relative;
-    left: 500px;
-    bottom: 665px;   
-}
+
 button {
     background-color: rgb(255, 255, 255);
     color: rgb(0 0 0);
@@ -565,4 +547,102 @@ button:hover {
 
 .team-member p {
   margin: 1rem;
+}
+
+.a3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  color: #000000;
+}
+
+.technologies {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: center;
+  grid-gap: 50px;
+  margin: 2rem;
+}
+
+.technologies-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 1rem;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  background: #f1e1e0;
+  box-shadow: 0 10px 6px -6px #000;
+  transition: all .3s ease-in-out;
+  margin: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.technologies-list:hover {
+  transform: scale(1.05);
+}
+
+.food-result {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  grid-gap: 50px;
+  margin: 1rem;
+}
+
+.food-list span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 1rem;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  background: #f1e1e0;
+  box-shadow: 0 10px 6px -6px #000;
+  transition: all .3s ease-in-out;
+}
+
+.food-list:hover {
+  transform: scale(1.05);
+}
+
+.food-result1 {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  grid-gap: 50px;
+  margin: 1rem;
+}
+
+.food-list1 span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 1rem;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  background: #f1e1e0;
+  box-shadow: 0 10px 6px -6px #000;
+  transition: all .3s ease-in-out;
+}
+
+.food-list1:hover {
+  transform: scale(1.05);
 }
