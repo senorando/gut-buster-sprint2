@@ -132,47 +132,43 @@ export function FoodSearch(props) {
                                   onSearchClick={handleSubmit}
                                 /><br/>
                             <br/>
-                            <div className="food">
-                                <span><a target="_blank" href={ingredient}>{food}</a></span><br/>
-                                <span>{calorie}</span><br/>
-                                <span>{prep}</span><br/>
-                                <span><img src= {image}/></span><br/>
-                                <br></br>
-                            </div>
-                            <div className="food1">
-                                <span><a target="_blank" href={ingredient1}>{food1}</a></span><br/>
-                                <span>{calorie1}</span><br/>
-                                <span>{prep1}</span><br/>
-                                <span><img src= {image1}/></span><br/>
-                                <br></br>
-                            </div>
-                            <div className="food2">
-                                <span><a target="_blank" href={ingredient2}>{food2}</a></span><br/>
-                                <span>{calorie2}</span><br/>
-                                <span>{prep2}</span><br/>
-                                <span><img src= {image2}/></span><br/>
-                                <br></br>
-                            </div>
-                            <div className="food3">
-                                <span><a target="_blank" href={ingredient3}>{food3}</a></span><br/>
-                                <span>{calorie3}</span><br/>
-                                <span>{prep3}</span><br/>
-                                <span><img src= {image3}/></span><br/>
-                                <br></br>
-                            </div>
-                            <div className="food4">
-                                <span><a target="_blank" href={ingredient4}>{food4}</a></span><br/>
-                                <span>{calorie4}</span><br/>
-                                <span>{prep4}</span><br/>
-                                <span><img src= {image4}/></span><br/>
-                                <br></br>
-                            </div>
-                            <div className="food5">
-                                <span><a target="_blank" href={ingredient5}>{food5}</a></span><br/>
-                                <span>{calorie5}</span><br/>
-                                <span>{prep5}</span><br/>
-                                <span><img src= {image5}/></span><br/>
-                                <br></br>
+                            <div className = 'food-result'>
+                                <div className="food-list">
+                                    <span><a target="_blank" href={ingredient}>{food}</a><br/>
+                                        {calorie}<br/>
+                                        {prep}<br/><br/>
+                                        <img src= {image}/></span><br/>
+                                </div>
+                                <div className="food-list">
+                                    <span><a target="_blank" href={ingredient1}>{food1}</a><br/>
+                                        {calorie1}<br/>
+                                        {prep1}<br/><br/>
+                                        <img src= {image1}/></span><br/>
+                                </div>
+                                <div className="food-list">
+                                    <span><a target="_blank" href={ingredient2}>{food2}</a><br/>
+                                        {calorie2}<br/>
+                                        {prep2}<br/><br/>
+                                        <img src= {image2}/></span><br/>
+                                </div>
+                                <div className="food-list">
+                                    <span><a target="_blank" href={ingredient3}>{food3}</a><br/>
+                                        {calorie3}<br/>
+                                        {prep3}<br/><br/>
+                                        <img src= {image3}/></span><br/>
+                                </div>
+                                <div className="food-list">
+                                    <span><a target="_blank" href={ingredient4}>{food4}</a><br/>
+                                        {calorie4}<br/>
+                                        {prep4}<br/><br/>
+                                        <img src= {image4}/></span><br/>
+                                </div>
+                                <div className="food-list">
+                                    <span><a target="_blank" href={ingredient5}>{food5}</a><br/>
+                                        {calorie5}<br/>
+                                        {prep5}<br/><br/>
+                                        <img src= {image5}/></span><br/>
+                                </div>
                             </div>
                         </div>
                         :

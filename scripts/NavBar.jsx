@@ -187,11 +187,11 @@ export function NavBar() {
           <Link id = 'NavButton' to="/workout">
             Workout Log
           </Link>
-          <Link id = 'NavButton' to="/about">
-            About Page
-          </Link>
           <Link id = 'NavButton' to="/foodsearch">
             Food Search
+          </Link>
+          <Link id = 'NavButton' to="/about">
+            About
           </Link>
           { currentUser.isLoggedIn?
             <Logout />

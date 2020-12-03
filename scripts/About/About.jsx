@@ -56,13 +56,21 @@ export function About() {
                 </div>
             </div>
             <div className = "a3">
+                <h1>Technologies</h1>
                 <div className="technologies">
-                    <h3>Technologies</h3>
                     <ul className="technologies-list">
                         <li><a href="https://flask.palletsprojects.com/en/1.1.x/" target="_blank">Python Flask</a></li>
+                    </ul>
+                    <ul className="technologies-list">
                         <li><a href="https://reactjs.org/" target="_blank">React.js</a></li>
+                    </ul>
+                    <ul className="technologies-list">
                         <li><a href="https://www.postgresql.org/" target="_blank">Postgresql</a></li>
+                    </ul>
+                    <ul className="technologies-list">
                         <li><a href="https://www.heroku.com/" target="_blank">Heroku</a></li>
+                    </ul>
+                    <ul className="technologies-list">
                         <li><a href="https://circleci.com/" target="_blank">Circle CI</a></li>
                     </ul>
                 </div>
