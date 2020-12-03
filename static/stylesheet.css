@@ -624,7 +624,7 @@ button:hover {
   grid-template-columns: repeat(3, auto);
   justify-content: center;
   grid-gap: 50px;
-  margin: 1rem;
+  margin: 6rem;
 }
 
 .food-list1 span {
@@ -645,4 +645,12 @@ button:hover {
 
 .food-list1:hover {
   transform: scale(1.05);
+}
+
+.sample-search p{
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px 5px black;
 }

@@ -178,6 +178,29 @@ export function FoodSearch(props) {
                                   classNames="test-class"
                                   onSearchClick={onClickAlert}
                                 /><br/>
+                            <div className = 'sample-search'>
+                                <p>You are Viewing a sample food search! Please login to perform a custom search</p>
+                            </div>
+                            <div className = 'food-result1'>
+                                <div className="food-list1">
+                                    <span><a target="_blank" href='http://www.foodista.com/recipe/3X3HYGB4/skirt-steak-fajitas'>Skirt Steak Fajitas</a><br/>
+                                        696 calories<br/>
+                                        45 minutes prep time<br/><br/>
+                                        <img src= 'https://spoonacular.com/recipeImages/660234-312x150.jpg'/></span><br/>
+                                </div>
+                                <div className="food-list1">
+                                    <span><a target="_blank" href='https://www.foodista.com/recipe/Y5X6DRHT/pasta-with-chicken-and-broccoli'>Pasta With Chicken and Broccoli</a><br/>
+                                        331 calories<br/>
+                                        45 minutes prep time<br/><br/>
+                                        <img src= 'https://spoonacular.com/recipeImages/654901-312x150.jpg'/></span><br/>
+                                </div>
+                                <div className="food-list1">
+                                    <span><a target="_blank" href='https://www.foodista.com/recipe/C75THTG5/rice-pudding'>Rice Pudding</a><br/>
+                                        407 calories<br/>
+                                        45 minutes prep time<br/><br/>
+                                        <img src= 'https://spoonacular.com/recipeImages/658276-312x150.jpg'/></span><br/>
+                                </div>
+                            </div>
                         </div>
                     }
                 </div>
