@@ -3,13 +3,11 @@ import * as React from 'react';
 export function About() {
     
     return (
-        <div>
+        <div id = 'About'>
             <div className = 'a1'>
                 <p>
-                  We aim to provide healthy food instructions,<br/>
-                  diet plans and deliver a live chat accessible from the browser.<br/>
-                  The  web app will provide a social login to allow users to easily identify themselves,<br/>
-                  and feature a Comment/Discussion attitude, through that people can communicate with each other .<br/>
+                  We aim to provide healthy food instructions, diet plans and deliver a live chat accessible from the browser.
+                  The web app will provide a social login to allow users to easily identify themselves, and feature a live chat, through that people can communicate with each other.<br/>
                 </p>
             </div>
             <div className = 'a2'>
@@ -58,7 +56,7 @@ export function About() {
                 </div>
             </div>
             <div className = "a3">
-                <div classname="technologies">
+                <div className="technologies">
                     <h3>Technologies</h3>
                     <ul className="technologies-list">
                         <li><a href="https://flask.palletsprojects.com/en/1.1.x/" target="_blank">Python Flask</a></li>

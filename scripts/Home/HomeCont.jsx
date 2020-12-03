@@ -14,21 +14,21 @@ export function HomeCont(props) {
           <UserForm />
           :
           <div className = 'Home'>
-            <h3>Welcome { currentUser.name }</h3>
-            <p>
-                We aim to provide healthy food instructions,<br></br>
-                diet plans and deliver a live chat accessible from the browser.<br></br>
-                The  web app will provide a social login to allow users to easily identify themselves,<br></br>
-                and feature a Comment/Discussion attitude, through that people can communicate with each other .
-            </p>
+            { currentUser.isLoggedIn?
+              <h3>Welcome { currentUser.name }</h3>              
+              :
+              <h3>Welcome! Please login to use Gut Buster</h3>
+            }
+            <div>
+              <ul>
+                <li>Gut Buster is the world's leading fitness application!</li>
+                <li>Once signed in you can view your profile, see your vitals and view recommendations made by our cutting edge software!</li>
+                <li>You can interact with other active users in our live chat!</li>
+              </ul>
+            </div>
           </div>
         }
         <Chat currentUser = { currentUser }/>
-      </div>
-      <div className = 'background'>
-        <img src={'../static/GB.jpg'} alt="Logo" 
-          style={{position: 'relative', left: 350, justify: 'contain'}}
-        />
       </div>
     </div>
     );

@@ -1,41 +1,57 @@
 body {
-    background-color: #cff2ff;
+    background-color: #434f5d;
+    font-family: 'Raleway';
+    transition: all .5s ease-in-out;
 }
-
 #AppHead {
     text-align: center;
-    font-family: Arial;
     width: 100%;
-    margin-top: 25;
+    padding-top: 5;
+    padding-bottom: 5;
+    background-color: #7c8da2;
+    border: solid;
+    border-color: transparent;
+    border-radius: 5px;
+    font-size: 30px;
+    color: white;
+    text-shadow: 5px 5px 5px black;
 }
 #NavBar {
-    font-family: Roboto, sans-serif;
     text-align: center;
-    padding: 10 5 10 5;
-    margin-top: 100px;
+    width: 100%;
+    padding-top: 10;
+    padding-bottom: 10;
+    padding-right: 6;
     appearance: button;
+    background-color: 7c8da2;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 5px;
 }
 #NavButton {
-    background-color: rgb(255, 255, 255); 
-    color: rgba(0, 0, 0, 0.54); 
+    background-color: rgb(255 255 255);
+    color: rgb(0 0 0);
     height: fit-content;
     width: 150;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
-    padding: 0px; 
-    border-radius: 2px; 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+    padding: 0px;
+    border-radius: 2px;
     border: 1px solid transparent;
     cursor: default;
-    font: 14px Arial;
+    font: 16px 'Raleway';
+    font-weight: bold;
     padding: 5 5 5 5;
     border-width: 2px;
-    margin-left: 50;
-    margin-right: 50;
+    margin-left: 25;
+    margin-right: 25;
     text-decoration: none;
     appearance: button;
+    letter-spacing: 1px;
+    transition: all .5s ease-in-out;
 }
 #NavButton:hover {
-    background-color: rgb(235 235 235); 
-    color: rgba(0, 0, 0, 0.54); 
+    background-color: rgb(192 192 192); 
+    color: rgb(0 0 0); 
     height: fit-content;
     width: 150;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
@@ -43,17 +59,18 @@ body {
     border-radius: 2px; 
     border: 1px solid transparent;
     cursor: default;
-    font: 14px Arial;
+    font: 16px 'Raleway';
+    font-weight: bold;
     padding: 5 5 5 5;
     border-width: 2px;
-    margin-left: 50;
-    margin-right: 50;
+    margin-left: 25;
+    margin-right: 25;
     text-decoration: none;
     appearance: button;
+    letter-spacing: 1px;
 }
 #UserForm {
-    font-family: Roboto, sans-serif;
-    background-color: #5daecd;
+    background-color: #ffffff;
     height: fit-content;
     width: fit-content;
     border: 2px solid;
@@ -79,7 +96,7 @@ body {
 #UpdateForm form {
     text-align: center;
     padding: 10px;
-    background-color: #ffeed4;
+    background-color: #f1e1e0;
     border-top: 1px dashed;
     border-bottom: 1px dashed;
 }
@@ -87,54 +104,62 @@ body {
     margin-top: 5px;
 }
 #HomeContent {
-    font-family: Roboto, sans-serif;
     display: flex;
     justify-content: center;
-    background-image: url("GB.jpg");
+    overflow: hidden;
 }
 
 #ProfileContent {
-    font-family: Roboto, sans-serif;
-    display: flex;
-    justify-content: center;
+  transition: all 5s ease-in-out;
+  justify-content: center;
+  overflow: hidden;
 }
 #WorkoutContent {
-    font-family: Roboto, sans-serif;
     display: flex;
     justify-content: center;
 }
-#FoodSearchContent {
-    font-family: Roboto, sans-serif;
-    display: flex;
-    justify-content: center;
+#SearchContent {
+  
 }
+#SearchContent a {
+  color: white;
+}
+#SearchContent a:hover {
+  color: #7c8da2;
+}
+#SearchContent a:active {
+  color: #7c8da2;
+}
+
 #AboutContent {
     font-family: Roboto, sans-serif;
     display: flex;
     justify-content: center;
+    overflow-y: auto;
 }
 .Home {
     float: left;
-    font-family: Roboto, sans-serif;
-    background-color: #5daecd;
+    background-color: #7c8da2;
     height: fit-content;
     width: fit-content;
     border: 2px solid;
     border-right: 1px solid;
     border-radius: 5px;
-    background-image: url("logo.png");
     background-repeat: no-repeat;
     background-position: 275px 450px;
 }
 .Home h3 {
     text-align: center;
     margin-top: 10;
-    margin-bottom: 15;
+    margin-bottom: 31;
     height: 0;
+
+    color: white;
+    text-shadow: 2px 2px 5px black;
 }
-.Home p {
+.Home div {
     float: left;
-    height: 531px;
+    height: 535px;
     width: 900px;
     overflow-y: auto;
     background-color: #ffffffd4;
@@ -150,7 +175,7 @@ body {
 }
 #Chatbox {
     float: left;
-    background-color: #FF9800;
+    background-color: #ac5049;
     width: 360px;
     border: 2px solid;
     border-left: 1px solid;
@@ -159,8 +184,10 @@ body {
 #Chatbox h3 {
     text-align: center;
     margin-top: 10;
-    margin-bottom: 15;
+    margin-bottom: 19;
     height: 0;
+    color: white;
+    text-shadow: 2px 2px 5px black;
 }
 .TextInput input {
     float: left;
@@ -170,6 +197,7 @@ body {
     padding: 15;
     border: 1px;
     border-radius: 1px;
+    font-family: 'Raleway';
 }
 .TextInput button {
     float: left;
@@ -179,7 +207,18 @@ body {
     color: rgb(0 0 0 / 54%);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
     border: 1px solid transparent;
-    font: 14px Arial;
+    padding: 5 5 5 5;
+    display: inline;
+    margin: 0;
+}
+.TextInput button:hover {
+    float: left;
+    background-color: rgb(225 225 225);
+    height: 30px;
+    width: 50;
+    color: rgb(0 0 0 / 54%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+    border: 1px solid transparent;
     padding: 5 5 5 5;
     display: inline;
     margin: 0;
@@ -202,7 +241,6 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;  
     border-radius: px; 
     border: 1px solid transparent;
-    font: 14px Arial;
     padding: 5 5 5 5;
     display: inline;
 }
@@ -250,11 +288,23 @@ body {
 }
 #Left {
     float: left;
-    width: 50%;
+    width: 33%;
+    margin-right: 1;
+}
+#Middle {
+  justify-content: center;
+}
+#Middle h2 {
+  text-align: center;
+  float: left;
+  width: 33%;
+  color: white;
+  text-shadow: 2px 2px 5px black;
 }
 #Right {
     float: right;
-    width: 50%
+    width: 33%;
+    margin-left: 1;
 }
 .UserDetails {
     text-align: center;
@@ -262,14 +312,19 @@ body {
     height: fit-content;
     width: fit-content;
     border: solid;
-    background-color: #ff9800;
+    background-color: #ac5049;
     flex: 50%;
+    margin-bottom: 15;
+    font-weight: bold;
 }
 .UserDetails h3{
+    letter-spacing: 0.5px;
     text-align: center;
     margin-top: 10;
     margin-bottom: 5;
     height: 0;
+    color: white;
+    text-shadow: 2px 2px 5px black
 }
 .UserDetails p {
     text-align: left;
@@ -282,41 +337,42 @@ body {
     padding-left: 5;
     margin-bottom: 0;
 }
-.MacrosChart {
+#MacrosChartBox {
     float: right;
     height: fit-content;
-    width: fit-content;
+    width: 505;
     border: solid;
-    background-color: #ff9800;
+    background-color: #ac5049;
     flex: 50%;
 }
-.MacrosChart h3{
+#MacrosChartBox h3{
     text-align: center;
-    margin-top: 10;
-    margin-bottom: 15;
+    margin-top: 5;
+    margin-bottom: 5;
     height: 40;
+    color: white;
+    text-shadow: 2px 2px 5px black;
 }
-.recharts-wrapper {
-    width: 500px;
-    border-top: 1px solid;
-    background-color: #ffffffd4;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 5;
+#MacrosChart {
+  height: 300;
+  background-color: #ffffffd4;
 }
 .RecommendedMeals {
     float: left;
     height: fit-content;
     width: fit-content;
     border: solid;
-    background-color: #ff9800;
+    background-color: #ac5049;
     flex: 50%;
+    font-weight: bold;
 }
 .RecommendedMeals h3{
     text-align: center;
     margin-top: 10;
     margin-bottom: 15;
     height: 15;
+    color: white;
+    text-shadow: 2px 2px 5px black;
 }
 .RecommendedMeals p {
     width: 500px;
@@ -327,8 +383,43 @@ body {
     padding-bottom: 15px;
     padding-left: 5;
 }
+.WeightGraph {
+    float: left;
+    height: fit-content;
+    width: fit-content;
+    border: solid;
+    background-color: #ac5049;
+    flex: 50%;
+    margin-bottom: 15;
+    background-color: #f1e1e0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 5;
+    font-weight: bold;
+}
+.WeightGraph h3{
+    text-align: center;
+    margin-top: 10;
+    height: 20;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+.WeightGraph p {
+    width: 500px;
+    border-top: 1px solid;
+    background-color: #ffffffd4;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5;
+}
 .Canvasdiv{
+    padding-top: 5px;
+    padding-left: 5px;
     text-align: left;
+    font-weight: bold;
+    border-top: 1px solid;
+    background-color: #f1e1e0;
+    height: 0;
 }
 .CanvasProt{
     border: 1px #0088FE;
@@ -351,27 +442,7 @@ body {
     height: 10;
     right:100px;
 } 
-.WeightGraph {
-    float: left;
-    height: fit-content;
-    width: fit-content;
-    border: solid;
-    background-color: #ff9800;
-    flex: 50%;
-}
-.WeightGraph h3{
-    text-align: center;
-    margin-top: 10;
-    height: 20;
-}
-.WeightGraph p {
-    width: 500px;
-    border-top: 1px solid;
-    background-color: #ffffffd4;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 5;
-}
+
 #FoodSearch {
     font-family: Arial;
 }
@@ -379,7 +450,7 @@ ul {
     list-style-type: none;
 }
 hr {
-    border: #5daecd 3px solid;
+    border: #ac5049 1px solid;
     border-radius: 50px;
 }
 .food3{
@@ -401,32 +472,31 @@ hr {
 }
 button {
     background-color: rgb(255, 255, 255);
-    color: rgba(0, 0, 0, 0.54);
+    color: rgb(0 0 0);
     height: fit-content;
     width: fit-content;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
     padding: 0px;
-    border-radius: 2px;
+    font-family: 'Raleway';
+    font-weight: bold;
     border: 1px solid transparent;
     cursor: default;
-    font: 14px Arial;
     padding: 5 5 5 5;
     border-width: 2px;
     text-decoration: none;
     appearance: button;
     margin-right: 5;
+    transition: all .3s ease-in-out;
 }
 button:hover {
-    background-color: rgb(235 235 235); 
-    color: rgba(0, 0, 0, 0.54); 
+    background-color: rgb(192 192 192);
+    color: rgb(0 0 0);
     height: fit-content;
     width: fit-content;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
-    padding: 0px; 
-    border-radius: 2px; 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+    padding: 0px;
     border: 1px solid transparent;
     cursor: default;
-    font: 14px Arial;
     padding: 5 5 5 5;
     border-width: 2px;
     text-decoration: none;
@@ -434,7 +504,6 @@ button:hover {
 }
 
 .a1 p {
-  font-family: monospace, arial;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -443,10 +512,10 @@ button:hover {
   height: fit-content;
   font-size: 1.5rem;
   padding: 1rem;
-  border: 2px solid #12718a;
+  border: 2px solid #000000;
   border-radius: 6px;
-  background: #FF9800;
-  box-shadow: 0 10px 6px -6px #777;
+  background: #f1e1e0;
+  box-shadow: 0 10px 6px -6px #000;
   transition: all .3s ease-in-out;
 }
 
@@ -457,7 +526,6 @@ button:hover {
   align-items: center;
   width: auto;
   height: auto;
-  min-height: 100vh;
   color: #000000;
 }
 
@@ -476,12 +544,13 @@ button:hover {
   align-items: center;
   width: auto;
   height: auto;
-  font-size: 1.5rem;
+  font-size: 18px;
+  font-weight: bold;
   padding: 1rem;
-  border: 2px solid #12718a;
+  border: 2px solid #000000;
   border-radius: 6px;
-  background: #34c6eb;
-  box-shadow: 0 10px 6px -6px #777;
+  background: #f1e1e0;
+  box-shadow: 0 10px 6px -6px #000;
   transition: all .3s ease-in-out;
 }
 

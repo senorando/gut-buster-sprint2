@@ -40,11 +40,21 @@ export function ProfileCont(props){
                     { isEdit? 
                         <UpdateForm currentUser = { currentUser }/>
                         :
-                        <button onClick = { updateStatus }>Add New Weight Entry</button>
+                        currentUser.isLoggedIn?
+                            <button id = 'UpdateButton' onClick = { updateStatus }>Add New Weight Entry</button>
+                            :
+                            <button id = 'UpdateButton' onClick = { updateStatus } disabled>Add New Weight Entry</button>
                     }
                 </div>
                 <MacrosChart profileDetail = { profileDetail } />
             </div>
+            { currentUser.isLoggedIn?
+                <div id = 'Middle'></div>
+                :
+                <div id = 'Middle'>
+                    <h2 id = 'SampleProfile'>You are viewing a sample profile!<br/>Please Login to see your data!</h2>
+                </div>
+                }
             <div id = 'Right'>
                 <WeightGraph userWeight = { props.userWeight } goal_weight= {profileDetail.goal_weight} date = {props.date} />
                 <div className = 'RecommendedMeals'>
