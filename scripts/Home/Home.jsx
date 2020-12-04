@@ -9,9 +9,7 @@ export function Home(props) {
   const isLoggingIn = props.isLoggingIn;
   
   return (
-    <div id = 'Home'>
-        <HomeCont currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
-    </div>
+    <HomeCont currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
     );
 }
     

@@ -4,13 +4,14 @@ import { MacrosChart } from './MacrosChart';
 import { WeightGraph } from './WeightGraph';
 import { UpdateForm } from './UpdateForm';
 import { Socket } from '../Socket';
+import { UserForm } from '../UserForm';
 
 export function ProfileCont(props){
-    console.log(props);
     const currentUser = props.currentUser;
     const [isEdit, setStatus] = useState(false);
     const profileDetail = props.profileDetail;
     const userWeight = props.userWeight;
+    const isLoggingIn = props.isLoggingIn;
     const date = props.date;
     console.log("profile weight:", props.userWeight);
     console.log("Date ", props.date);
@@ -53,6 +54,11 @@ export function ProfileCont(props){
                 :
                 <div id = 'Middle'>
                     <h2 id = 'SampleProfile'>You are viewing a sample profile!<br/>Please Login to see your data!</h2>
+                    { isLoggingIn?
+                        <UserForm />
+                        :
+                        <div id = 'Blank'>blank</div>
+                    }
                 </div>
                 }
             <div id = 'Right'>

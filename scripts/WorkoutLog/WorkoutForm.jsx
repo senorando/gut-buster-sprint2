@@ -29,23 +29,23 @@ export function WorkoutForm(props) {
         }
         event.preventDefault();
     }
-    
+
     return (
         <div id = 'WorkoutForm' className = 'Form'>
             <h3>Workout Entry</h3><br/>
             <form onSubmit={ handleSubmit }>
                 Difficulty Level: <select id="DifficultyLevel">
-                        <option value="0">{'<-Please select your difficulty level->'}</option>
+                        <option value="0">{'<-Please select your workout experience->'}</option>
                         <option value="1"> 1 - Beginner</option>
                         <option value="2"> 2 - Intermediate</option>
                         <option value="3"> 3 - Advanced</option>
                     </select><br/><br/>
                 Choose Workout Splits: <select id="split">
-                        <option value="">{'<-Please Choose splits->'}</option>
-                        <option value="Bro Split"> Bro Split</option>
-                        <option value="Full Body"> Full Body</option>
-                        <option value="Push/Pull/Legs"> Push/Pull/Legs</option>
-                        <option value="Upper/Lower"> Upper/Lower</option>
+                        <option value="">{'<-Please Choose A Workout Split->'}</option>
+                        <option value="Bro Split"> Bro Split (4 days/week)</option>
+                        <option value="Full Body"> Full Body (2 - 3 days/week)</option>
+                        <option value="Push/Pull/Legs"> Push/Pull/Legs (3 or 6 days/week)</option>
+                        <option value="Upper/Lower"> Upper/Lower (2, 4, or 6 days/week)</option>
                     </select><br/><br/>
                 <button type="submit">Submit</button>
             </form>
