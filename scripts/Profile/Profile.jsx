@@ -26,6 +26,9 @@ export function Profile(props) {
                                     userWeight = { userWeight }
                                     date = {props.date}/>
             }
+        <div id="footer">
+              <img src={'/static/logo.png'} className = "logoImg" />
+        </div>
         </div>
         );
 }

@@ -19,6 +19,9 @@ export function Workout(props) {
                     <WorkoutForm currentUser = { currentUser } />
                 </div>
             }
+        <div id="footer">
+              <img src={'/static/logo.png'} className = "logoImg" />
+        </div>
         </div>
     );
 }

@@ -16,12 +16,28 @@ import { FoodSearch } from "./FoodSearch/FoodSearch";
 
 export function NavBar() {
   const [currentUser, setUser] = useState({
-      name: '', email: '', sid: '', isLoggedIn: false,
+      name: 'John', email: 'john@example.com', sid: '001', isLoggedIn: false,
   });
   const [profileDetail, setProfileDetail] = useState({ 
-        height: '', age: '', gender: '', activityLevel: '',
+        height: '65', 
+        age: '24', 
+        gender: 'Man',
+        activityLevel: '2',
+        goal_weight: '130',
+        bmr: '1507',
+        maxCal: '828', 
+        maxProt: '828',
+        maxCarb: '828',
+        maxFat: '414',
+        breakfastMeal:'Sweet Potato Breakfast Skillet',
+        lunchMeal:'Smoky 3 Cheese Fondue with Toasted Garlic Buttered Croissants',
+        dinnerMeal:'Louisiana Shrimp',
+        calMeal: '2071.84',
+        carbMeal: '71.29',
+        protMeal: '84.01',
+        fatMeal: '158.84',
   });
-  const [userWeight, setWeight] = useState([]);
+  const [userWeight, setWeight] = useState([140]);
   const [date,setDate] = useState([]);
   const [isLoggingIn, setStatus] = useState(false);
   function setCurrUser(){

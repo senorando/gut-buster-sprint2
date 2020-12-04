@@ -11,6 +11,9 @@ export function Home(props) {
   return (
     <div id = 'Home'>
         <HomeCont currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
+        <div id="footer">
+             <img src={'/static/logo.png'} className = "logoImg" />
+        </div>
     </div>
     );
 }
