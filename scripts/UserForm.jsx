@@ -111,11 +111,11 @@ export function UserForm(){
                Goal Weight: <input type="float" id= "GoalWeight" placeholder="lbs"/> lbs<br/>
                Activity Level: <select id="ActivityLevel">
                         <option value="0">{'<-Please select an activity level->'}</option>
-                        <option value="1"> Somewhat Active</option>
-                        <option value="2"> Exercise 1 - 3 times a week</option>
-                        <option value="3"> Exercise 4 - 5 times a week</option>
-                        <option value="4"> Daily Exercise or intense exercise 3 - 4 times a week</option>
-                        <option value="5"> Intense Exercise 6 times a week</option>
+                        <option value="1"> Sedentary: little to no exercise a week</option>
+                        <option value="2"> Not Very Active: 1 - 3 times a week</option>
+                        <option value="4"> Somewhat Active: 3 - 4 times a week</option>
+                        <option value="3"> Active: 4 - 5 times a week</option>
+                        <option value="5"> Very Active: 6 times a week</option>
                     </select><br/>
                 <button type="submit" value="Submit">Submit</button>
             </form>

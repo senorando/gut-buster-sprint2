@@ -9,6 +9,8 @@ import os, flask, flask_sqlalchemy, flask_socketio, datetime
 from flask import request
 from calories_count import bmr_cal, daily_caloric_need, calculate_macro
 from spoonacular import foodsearch, mealplan
+import workout
+
 MESSAGE_RECEIVED_CHANNEL = 'message received'
 app = flask.Flask(__name__)
 
@@ -151,35 +153,34 @@ def on_new_entry(data):
     age = 0
     gender_update = ''
     
-    user_email=data['email']
-    user_id= data['sid']
+    user_email = data['email']
+    user_id = data['sid']
     weight_update = data['weight']
     user = db.session.query(models.Users).filter_by(id = user_email).scalar()
     
     height_update = user.height
     birth = user.birthday
-    age= calculate_age(birth)
+    age = calculate_age(birth)
     gender = user.gender
     activityLevel = user.activityLevel
     goal_weight = user.goal_weight
     
-    
     meal = db.session.query(models.Meals).filter_by(email = user_email).scalar()  
   
-    bmr=bmr_cal(weight_update,height_update,age,gender)
+    bmr = bmr_cal(weight_update,height_update,age,gender)
     print(bmr)
-    calories_need= daily_caloric_need(bmr,int(activityLevel))
+    calories_need = daily_caloric_need(bmr,int(activityLevel))
     print(calories_need)
     macro_update = calculate_macro(calories_need)
     print(macro_update)
     
-    maxCal =macro_update['MaxCalories']
-    minCal =macro_update['MinCalories']
-    maxProtein =macro_update['MaxProtein']
-    minProtein =macro_update['MinProtein']
-    maxCarbs =macro_update['MaxCarbs']
-    maxFat =macro_update['MaxFat']
-    minFat =macro_update['MinFat']
+    maxCal = macro_update['MaxCalories']
+    minCal = macro_update['MinCalories']
+    maxProtein = macro_update['MaxProtein']
+    minProtein = macro_update['MinProtein']
+    maxCarbs = macro_update['MaxCarbs']
+    maxFat = macro_update['MaxFat']
+    minFat = macro_update['MinFat']
     
     data = {
             "id": user.id,
@@ -215,13 +216,24 @@ def on_workou_entry(data):
         "split" : data['split'],
         "email" : data['email'],
     }
-    db.session.add(models.Workout(workout_entry["level"],
-        workout_entry["split"],
-        workout_entry["email"],
-        )
-    )
+    print('\nNew Workout Entry Received!')
+    db.session.add(models.Workout(
+        workout_entry["level"], workout_entry["split"], workout_entry["email"],
+    ))
     db.session.commit()
     
+    plan = workout.create_workout_plan(workout_entry['level'], workout_entry['split'])
+    clean_plan = []
+    
+    for day in plan['days']:
+        clean_plan.append({
+            'title': day,
+            'workout': plan['days'][day],
+        })
+    socketio.emit('set plan', {
+        'sid': request.sid,
+        'clean_plan': clean_plan,
+    })
     
 @socketio.on('new text input')
 def on_new_message(data):
@@ -390,7 +402,6 @@ def on_disconnect():
 def home():
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
     return flask.render_template("home.html")
-
 
 @app.route("/profile")
 def profile():

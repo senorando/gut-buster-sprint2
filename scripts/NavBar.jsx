@@ -16,7 +16,7 @@ import { FoodSearch } from "./FoodSearch/FoodSearch";
 
 export function NavBar() {
   const [currentUser, setUser] = useState({
-      name: '', email: '', sid: '', isLoggedIn: false,
+      name: '', email: '', sid: '', isLoggedIn: false, hasPlan: false,
   });
   const [profileDetail, setProfileDetail] = useState({ 
         height: '', age: '', gender: '', activityLevel: '',
@@ -24,6 +24,7 @@ export function NavBar() {
   const [userWeight, setWeight] = useState([]);
   const [date,setDate] = useState([]);
   const [isLoggingIn, setStatus] = useState(false);
+  const [plan, setPlan] = useState({});
   function setCurrUser(){
     useEffect(() => {
       Socket.on('success login', (data) => {
@@ -33,6 +34,7 @@ export function NavBar() {
             email: data.email,
             sid: data.sid,
             isLoggedIn: true,
+            hasPlan: false,
           }));
         }
       });
@@ -110,8 +112,7 @@ export function NavBar() {
       Socket.off('most recent weight', '');
     });
   }
-  
-  function UserDetails(){
+  function userDetails(){
     useEffect(() => {
       Socket.on('User Details',(data) => {
         console.log('h')
@@ -166,11 +167,31 @@ export function NavBar() {
       
     }, []);
   }
+  function setWorkout(){
+    useEffect(() => {
+      Socket.on('set plan', (data) => {
+        if(data.sid === Socket.id){  
+          setPlan(data.clean_plan);
+          setUser((prevState) => ({
+            name: currentUser.name,
+            email: currentUser.email,
+            sid: currentUser.sid,
+            isLoggedIn: true,
+            hasPlan: true,
+          }));
+        }
+      });
+      Socket.off('set plan', '');
+    }, []);
+  }
   setCurrUser();
   setDetails();
   loginState();
   failedLogin();
-  UserDetails();
+  userDetails();
+  setWorkout();
+  
+  console.log('hasPlan: ' + currentUser.hasPlan);
   return (
     <div id = 'App'>
       <div id = 'AppHead'>
@@ -217,7 +238,8 @@ export function NavBar() {
           </Route>
            <Route path="/workout">
             <Workout currentUser = { currentUser } 
-                          isLoggingIn = { isLoggingIn }/>
+                      isLoggingIn = { isLoggingIn }
+                      workout_plan = { plan }/>
           </Route>
           <Route path="/about">
             <About />

@@ -25,9 +25,11 @@ class Users(db.Model):
     height = db.Column(db.Integer)
     date = db.Column(db.String(12))
     imgUrl = db.Column(db.Text)
-    goal_weight=db.Column(db.Float)
+    goal_weight = db.Column(db.Float)
+    has_plan = db.Column(db.Boolean)
     weight = db.relationship('Weight', backref = 'users')
     messages = db.relationship('Chat', backref = 'users')
+    workout = db.relationship('Workout', backref = 'users')
     
     
     # db.session.add(models.Users(email, name, birthday, gender, activityLevel))
@@ -39,8 +41,9 @@ class Users(db.Model):
         self.gender = gender
         self.activityLevel = activityLevel
         self.date = date
-        self.imgUrl= imgUrl
+        self.imgUrl = imgUrl
         self.goal_weight= goal_weight
+        self.has_plan = False
     def __repr__(self):
         return '<Email: %s\nName: %s\nHeight: %s\nBirthday: %s\nGender: %s\nActivity Level: %s \nGoal weight: %s>' % (self.id, self.name, self.height, self.birthday, self.gender, self.activityLevel,self.goal_weight)
         
@@ -122,13 +125,11 @@ class Chat(db.Model):
     text = db.Column(db.Text)
     time = db.Column(db.Text)
     user_id=db.Column(db.String(75),db.ForeignKey("users.id"))
-    
-   
+
     def __init__(self, text,time,user_id):
         self.text = text
         self.time = time
         self.user_id = user_id
-        
         
     def __repr__(self):
         return '<Chat messages: %s>' % self.text
@@ -137,7 +138,7 @@ class Workout(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     level = db.Column(db.Integer)
-    split = db.Column(db.String(16))
+    split = db.Column(db.Text)
     email = db.Column(db.String(50), db.ForeignKey('users.id'))
     
     def __init__(self, level,split, email):
@@ -146,7 +147,7 @@ class Workout(db.Model):
         self.email = email
     
     def __repr__(self):
-        return '<level: %s \n split: %s>' % (self.level,self.split)
+        return '<level: %s \n split: %s>' % (self.level, self.split)
         
 db.create_all()
 db.session.commit()

@@ -46,9 +46,9 @@ def full_body(level):
     full_body = {
         'num days': [2, 3],
         'days': {
-            'Day 1': (get_chest(level, 'full') + get_back(level, 'full') + get_legs(level, 'full') + get_triceps(level, 'full') + get_biceps(level, 'full')),
-            'Day 2': (get_chest(level, 'full') + get_back(level, 'full') + get_legs(level, 'full') + get_triceps(level, 'full') + get_biceps(level, 'full')),
-            'Day 3': (get_chest(level, 'full') + get_back(level, 'full') + get_legs(level, 'full') + get_triceps(level, 'full') + get_biceps(level, 'full')),
+            'Full Body 1': (get_chest(level, 'full') + get_back(level, 'full') + get_legs(level, 'full') + get_triceps(level, 'full') + get_biceps(level, 'full')),
+            'Full Body 2': (get_chest(level, 'full') + get_back(level, 'full') + get_legs(level, 'full') + get_triceps(level, 'full') + get_biceps(level, 'full')),
+            'Full Body 3': (get_chest(level, 'full') + get_back(level, 'full') + get_legs(level, 'full') + get_triceps(level, 'full') + get_biceps(level, 'full')),
         },
     }
 
@@ -396,4 +396,18 @@ def get_abs(level, split):
 #     print('Enter a split\n<Bro Split> <Full Body> <Push/Pull/Legs> <Upper/Lower>')
 #     split = input()
     
-#     print(create_workout_plan(int(level), split))
+#     plan = create_workout_plan(int(level), split)
+#     clean_plan = []
+#     count = 1
+#     for day in plan['days']:
+#         clean_plan.append({
+#             'title': day,
+#             'workout': plan['days'][day],
+#         })
+#     for day in clean_plan:
+        
+#         print(day['title'])
+#         for exercise in day['workout']:
+#             print(exercise)
+#             # print(day['workout'])
+#             # print('\n')
