@@ -6,6 +6,17 @@ body {
 #blank {
   display: none;
 }
+.logoImg{
+  height: auto;
+  margin-bottom: 5px;
+  opacity: 0.5;
+}
+#footer{
+    display: none;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+}
 #AppHead {
     text-align: center;
     width: 100%;

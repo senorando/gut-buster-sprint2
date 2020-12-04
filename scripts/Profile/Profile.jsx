@@ -25,6 +25,9 @@ export function Profile(props) {
                                 date = {props.date}
                                 isLoggingIn = { isLoggingIn } />
             }
+        <div id="footer">
+              <img src={'/static/logo.png'} className = "logoImg" />
+        </div>
         </div>
         );
 }

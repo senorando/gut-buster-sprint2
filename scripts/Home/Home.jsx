@@ -9,7 +9,12 @@ export function Home(props) {
   const isLoggingIn = props.isLoggingIn;
   
   return (
-    <HomeCont currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
+    <div id = 'Home'>
+        <HomeCont currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
+        <div id="footer">
+             <img src={'/static/logo.png'} className = "logoImg" />
+        </div>
+    </div>
     );
 }
     

@@ -205,6 +205,9 @@ export function FoodSearch(props) {
                     }
                 </div>
             }
+         <div id="footer">
+              <img src={'/static/logo.png'} className = "logoImg" />
+        </div>
         </div>
         );
 }
