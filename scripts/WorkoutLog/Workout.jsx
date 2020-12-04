@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { UserForm } from '../UserForm';
 import { Socket } from '../Socket';
+import {WorkoutForm } from './WorkoutForm';
 
 export function Workout(props) {
     const currentUser = props.currentUser;
@@ -15,7 +16,7 @@ export function Workout(props) {
                 </div>
                 :
                 <div id = 'WorkoutContent'>
-                    <h1>Workout Content</h1>
+                    <WorkoutForm currentUser = { currentUser } />
                 </div>
             }
         </div>

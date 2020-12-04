@@ -69,18 +69,58 @@ body {
     appearance: button;
     letter-spacing: 1px;
 }
-#UserForm {
-    background-color: #ffffff;
+#WorkoutForm {
+    background-color:#ac5049;
     height: fit-content;
     width: fit-content;
     border: 2px solid;
     border-radius: 5px;
+    font-weight: bold;
+}
+#WorkoutForm form {
+    float: left;
+    height: fit-content;
+    overflow-y: auto;
+    background-color: #ffffffd4;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid;
+    padding: 40px;
+    margin-bottom: 0;
+    font-weight: bold;
+    
+}
+#WorkoutForm h3 {
+    text-align: center;
+    margin-top: 10;
+    color: white;
+    text-shadow: 5px 5px 5px black;
+    margin-bottom: 40;
+    background-color:#ffffffd4;
+    height: 0;
+    font-weight: bold;
+}
+
+#UserForm form {
+    float: left;
+    height: fit-content;
+    overflow-y: auto;
+    background-color:#ac5049;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid;
+    padding: 5px;
+    margin-bottom: 0;
 }
 #UserForm h4 {
     text-align: center;
     margin-top: 10;
+    color: white;
+    text-shadow: 5px 5px 5px black;
     margin-bottom: 40;
+    background-color:#ffffffd4;
     height: 0;
+    font-weight: bold;
 }
 #UserForm form {
     float: left;

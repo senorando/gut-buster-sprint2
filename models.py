@@ -29,6 +29,7 @@ class Users(db.Model):
     weight = db.relationship('Weight', backref = 'users')
     messages = db.relationship('Chat', backref = 'users')
     
+    
     # db.session.add(models.Users(email, name, birthday, gender, activityLevel))
     def __init__(self, email, name, height, birthday, gender, activityLevel, date, imgUrl, goal_weight):
         self.id = email
@@ -131,6 +132,21 @@ class Chat(db.Model):
         
     def __repr__(self):
         return '<Chat messages: %s>' % self.text
-
+        
+class Workout(db.Model):
+    __table_args__ = {'extend_existing': True}
+    id = db.Column(db.Integer, primary_key=True)
+    level = db.Column(db.Integer)
+    split = db.Column(db.String(16))
+    email = db.Column(db.String(50), db.ForeignKey('users.id'))
+    
+    def __init__(self, level,split, email):
+        self.level = level
+        self.split = split
+        self.email = email
+    
+    def __repr__(self):
+        return '<level: %s \n split: %s>' % (self.level,self.split)
+        
 db.create_all()
 db.session.commit()

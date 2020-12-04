@@ -207,7 +207,22 @@ def on_new_entry(data):
     socketio.emit('not editing', 'User is no longer editing')
     emit_all_user_weights(user_email, user_id)
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
-
+    
+@socketio.on('workout entry')
+def on_workou_entry(data):
+    workout_entry = {
+        "level" : data['level'],
+        "split" : data['split'],
+        "email" : data['email'],
+    }
+    db.session.add(models.Workout(workout_entry["level"],
+        workout_entry["split"],
+        workout_entry["email"],
+        )
+    )
+    db.session.commit()
+    
+    
 @socketio.on('new text input')
 def on_new_message(data):
     new_str=data["entry"]
