@@ -22,7 +22,10 @@ export function FoodSearch(props) {
           'user': user
         });
        console.log('Sent the food ' + name + user + ' to server!');
+       setOnClick(true);
     }
+    
+    const [onClick, setOnClick] = useState(false);
     
     const [food, setFoods] = useState([]);
     const [ingredient, setIngredient] = useState([]);
@@ -132,18 +135,23 @@ export function FoodSearch(props) {
                                   onSearchClick={handleSubmit}
                                 /><br/>
                             <br/>
-                            <div className = 'food-result'>
+                            { onClick?
+                                <div>
+                                    <div className = 'food-result'>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient}>{food}</a><br/>
                                         {calorie}<br/>
                                         {prep}<br/><br/>
-                                        <img src= {image}/></span><br/>
+                                        <img src= {image}/><br/>
+                                        <RatingStar /></span><br/>
+                                        
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient1}>{food1}</a><br/>
                                         {calorie1}<br/>
                                         {prep1}<br/><br/>
-                                        <img src= {image1}/></span><br/>
+                                        <img src= {image1}/><br/>
+                                        <RatingStar /></span><br/>
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient2}>{food2}</a><br/>
@@ -170,6 +178,12 @@ export function FoodSearch(props) {
                                         <img src= {image5}/></span><br/>
                                 </div>
                             </div>
+                                </div>
+                                :
+                                <div className = 'sample-search'>
+                                    <p>Use search field above</p>
+                                </div>
+                            }
                         </div>
                         :
                         <div>
