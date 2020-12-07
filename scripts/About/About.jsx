@@ -14,6 +14,7 @@ export function About() {
                 <h1>Team Members</h1>
                 <div className = 'team-intro'>
                     <div className = 'team-member'>
+                        <img src="./static/Andy.png" class="member-picture"/>
                         <h4>Andy Martinez</h4>
                         <p>
                             Hi, I'm Andy! I came up with the idea of this app because as someone into fitness, 
@@ -24,6 +25,7 @@ export function About() {
                         </p>
                     </div>
                     <div className = 'team-member'>
+                        <img src="./static/Oreo.png" class="member-picture"/>
                         <h4>Oreoluwa Akeredolu</h4>
                         <p>
                             Hello, I'm Oreoluwa Akeredolu. I'm a current student at NJIT persuing a degree in Computer Science.
@@ -44,13 +46,15 @@ export function About() {
                         </p>
                     </div>
                     <div className = 'team-member'>
+                        <img src="./static/Nisrag.png" class="member-picture"/>
                         <h4>Nisrag Patel</h4>
                         <p>
-                            Hello, I'm Oreoluwa Akeredolu. I'm a current student at NJIT persuing a degree in Computer Science.
-                            I enjoy the process of problem solving, which has lead me down the path to absolutely adoring
-                            all aspects of the software development process.  Working on this project has absolutely
-                            exposed me to learning new technoloiges and how it is to truly work in a team enviroment.<br/>
-                            I'm glad to be working with such an awesome team.
+                            Hello, I'm Nisarg Patel. I'm a rising senior at NJIT persuing a degree in Computer Science.
+                            I enjoy working on the team enviroment while showcasing my skills and learning form others.
+                            I implemented most of the logic in the backend code and handled front-end functionalities in the project.  
+                            Building this project, collaborating with the team and an industrial mentor who taught me many technologies
+                            and how they work has been a wonderful experience.<br/>
+                            I now look forward to improving my skills and practice in fullstack development.<br/>
                         </p>
                     </div>
                 </div>
