@@ -558,7 +558,16 @@ exercises = {
            
         ],        
     },
-    'Abs': {
+    'Core': {
+        'Rectus Abdominis': [
+            {
+                'name': '',
+                'difficulty': 1,
+                'accessory_muscles': '',
+                'utility': '',
+                'equipment': '',
+            }, 
+        ],
         'Obliques': [
             {
                 'name': 'Cable Kneeling Twisting Crunch',
@@ -586,7 +595,7 @@ exercises = {
                 'difficulty': 1,
                 'accessory_muscles': 'Obliques, Triceps, Shoulder',
                 'utility': 'Auxiliary',
-                'equipment': 'Barbell, Wight Plate',
+                'equipment': 'Barbell, Weight Plate',
             },
              {
                 'name': 'Plank',
