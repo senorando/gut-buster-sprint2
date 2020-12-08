@@ -561,12 +561,36 @@ exercises = {
     'Core': {
         'Rectus Abdominis': [
             {
-                'name': '',
+                'name': 'Lying Leg Raise Crunch',
                 'difficulty': 1,
-                'accessory_muscles': '',
-                'utility': '',
-                'equipment': '',
+                'accessory_muscles': 'Rectus Abdominis, Obliques',
+                'utility': 'Auxiliary',
+                'equipment': 'Leg Raise Machine',
             }, 
+            
+            {
+                'name': 'Vertical Leg-Hip Raise',
+                'difficulty': 1,
+                'accessory_muscles': 'Rectus Abdominis, Obliques, Iliopsoas',
+                'utility': 'Auxiliary',
+                'equipment': 'N/A',
+            }, 
+            {
+                'name': 'Crunch (arms crossed)',
+                'difficulty': 1,
+                'accessory_muscles': 'Rectus Abdominis, Obliques, Iliopsoas',
+                'utility': 'Basic',
+                'equipment': 'N/A',
+            }, 
+             {
+                'name': 'V-up',
+                'difficulty': 3,
+                'accessory_muscles': 'Rectus Abdominis, Obliques, Iliopsoas',
+                'utility': 'Basic',
+                'equipment': 'N/A',
+            }, 
+            
+            
         ],
         'Obliques': [
             {
