@@ -210,15 +210,13 @@ export function NavBar() {
   console.log('hasPlan: ' + currentUser.hasPlan);
   return (
     <div id = 'App'>
-      <div id = 'AppHead'>
-        <h1>Gut Buster</h1>
-        <img src="./static/gb.png" className="gb-logo"/>
-      </div>
       <Router>
-        <div id = 'NavBar'>
-          <Link  id = 'NavButton' to="/">
-            Home
+        <div id = 'AppHead'>
+          <Link id = 'NavButton1' to="/">
+            <img src="./static/GUTBUSTER.png" className="gb-logo"/>
           </Link>
+        </div>
+        <div id = 'NavBar'>
           <Link id = 'NavButton' to="/profile">
             Profile
           </Link>

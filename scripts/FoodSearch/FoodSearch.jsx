@@ -114,12 +114,14 @@ export function FoodSearch(props) {
         
     return (
          <div id = 'FoodSearch'>
-            <img src={'../static/eat-right.png'} alt="Logo"
+            <div className="img1">
+             <img src={'../static/eat-right.png'} alt="Logo"
                 style={{float: 'right',
                         position: 'relative',
-                        top: 150
+                        width: 550
                         }}
             />
+            </div>
             { isLoggingIn?
                 <div id = 'UserForm'>
                     <UserForm />
@@ -142,16 +144,13 @@ export function FoodSearch(props) {
                                     <span><a target="_blank" href={ingredient}>{food}</a><br/>
                                         {calorie}<br/>
                                         {prep}<br/><br/>
-                                        <img src= {image}/><br/>
-                                        <RatingStar /></span><br/>
-                                        
+                                        <img src= {image}/></span><br/>
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient1}>{food1}</a><br/>
                                         {calorie1}<br/>
                                         {prep1}<br/><br/>
-                                        <img src= {image1}/><br/>
-                                        <RatingStar /></span><br/>
+                                        <img src= {image1}/></span><br/>
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient2}>{food2}</a><br/>

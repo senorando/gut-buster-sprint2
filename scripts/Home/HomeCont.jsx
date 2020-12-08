@@ -20,15 +20,14 @@ export function HomeCont(props) {
           }
           <div>
             <ul>
-              <li>Gut Buster is a great fitness tool for all your daily fitness needs.</li><br/>
-              <li>Once signed in you can view your profile, you can interact with other active users in our live chat</li><br/>
-              <li>Once logged in you will be promped to fill out the information such as birthday, height, weight, goal weight, and activity level.</li><br/>
-              <li>Navigate to Profile where our cutting edge software! will process all of the information and provide statistical information such as such as pie-chart for your macros, 
-              line graph for goal weight, and the recommended meal based on your macros </li> <br/>
-              <li>Navigate to Workout Log where you will be promped to fill out couple of information such as difficulty level and select workout splits.</li><br/>
-              <li> Once you fill out the information our tool will provide you with workout plan for the full week.</li><br/>
-              <li>Naviagte to the Food Search Page where you can enter any food and our tool will provide you with randomly suggested meals 
-              with calorie counts, and preperation time, and link to the recepie.</li><br/>
+              <li>Gut Buster is a great fitness tool that satisfies all of your workout and dieting needs.</li><br/><br/>
+              <li>Once signed in you can view your profile, and interact with other active users through our chat feature.</li><br/><br/>
+              <li>Once logged in you will be shown a secure form thats requires information such as birthday, height, weight, goal weight, and activity level.</li><br/><br/>
+              <li>Visit  your Profile where our cutting edge software provides statistical information such as such as pie-charts for your macros, 
+              a line graph for your goal weight, and the recommended meals based on your macros.</li> <br/><br/>
+              <li>Visit the Workout platform to generate a custom workout plan for the week.</li><br/><br/>
+              <li>Naviagte to the Food Search Page to browse various meals. Each meal shows its 
+              calorie count, preperation time, and a link to the recepie.</li><br/>
           </ul>
           </div>
         </div>

@@ -699,8 +699,8 @@ button:hover {
   font-size: 18px;
   font-weight: bold;
   padding: 1rem;
-  border: 2px solid #000000;
-  border-radius: 6px;
+  border: 7px solid #f4ad55;
+  border-radius: 7px;
   background: #f1e1e0;
   box-shadow: 0 10px 6px -6px #000;
   transition: all .3s ease-in-out;
@@ -727,8 +727,8 @@ button:hover {
   font-size: 18px;
   font-weight: bold;
   padding: 1rem;
-  border: 2px solid #000000;
-  border-radius: 6px;
+  border: 7px solid #f4ad55;
+  border-radius: 7px;
   background: #f1e1e0;
   box-shadow: 0 10px 6px -6px #000;
   transition: all .3s ease-in-out;
@@ -865,6 +865,51 @@ button:hover {
 }
 
 .gb-logo {
-  width: auto;
-  height: auto;
+  width: 250px;
+}
+
+.logo a {
+  float: left;
+  
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 10px;
+}
+
+#NavButton1 {
+    background-color: rgb(74 86 99);
+    color: rgb(74 86 99);
+    height: fit-content;
+    padding: 0px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font: 16px 'Raleway';
+    font-weight: bold;
+    padding: 5 5 5 5;
+    border-width: 2px;
+    margin-left: 25;
+    margin-right: 25;
+    text-decoration: none;
+    appearance: button;
+    letter-spacing: 1px;
+    transition: all .3s ease-in-out;
+}
+
+.img1 {
+    float: right;
+    position: relative;
+    top: 150px;
+    width: 550px;
+    border: 7px solid #f5ad55;
+    right: 25px;
+    border-radius: 7px;
+    box-shadow: 0 10px 6px -6px #000;
 }

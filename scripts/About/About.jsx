@@ -20,7 +20,10 @@ export function About() {
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                         <img src="./static/Andy.png" class="member-picture"/>
                         <h4>Andy Martinez</h4>
+                        <div className="logos">
                         <a href="https://github.com/senorando" target="_blank" class="git-logo"><i className="fa fa-github" ></i></a>
+                        <a href="https://www.linkedin.com/in/Oreoluwa-Akeredolu/" target="_blank"><i className="fa fa-linkedin" ></i></a>
+                        </div>
                         <p>
                             Hi, I'm Andy! I came up with the idea of this app because as someone into fitness, 
                             I want to have a good fitness app that has all aspects combined into it, nutrition and exercise.
@@ -32,7 +35,10 @@ export function About() {
                     <div className = 'team-member'>
                         <img src="./static/Oreo.png" class="member-picture"/>
                         <h4>Oreoluwa Akeredolu</h4>
+                        <div className="logos">
                         <a href="https://github.com/atorisemofe" target="_blank"><i className="fa fa-github" ></i></a>
+                        <a href="https://www.linkedin.com/in/Oreoluwa-Akeredolu/" target="_blank"><i className="fa fa-linkedin" ></i></a>
+                        </div>
                         <p>
                             Hello, I'm Oreoluwa Akeredolu. I'm a current student at NJIT persuing a degree in Computer Science.
                             I enjoy the process of problem solving, which has lead me down the path to absolutely adoring
@@ -44,7 +50,10 @@ export function About() {
                     <div className = 'team-member'>
                         <img src="./static/Jinal.png" class="member-picture"/>
                         <h4>Jinal patel</h4>
+                        <div className="logos">
                         <a href="https://github.com/jsp88" target="_blank"><i className="fa fa-github" ></i></a>
+                        <a href="https://www.linkedin.com/in/nisarg-patel-/" target="_blank"><i className="fa fa-linkedin" ></i></a>
+                        </div>
                         <p>
                             Hello, I'm Jinal Patel. I'm a current student at NJIT pursuing a degree in Computer Science. 
                             I'm extremely eager to introduce our site that me and my team member has been dealing with.
@@ -55,8 +64,10 @@ export function About() {
                     <div className = 'team-member'>
                         <img src="./static/Nisrag.png" class="member-picture"/>
                         <h4>Nisrag Patel</h4>
+                        <div className="logos">
                         <a href="https://github.com/np575" target="_blank"><i className="fa fa-github" ></i></a>
                         <a href="https://www.linkedin.com/in/nisarg-patel-/" target="_blank"><i className="fa fa-linkedin" ></i></a>
+                        </div>
                         <p>
                             Hello, I'm Nisarg Patel. I'm a rising senior at NJIT persuing a degree in Computer Science.
                             I enjoy working on the team enviroment while showcasing my skills and learning form others.
@@ -88,14 +99,13 @@ export function About() {
                 <div class="box box-2">
                     <h2>Why did we create Gut Buster?</h2>
                     <p>
-                    A list of the most notable technologies used in this web-app are included at the bottom of this page. 
-                    For the backend, the main programming language we used was Python. With Python, we utilized the Flask Micro-Framework 
-                    to serve web pages. Along with this, we used socket.io to interface between the front-end and the back-end. Persistence 
-                    was achieved using Postgresql and SQLAlchemy to provide an easy interface to interact with the database via Python. Comments
-                    are stored in the database, as well as future user information and preferences. For the front-end, the main technology that 
-                    we used was functional React.js, as well as some vanilla HTML, CSS, and Javascript. A number of different packages were
-                    utilized with React as well, which can be found on the Github page. Collaboration was utilized using Git and Github. Final
-                    deployment of this web app was done on Heroku.
+                    Our goal for the users of The Gut Buster is to provide them with the information needed on a daily basis as it pertains to their health and fitness.<br/><br/>
+                    Nowadays, a lot of the information people use in their day-to-day lives is spread across a variety of different applications, making it is very difficult
+                    to locate the specific information needed from fitness apps.<br/><br/>
+                    However, with The Gut Buster, we aim to provide a healthier lifestyle and help our clients achieve their health goals effectively by tracking body measurements
+                    and workout patterns.<br/><br/>
+                    Gut Buster offers its clients many benefits like helping them monitor their daily diet needs and progress. Gut Buster also provides a tool to improve lifestyle habits
+                    through constant reminders about health goals, thus keeping clients motivated.
                     </p>
 
                 </div>
