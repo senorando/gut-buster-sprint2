@@ -554,6 +554,11 @@ button:hover {
     background-color: rgb(192 192 192);
 }
 
+.a1 {
+  padding: 1rem;
+  justify-content: center;
+}
+
 .a1 p {
   display: flex;
   flex-direction: column;
@@ -563,17 +568,17 @@ button:hover {
   height: fit-content;
   font-size: 1.5rem;
   padding: 1rem;
-  border: 2px solid #000000;
-  border-radius: 6px;
+  border: 7px solid #f4ad55;
+  border-radius: 7px;
   background: #f1e1e0;
   box-shadow: 0 10px 6px -6px #000;
-  transition: all .3s ease-in-out;
 }
 
 .a1 h1 {
     color: white;
     justify-content: center;
     display: flex;
+    text-shadow: 1px 1px 1px #f3ad55;
 }
 
 .a2 {
@@ -588,6 +593,9 @@ button:hover {
 
 .a2 h1{
     color: white;
+    justify-content: center;
+    display: flex;
+    text-shadow: 1px 1px 1px #f3ad55;
 }
 
 .team-intro {
@@ -608,8 +616,8 @@ button:hover {
   font-size: 18px;
   font-weight: bold;
   padding: 1rem;
-  border: 2px solid #000000;
-  border-radius: 6px;
+  border: 7px solid #f4ad55;
+  border-radius: 7px;
   background: #f1e1e0;
   box-shadow: 0 10px 6px -6px #000;
   transition: all .3s ease-in-out;
@@ -648,11 +656,14 @@ button:hover {
 
 .a3 h1{
     color: white;
+    justify-content: center;
+    display: flex;
+    text-shadow: 1px 1px 1px #f3ad55;
 }
 
 .technologies {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(1, auto);
   justify-content: center;
   grid-gap: 50px;
   margin: 2rem;
@@ -665,11 +676,11 @@ button:hover {
   align-items: center;
   width: auto;
   height: auto;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
-  padding: 1rem;
-  border: 2px solid #000000;
-  border-radius: 6px;
+  padding: 3rem;
+  border: 7px solid #f4ad55;
+  border-radius: 7px;
   background: #f1e1e0;
   box-shadow: 0 10px 6px -6px #000;
   transition: all .3s ease-in-out;
@@ -824,6 +835,13 @@ button:hover {
   padding: 1rem;
   color: #fff;
 }
+.a4 h1{
+  color: white;
+  justify-content: center;
+  display: flex;
+  text-shadow: 1px 1px 1px #f3ad55;
+}
+
 .a4 h3{
   font-size: 3rem;
   color: white;
@@ -845,23 +863,28 @@ button:hover {
 .box-1 {
   grid-area: box-1;
   background: #f1e1e0;
-  border: 2px solid #000000;
+  border: 7px solid #f4ad55;
   border-radius: 6px;
   color: black;
   font-size: 22px;
   font-weight: bold;
   transition: all .3s ease-in-out;
+  margin: 25px;
 }
+
+
 
 .box-2{
   grid-area: box-2;
-  background: #f1e1e0;
-  border: 2px solid #000000;
-  border-radius: 6px;
   color: black;
   font-size: 22px;
   font-weight: bold;
-  transition: all .3s ease-in-out;
+  padding: 1rem;
+  border: 7px solid #f4ad55;
+  border-radius: 6px;
+  background: #f1e1e0;
+  box-shadow: 0 10px 6px -6px #000;
+  margin: 25px;
 }
 
 .gb-logo {
