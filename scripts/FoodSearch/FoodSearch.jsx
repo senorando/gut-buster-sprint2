@@ -126,7 +126,7 @@ export function FoodSearch(props) {
                 </div>
                 :
                 <div id = 'SearchContent'>
-                    <h3>Food Search</h3>
+                    <h2>Food Search</h2>
                     { isLoggedIn?
                         <div>
                             <SearchField

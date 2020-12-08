@@ -170,6 +170,10 @@ body {
 #SearchContent a {
   color: black;
 }
+#SearchContent h2 {
+  color: white;
+  text-shadow: 2px 2px 5px black;
+}
 #SearchContent a:hover {
   color: #7c8da2;
 }
@@ -349,7 +353,11 @@ body {
   align-items: center;
   float: left;
   margin: auto;
+  margin-left: 8px;
+  margin-top: 150px;
+  background-color: #ac5049;
   transition: all 1s ease-in-out;
+  
   width: 33%;
 }
 #Middle h2 {
@@ -357,7 +365,8 @@ body {
   /* float: left; */
   /* width: 33%; */
   color: white;
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 2px 2px 8px black
+  
 }
 #Right {
     float: right;
@@ -440,7 +449,7 @@ body {
     width: 500px;
     border-top: 1px solid;
     border-bottom: 1px solid;
-    background-color: #ffffffd4;
+    background-color: #f1e1e0;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 5;

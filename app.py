@@ -10,6 +10,7 @@ from flask import request
 from calories_count import bmr_cal, daily_caloric_need, calculate_macro
 from spoonacular import foodsearch, mealplan
 import workout
+from quotes import return_quotes
 
 MESSAGE_RECEIVED_CHANNEL = 'message received'
 app = flask.Flask(__name__)
@@ -60,6 +61,7 @@ def emit_all_messages(channel):
 def calculate_age(birth_date):
     today = datetime.datetime.now()
     return int((today - birth_date).days / 365)
+    
 
 def get_user_details(user_email):
     current_user = db.session.query(models.Users).filter_by(id = user_email).scalar()
@@ -142,6 +144,13 @@ def emit_all_user_weights(user_email, sid):
         'date' : date,
         'sid': sid,
     })
+
+   
+def displaying_quotes():
+   
+    quotes=return_quotes()
+    print(quotes)
+    socketio.emit('quotes', quotes)
 
 @socketio.on('new entry')
 def on_new_entry(data):
@@ -371,6 +380,7 @@ def on_google_sign_in(data):
             socketio.emit("success login", google_usr)
             get_user_details(google_usr["email"])
             emit_all_user_weights(google_usr['email'], google_usr['sid'])
+            displaying_quotes()
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
 
 @socketio.on("google sign out")
