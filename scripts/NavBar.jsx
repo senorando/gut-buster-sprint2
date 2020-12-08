@@ -212,6 +212,7 @@ export function NavBar() {
     <div id = 'App'>
       <div id = 'AppHead'>
         <h1>Gut Buster</h1>
+        <img src="./static/gb.png" className="gb-logo"/>
       </div>
       <Router>
         <div id = 'NavBar'>
