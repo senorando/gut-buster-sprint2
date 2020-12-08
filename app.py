@@ -222,7 +222,7 @@ def on_workou_entry(data):
     ))
     db.session.commit()
     
-    plan = workout.create_workout_plan(workout_entry['level'], workout_entry['split'])
+    plan = workout.Workout(workout_entry['level'], workout_entry['split']).plan
     clean_plan = []
     
     for day in plan['days']:
