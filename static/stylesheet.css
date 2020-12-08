@@ -147,6 +147,12 @@ body {
     overflow: hidden;
     transition: all 1s ease-in-out;
 }
+#HomeContent li {
+list-style-type: disc;
+list-style-type: inside;
+font-size: 21px;
+font-weight: bold;
+}
 
 #ProfileContent {
   transition: all 5s ease-in-out;
