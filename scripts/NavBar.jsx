@@ -42,6 +42,7 @@ export function NavBar() {
   const [isLoggingIn, setStatus] = useState(false);
   const [plan, setPlan] = useState({});
   const [quotes, setQuotes] = useState();
+  const [message, setMessage] = useState([]);
   
   function setCurrUser(){
     useEffect(() => {
@@ -213,6 +214,15 @@ export function NavBar() {
         Socket.off('quotes', '');
     }, []);
   }
+  function getNewMessage() {
+    useEffect(() => {
+        Socket.on('message received', (data) => {
+            console.log("Received messages from server: " + data['allMessages']);
+           setMessage(data['allMessages']);
+        });
+        Socket.off('message received', '');
+    }, []);
+  }
   setCurrUser();
   setDetails();
   loginState();
@@ -220,6 +230,7 @@ export function NavBar() {
   userDetails();
   setWorkout();
   getrandomquotes();
+  getNewMessage();
   
   console.log('hasPlan: ' + currentUser.hasPlan);
   return (
@@ -256,7 +267,8 @@ export function NavBar() {
         <Switch>
           <Route exact path="/">
             <Home currentUser = { currentUser } 
-                  isLoggingIn = { isLoggingIn }/>
+                  isLoggingIn = { isLoggingIn }
+                  message = { message }/>
           </Route>
           <Route path="/profile">
             <Profile currentUser = { currentUser }

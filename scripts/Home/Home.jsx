@@ -10,7 +10,9 @@ export function Home(props) {
   
   return (
     <div id = 'Home'>
-        <HomeCont currentUser = { currentUser } isLoggingIn = { isLoggingIn }/>
+        <HomeCont currentUser = { currentUser } 
+                  isLoggingIn = { isLoggingIn }
+                  message = { props.message }/>
         <div id="footer">
              <img src={'/static/logo.png'} className = "logoImg" />
         </div>

@@ -32,7 +32,7 @@ export function HomeCont(props) {
           </div>
         </div>
       }
-      <Chat currentUser = { currentUser }/>
+      <Chat currentUser = { currentUser } message = { props.message }/>
     </div>
     );
 }
