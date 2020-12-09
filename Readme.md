@@ -1,4 +1,4 @@
-## Gut Buster
+ ## Gut Buster
 
 ***
 ### Heroku Link
@@ -14,6 +14,8 @@ c) pip install eventlet
 d) npm install -g webpack
 e) npm install --save-dev webpack
 f) npm install socket.io-client --save
+g) npm install 'react-scroll'
+h) npm install recharts
 ⚠️ ⚠️ ⚠️ If you see any error messages, make sure you use sudo pip or sudo npm. If it says "pip cannot be found", run which pip and use sudo [path to pip from which pip] install ⚠️ ⚠️ ⚠️
 3.	If you already have psql set up, SKIP THE REST OF THE STEPS AND JUST DO THE FOLLOWING COMMAND:
 sudo service postgresql start
@@ -88,27 +90,38 @@ i. Created the DB
 ii. Made the Home page  
 iii. Created the conditional rendering on the home and profile pages  
 iv. Managed current user on each client via sockets  
-v. Cleaned up React by putting most of the HTML in components  
+v. Cleaned up React by putting most of the HTML in components 
+vi. Worked on fitness plan for user in backend.  
+vii. Display elements for the weekly workout plan.   
+viii. Setup CircleCI   
 
 2. Jinal Patel *jsp88*  
-i.   Initialize the html and jsx files
-ii.  Create add contents profiile.jsx
-iii. Create make form userform.jsx
-iv.  Handle the frontend rendering for home.jsx and profile.jsx
+i.   Initialize the html and jsx files  
+ii.  Create add contents profiile.jsx  
+iii. Create make form userform.jsx.  
+iv.  Handle the frontend rendering for home.jsx and profile.jsx. 
+v.   Implemented Pie chart and line graph and displayed on Profile Page. 
+vi.  Made workour form and Setup database for the workout log.  
+vii. style the app in general. 
+
 
 3. Nisarg Patel *np575*  
-i. Added jsx files for the flow of login/home/profile page.
-ii. Added logic for bmr and daily calorie needs based on fitness goal.
-iii. Figured out possible socket to client for bmr/daily calorie needs and Added sockets to fetch the information through API.
-iv. Fixed Backend logic and added input validation to the Userform.
-v. socket back the food search response to client and added tests for unmocked/mocked to increase coverage.
-
+i. Added jsx files for the flow of login/home/profile page.  
+ii. Added logic for bmr and daily calorie needs based on fitness goal.  
+iii. Figured out possible socket to client for bmr/daily calorie needs and Added sockets to fetch the information through API.  
+iv. Fixed Backend logic and added input validation to the Userform.  
+vi. Created The workout db to generate workout plan.Redo macro calculation after weight update on the profile page.
+vii.Added the live chat feature with conditional rendering.  
+viii. socket back the food search response to client and added tests for unmocked/mocked to increase coverage.Cleaned up python code using pylint and eslint.  
 
 4. Oreoluwa Akeredolu *atorisemofe*  
 i. Initialized app.py  
 ii. Created navigation bar between all pages  
 iii. Created Search bar for food search page  
 iv. Created Spoonacular API call function to create meal plans  
-v. Cleaned up python code using pylint
+v.  Cleaned up python code using pylint 
+vi. Organized page elements with CSS.   
+vii. Implemented landing page.  
+viii. Set Logo in App.
 
 ***
