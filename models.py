@@ -150,20 +150,7 @@ class Workout(db.Model):
     
     def __repr__(self):
         return '<level: %s \n split: %s>' % (self.level, self.split)
-    
-class Ratings(db.Model):
-    __table_args__ = {'extend_existing': True}
-    food_title= db.Column(db.Text, primary_key=True)
-    rating= db.Column(db.Integer)
-    num_of_ratings= db.Column(db.Integer)
-    
-    def __init__(self, food_title, rating, num_of_ratings):
-        self.food_title = food_title
-        self.rating = rating
-        self.num_of_ratings = num_of_ratings
-        
-    def __repr__(self):
-        return '<food_title: %s \n rating: %s \n num_of_ratings: %s>' % (self.food_title, self.rating, self.num_of_ratings)
+
     
 db.create_all()
 db.session.commit()

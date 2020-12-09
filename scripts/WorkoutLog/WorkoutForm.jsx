@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint react/prop-types: 0 */
+import React from 'react';
 
 import { Socket } from '../Socket';
 
