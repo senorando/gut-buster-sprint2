@@ -7,6 +7,8 @@
 # pylint: disable=C0301
 # pylint: disable=C0303
 # pylint: disable=E1101
+# pylint: disable=R0903
+# pylint: disable=C0115
 import flask_sqlalchemy
 from sqlalchemy import create_engine, Column, Integer, String, Sequence, Float, PrimaryKeyConstraint, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base

@@ -1,3 +1,6 @@
+# pylint: disable=C0116
+# pylint: disable=C0411
+# pylint: disable=C0303
 """spoonacular.py"""
 import requests
 import json
