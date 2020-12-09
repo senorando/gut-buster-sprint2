@@ -6,7 +6,7 @@ import { Socket } from '../Socket';
 export function WorkoutCalendar(props){
     const currentUser = props.currentUser;
     const workout_plan = props.workout_plan;
-    console.log(workout_plan);
+    console.log('length: ' + workout_plan.length);
     var count = -1;
     
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -19,14 +19,24 @@ export function WorkoutCalendar(props){
     const daysList = days.map((day, index) => {
         return (
             selected.indexOf(day) >= 0? 
-                        <div className = { day == today? 'Today' : 'OtherDay' } key = { index }>
-                            <div id = 'DateHead'>
-                                <h2>{ day }</h2>
+                        count < workout_plan.length - 1?
+                            <div className = { day == today? 'Today' : 'OtherDay' } key = { index }>
+                                <div id = 'DateHead'>
+                                    <h2>{ day }</h2>
+                                </div>
+                                <div id = 'DateBody'>
+                                    { exerciseList(index) }
+                                </div> 
                             </div>
-                            <div id = 'DateBody'>
-                                { exerciseList(index) }
-                            </div> 
-                        </div>
+                            :
+                            <div className = { day == today? 'Today' : 'OtherDay' } key = { index }>
+                                <div id = 'DateHead'>
+                                    <h2>{ day }</h2>
+                                </div>
+                                <div id = 'DateBody'>
+                                    <h2>REST</h2>
+                                </div> 
+                            </div>
                         :
                         <div className = { day == today? 'Today' : 'OtherDay' } key = { index }>
                             <div id = 'DateHead'>
@@ -35,13 +45,13 @@ export function WorkoutCalendar(props){
                             <div id = 'DateBody'>
                                 <h2>REST</h2>
                             </div> 
-                        </div> 
+                        </div>
         );
     });
     
     function exerciseList(index) {
         
-        if(count < workout_plan.length){
+        if(count < workout_plan.length - 1){
             count += 1;
             return(
                 <div id = 'Exercises'>
