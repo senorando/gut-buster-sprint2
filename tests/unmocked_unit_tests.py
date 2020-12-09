@@ -1,10 +1,12 @@
-'''unmocked_unit_tests.py'''
+"""unmocked_unit_tests.py"""
 # pylint: disable=C0103
 # pylint: disable=C0116
 # pylint: disable=C0413
 # pylint: disable=C0115
 # pylint: disable=W0611
 # pylint: disable=W1503
+# pylint: disable=R0201
+# pylint: disable=E1111
 
 import unittest
 import unittest.mock as mock
@@ -68,34 +70,31 @@ class Test(unittest.TestCase):
         print(result)
         expected = {"calories": 1200}
         self.assertEqual(data, expected)
-    
+
     def test_calculate_age(self):
-        data=datetime.datetime.now()
-        expected=0
-        result=app.calculate_age(data)
-        self.assertEqual(result,expected)
-    
+        data = datetime.datetime.now()
+        expected = 0
+        result = app.calculate_age(data)
+        self.assertEqual(result, expected)
+
     def test_display_quotes(self):
-        quote=app.displaying_quotes()
-        data=quote
-        result=quote
-        self.assertEqual(data,result)
-    
+        quote = app.displaying_quotes()
+        data = quote
+        result = quote
+        self.assertEqual(data, result)
+
     def test_on_messages(self):
-        data= {
-            'entry': 'hi there',
-            'email' :'nisargpatel356@gmail.com'
-        }
-        result=app.on_new_message(data)
+        data = {"entry": "hi there", "email": "nisargpatel356@gmail.com"}
+        result = app.on_new_message(data)
         print(result)
-    
+
     # def test_sign_in(self):
     #     data={
     #         'name': 'test',
     #         'email': 'test@edu',
     #         'imgUrl': 'http//..'
     #     }
-        
+
     #     mocker = mock.MagicMock()
     #     mocker.values("AAAA")
     #     session_mocker = mock.MagicMock()
@@ -103,35 +102,30 @@ class Test(unittest.TestCase):
     #         mock_sid.request.sid ='test01'
     #         result= app.on_google_sign_in(data)
     #         print((result))
-           
-        # mocker = mock.MagicMock()
-        # with mock.patch("app.flask.request"):
-        #     result= app.on_google_sign_in(data)
-        #     print(result)
-            
-            # print('hre')
-            # mocked_sid.request.sid = 'test01'
-    
+
+    # mocker = mock.MagicMock()
+    # with mock.patch("app.flask.request"):
+    #     result= app.on_google_sign_in(data)
+    #     print(result)
+
+    # print('hre')
+    # mocked_sid.request.sid = 'test01'
+
     # def test_workout(self):
     #     data={
     #         'level': 2, 'split': 'Bro Split', 'email': 'nisargpatel356@gmail.com', 'sid': 'faafdacb1d1847f38dd2aadc67596720','name': 'john'
     #     }
     #     result= app.on_workou_entry(data)
-        
-    
-    
+
     def test_food_Search(self):
-        data={
-            'food_search': 'pasta', 'user': 'nisargpatel356@gmail.com'
-            
-        }
+        data = {"food_search": "pasta", "user": "nisargpatel356@gmail.com"}
         # with mock.patch("db.session.query" ):
-        result=app.on_new_food_search(data)
-        print('chek')
+        result = app.on_new_food_search(data)
+        print("chek")
         print(result)
-        expected=None
-        self.assertEqual(result,expected)
-        
+        expected = None
+        self.assertEqual(result, expected)
+
     # def test_new_user(self):
     #     data={
     #       'birthday': '1220-02-12',
@@ -146,54 +140,52 @@ class Test(unittest.TestCase):
     #     }
     #     result=app.on_new_user(data)
     #     print(result)
-        
+
     def test_user_details(self):
-        test_email='nisargpatel356@gmail.com'
-        result=app.get_user_details(test_email)
-        print('che')
+        test_email = "nisargpatel356@gmail.com"
+        result = app.get_user_details(test_email)
+        print("che")
         print(result)
-        expected=None
-        self.assertEqual(result,expected)
-        
+        expected = None
+        self.assertEqual(result, expected)
+
     def test_all_user_weights(self):
-        test_email='nisargpatel356@gmail.com',
-        sid='903'
-        result=app.emit_all_user_weights(test_email,sid)
-        print('ch')
+        test_email = ("nisargpatel356@gmail.com",)
+        sid = "903"
+        result = app.emit_all_user_weights(test_email, sid)
+        print("ch")
         print(result)
         print(result)
-        
-    
+
     def test_render_landing_page(self):
         """Test landing_page rendering"""
         with mock.patch("flask.render_template"):
             app.about()
-            
+
     def test_render_home_page(self):
         """Test landing_page rendering"""
         with mock.patch("flask.render_template"):
             app.home()
-            
+
     def test_render_foodsearch_page(self):
         """Test landing_page rendering"""
         with mock.patch("flask.render_template"):
             app.food_search()
-            
+
     def test_render_workout_page(self):
         """Test landing_page rendering"""
         with mock.patch("flask.render_template"):
             app.workout_log()
-            
+
     def test_render_profile_page(self):
         """Test landing_page rendering"""
         with mock.patch("flask.render_template"):
             app.profile()
-    
+
 
 class testingusers(Users):
     def init(self, name):
         self.connection = name
-        
 
 
 if __name__ == "__main__":

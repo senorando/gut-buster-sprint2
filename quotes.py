@@ -1,4 +1,8 @@
 #quotes
+# pylint: disable=C0301
+# pylint: disable=C0116
+# pylint: disable=C0114
+
 import random
 
 quotes_list = [
