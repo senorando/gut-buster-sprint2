@@ -96,7 +96,7 @@ body {
 #WorkoutForm h3 {
     text-align: center;
     margin-top: 10;
-    margin-bottom: 5;
+    margin-bottom: 15;
     color: white;
     text-shadow: 2px 2px 5px black;
     height: 0;
@@ -147,13 +147,6 @@ body {
     overflow: hidden;
     transition: all 1s ease-in-out;
 }
-#HomeContent li {
-list-style-type: disc;
-list-style-type: inside;
-font-size: 21px;
-font-weight: bold;
-}
-
 #ProfileContent {
   transition: all 5s ease-in-out;
   justify-content: center;
@@ -172,6 +165,7 @@ font-weight: bold;
 }
 #SearchContent {
   transition: all 1s ease-in-out;
+  text-align: center;
 }
 #SearchContent a {
   color: black;
@@ -211,7 +205,6 @@ font-weight: bold;
     margin-top: 10;
     margin-bottom: 31;
     height: 0;
-
     color: white;
     text-shadow: 2px 2px 5px black;
 }
@@ -227,6 +220,12 @@ font-weight: bold;
     padding: 5px;
     margin-bottom: 0;
 }
+.Home li {
+    list-style-type: disc;
+    list-style-type: inside;
+    font-size: 21px;
+    font-weight: bold;
+}
 #Profile_Pic {
     width: 25;
     border-radius: 50%;
@@ -239,6 +238,7 @@ font-weight: bold;
     border-left: 1px solid;
     border-radius: 5px;
     transition: all 1s ease-in-out;
+    font-weight: bold;
 }
 #Chatbox h3 {
     text-align: center;
@@ -688,11 +688,6 @@ button:hover {
   margin-top: 1rem;
   margin-bottom: 0;
 }
-
-.technologies-list:hover {
-  transform: scale(1.05);
-}
-
 .food-result {
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -719,6 +714,10 @@ button:hover {
 
 .food-list:hover {
   transform: scale(1.05);
+}
+.food-list img {
+  width: 312px;
+  height: 150px;
 }
 
 .food-result1 {
@@ -854,7 +853,6 @@ button:hover {
 }
 .box{
   padding: 1rem;
-  /*font-size: 2vw;*/
 }
 .box h2{
   text-align: center;
@@ -862,18 +860,16 @@ button:hover {
 
 .box-1 {
   grid-area: box-1;
-  background: #f1e1e0;
-  border: 7px solid #f4ad55;
-  border-radius: 6px;
   color: black;
   font-size: 22px;
   font-weight: bold;
-  transition: all .3s ease-in-out;
+  padding: 1rem;
+  border: 7px solid #f4ad55;
+  border-radius: 6px;
+  background: #f1e1e0;
+  box-shadow: 0 10px 6px -6px #000;
   margin: 25px;
 }
-
-
-
 .box-2{
   grid-area: box-2;
   color: black;
@@ -903,7 +899,8 @@ button:hover {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding: 10px;
+    padding: 10px 20px 5px 20px;
+    transform: scale(2);
 }
 
 #NavButton1 {
@@ -930,9 +927,17 @@ button:hover {
     float: right;
     position: relative;
     top: 150px;
-    width: 550px;
+    width: 550;
     border: 7px solid #f5ad55;
     right: 25px;
     border-radius: 7px;
     box-shadow: 0 10px 6px -6px #000;
+}
+.fa-github:before {
+    content: "\f09b";
+    color: #282e36;
+}
+.fa-linkedin:before {
+    content: "\f0e1";
+    color: #0072ff;
 }

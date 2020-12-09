@@ -6,7 +6,7 @@ export function WorkoutForm(props) {
     const currentUser = props.currentUser;
     
     function handleSubmit(event) {
-        let level =parseInt(document.getElementById("DifficultyLevel").value);
+        let level = parseInt(document.getElementById("DifficultyLevel").value);
         let split = document.getElementById("split").value;
         let email = currentUser.email
         if (split == "" ){
@@ -24,6 +24,7 @@ export function WorkoutForm(props) {
               'level': level,
               'split': split,
               'email': currentUser.email,
+              'name': currentUser.name,
               'sid': currentUser.sid
             });
         }

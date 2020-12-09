@@ -22,7 +22,7 @@ export function About() {
                         <h4>Andy Martinez</h4>
                         <div className="logos">
                         <a href="https://github.com/senorando" target="_blank" class="git-logo"><i className="fa fa-github" ></i></a>
-                        <a href="https://www.linkedin.com/in/Oreoluwa-Akeredolu/" target="_blank"><i className="fa fa-linkedin" ></i></a>
+                        <a href="https://www.linkedin.com/in/Andy-Martinez-/" target="_blank"><i className="fa fa-linkedin" ></i></a>
                         </div>
                         <p>
                             Hi, I'm Andy! I came up with the idea of this app because as someone into fitness, 
@@ -52,7 +52,7 @@ export function About() {
                         <h4>Jinal patel</h4>
                         <div className="logos">
                         <a href="https://github.com/jsp88" target="_blank"><i className="fa fa-github" ></i></a>
-                        <a href="https://www.linkedin.com/in/nisarg-patel-/" target="_blank"><i className="fa fa-linkedin" ></i></a>
+                        <a href="https://www.linkedin.com/in/jinal-patel-07/" target="_blank"><i className="fa fa-linkedin" ></i></a>
                         </div>
                         <p>
                             Hello, I'm Jinal Patel. I'm a current student at NJIT pursuing a degree in Computer Science. 

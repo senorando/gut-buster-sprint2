@@ -144,37 +144,37 @@ export function FoodSearch(props) {
                                     <span><a target="_blank" href={ingredient}>{food}</a><br/>
                                         {calorie}<br/>
                                         {prep}<br/><br/>
-                                        <img src= {image}/></span><br/>
+                                        <img src= {image} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient1}>{food1}</a><br/>
                                         {calorie1}<br/>
                                         {prep1}<br/><br/>
-                                        <img src= {image1}/></span><br/>
+                                        <img src= {image1} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient2}>{food2}</a><br/>
                                         {calorie2}<br/>
                                         {prep2}<br/><br/>
-                                        <img src= {image2}/></span><br/>
+                                        <img src= {image2} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient3}>{food3}</a><br/>
                                         {calorie3}<br/>
                                         {prep3}<br/><br/>
-                                        <img src= {image3}/></span><br/>
+                                        <img src= {image3} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient4}>{food4}</a><br/>
                                         {calorie4}<br/>
                                         {prep4}<br/><br/>
-                                        <img src= {image4}/></span><br/>
+                                        <img src= {image4} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
                                     <span><a target="_blank" href={ingredient5}>{food5}</a><br/>
                                         {calorie5}<br/>
                                         {prep5}<br/><br/>
-                                        <img src= {image5}/></span><br/>
+                                        <img src= {image5} alt = 'No image found :('/></span><br/>
                                 </div>
                             </div>
                                 </div>

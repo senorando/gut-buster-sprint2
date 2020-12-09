@@ -5,7 +5,7 @@
 # pylint: disable=W0612
 from os.path import join, dirname
 from dotenv import load_dotenv
-import os, flask, flask_sqlalchemy, flask_socketio, datetime
+import os, flask, flask_sqlalchemy, flask_socketio, datetime, pytz
 from flask import request
 from calories_count import bmr_cal, daily_caloric_need, calculate_macro
 from spoonacular import foodsearch, mealplan
@@ -33,6 +33,20 @@ db.create_all()
 db.session.commit()
 import models
 online_users = []
+months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+]
 
 def emit_all_messages(channel):
     db_messages = [ \
@@ -62,7 +76,6 @@ def calculate_age(birth_date):
     today = datetime.datetime.now()
     return int((today - birth_date).days / 365)
     
-
 def get_user_details(user_email):
     current_user = db.session.query(models.Users).filter_by(id = user_email).scalar()
     macros = db.session.query(models.Macros).filter_by(email=current_user.id).scalar()
@@ -145,7 +158,6 @@ def emit_all_user_weights(user_email, sid):
         'sid': sid,
     })
 
-   
 def displaying_quotes():
    
     quotes=return_quotes()
@@ -224,6 +236,7 @@ def on_workou_entry(data):
         "level" : data['level'],
         "split" : data['split'],
         "email" : data['email'],
+        'name': data['name'],
     }
     print('\nNew Workout Entry Received!')
     db.session.add(models.Workout(
@@ -242,16 +255,27 @@ def on_workou_entry(data):
     socketio.emit('set plan', {
         'sid': request.sid,
         'clean_plan': clean_plan,
+        'name': workout_entry['name'],
+        'email': workout_entry['email'],
     })
+    displaying_quotes()
     
 @socketio.on('new text input')
 def on_new_message(data):
     new_str=data["entry"]
-    time=datetime.datetime.now()
+    
+    date = datetime.datetime.now()
+    time = str(
+        datetime.datetime.now(pytz.timezone("US/Eastern")).strftime("%H:%M")
+    )  # NYC time
+    time_str = months[date.month - 1] + " " + str(date.day) + " \n@" + time
+    
+    
     user_id= data["email"]
-    db.session.add(models.Chat(data["entry"],time,user_id))
+    db.session.add(models.Chat(data["entry"], time_str, user_id))
     db.session.commit()
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
+    displaying_quotes()
     
 @socketio.on("new food search")
 def on_new_food_search(data):
@@ -261,6 +285,7 @@ def on_new_food_search(data):
     food_response = foodsearch(food_name["food"],calorie.max_carb)
     socketio.emit("food response", food_response)
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
+    displaying_quotes()
 
 @socketio.on("new user input")
 def on_new_user(data):
@@ -348,6 +373,7 @@ def on_new_user(data):
     get_user_details(google_usr["email"])
     emit_all_user_weights(google_usr['email'], google_usr['sid'])
     emit_all_messages(MESSAGE_RECEIVED_CHANNEL)
+    displaying_quotes()
 
 @socketio.on("google sign in")
 def on_google_sign_in(data):

@@ -41,6 +41,8 @@ export function NavBar() {
   const [date,setDate] = useState([]);
   const [isLoggingIn, setStatus] = useState(false);
   const [plan, setPlan] = useState({});
+  const [quotes, setQuotes] = useState();
+  
   function setCurrUser(){
     useEffect(() => {
       Socket.on('success login', (data) => {
@@ -189,9 +191,9 @@ export function NavBar() {
         if(data.sid === Socket.id){  
           setPlan(data.clean_plan);
           setUser((prevState) => ({
-            name: currentUser.name,
-            email: currentUser.email,
-            sid: currentUser.sid,
+            name: data.name,
+            email: data.email,
+            sid: Socket.id,
             isLoggedIn: true,
             hasPlan: true,
           }));
@@ -200,12 +202,24 @@ export function NavBar() {
       Socket.off('set plan', '');
     }, []);
   }
+  function getrandomquotes() {
+    useEffect(() => {
+        Socket.on('quotes', (data) => {
+            console.log(data);
+            
+            console.log("Received a quote from server: " + data );
+            setQuotes(data); 
+        });
+        Socket.off('quotes', '');
+    }, []);
+  }
   setCurrUser();
   setDetails();
   loginState();
   failedLogin();
   userDetails();
   setWorkout();
+  getrandomquotes();
   
   console.log('hasPlan: ' + currentUser.hasPlan);
   return (
@@ -249,7 +263,8 @@ export function NavBar() {
                       userWeight = { userWeight } 
                       date = {date}
                       profileDetail = { profileDetail } 
-                      isLoggingIn = { isLoggingIn }/>
+                      isLoggingIn = { isLoggingIn }
+                      quotes = { quotes }/>
           </Route>
            <Route path="/workout">
             <Workout currentUser = { currentUser } 

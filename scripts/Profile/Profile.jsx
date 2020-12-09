@@ -9,6 +9,7 @@ export function Profile(props) {
     const isLoggingIn = props.isLoggingIn;
     const profileDetail = props.profileDetail;
     const userWeight = props.userWeight;
+    const quotes = props.quotes;
     
     return (
         <div id = 'Profile'>
@@ -17,13 +18,15 @@ export function Profile(props) {
                                 profileDetail = { profileDetail }
                                 userWeight = { userWeight }
                                 date = {props.date}
-                                isLoggingIn = { isLoggingIn } />
+                                isLoggingIn = { isLoggingIn } 
+                                quotes = { quotes }/>
                 :
                 <ProfileCont currentUser = { currentUser } 
                                 profileDetail = { profileDetail }
                                 userWeight = { userWeight }
                                 date = {props.date}
-                                isLoggingIn = { isLoggingIn } />
+                                isLoggingIn = { isLoggingIn }
+                                quotes = { quotes }/>
             }
         <div id="footer">
               <img src={'/static/logo.png'} className = "logoImg" />

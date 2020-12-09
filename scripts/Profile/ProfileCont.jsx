@@ -12,11 +12,8 @@ export function ProfileCont(props){
     const profileDetail = props.profileDetail;
     const userWeight = props.userWeight;
     const isLoggingIn = props.isLoggingIn;
-    const date = props.date;
-    const [quotes, setQuotes] = React.useState();
+    const quotes = props.quotes;
     
-    console.log("profile weight:", props.userWeight);
-    console.log("Date ", props.date);
     function updateStatus() {
         console.log('isEdit: ' + isEdit);
         setStatus((prevStatus) => !isEdit);
@@ -27,21 +24,6 @@ export function ProfileCont(props){
     });
     Socket.off('not editing', '');
     
-    
-    function getrandomquotes() {
-        React.useEffect(() => {
-            console.log("h")
-            Socket.on('quotes', (data) => {
-                console.log(data)
-                
-                console.log("Received a quote from server: " + data );
-                setQuotes(data); 
-            })
-        });
-    }
-    
-    
-    getrandomquotes();
     return (
         <div id = 'ProfileContent'>
             <div id = 'Left'>
@@ -69,10 +51,7 @@ export function ProfileCont(props){
             </div>
             { currentUser.isLoggedIn?
                 <div id = 'Middle'>
-                
-                <h2> Fitness motivational  quote to inspire you to work harder </h2>
-                <h2> { quotes } </h2>
-                
+                    <h2><i> "{ quotes }" </i></h2>
                 </div>
                 
                 :
