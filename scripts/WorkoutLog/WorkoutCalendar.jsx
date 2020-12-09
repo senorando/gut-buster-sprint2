@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Calendar from 'react-calendar';
-
-import { Socket } from '../Socket';
+/* eslint react/prop-types: 0 */
+/* eslint no-unused-vars: 0 */
+import React, { useState } from 'react';
 
 export function WorkoutCalendar(props){
     const currentUser = props.currentUser;

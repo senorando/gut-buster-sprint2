@@ -1,7 +1,7 @@
+/* eslint react/prop-types: 0 */
 import React, { useState, useEffect } from 'react';
 import { UserForm } from '../UserForm';
 import { Socket } from '../Socket';
-import { RatingStar } from '../StarRating';
 import SearchField from "react-search-field";
 
 export function FoodSearch(props) {
@@ -141,37 +141,37 @@ export function FoodSearch(props) {
                                 <div>
                                     <div className = 'food-result'>
                                 <div className="food-list">
-                                    <span><a target="_blank" href={ingredient}>{food}</a><br/>
+                                    <span><a target="_blank" href={ingredient} rel="noreferrer">{food}</a><br/>
                                         {calorie}<br/>
                                         {prep}<br/><br/>
                                         <img src= {image} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
-                                    <span><a target="_blank" href={ingredient1}>{food1}</a><br/>
+                                    <span><a target="_blank" href={ingredient1}rel="noreferrer" >{food1}</a><br/>
                                         {calorie1}<br/>
                                         {prep1}<br/><br/>
                                         <img src= {image1} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
-                                    <span><a target="_blank" href={ingredient2}>{food2}</a><br/>
+                                    <span><a target="_blank" href={ingredient2} rel="noreferrer" >{food2}</a><br/>
                                         {calorie2}<br/>
                                         {prep2}<br/><br/>
                                         <img src= {image2} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
-                                    <span><a target="_blank" href={ingredient3}>{food3}</a><br/>
+                                    <span><a target="_blank" href={ingredient3} rel="noreferrer" >{food3}</a><br/>
                                         {calorie3}<br/>
                                         {prep3}<br/><br/>
                                         <img src= {image3} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
-                                    <span><a target="_blank" href={ingredient4}>{food4}</a><br/>
+                                    <span><a target="_blank" href={ingredient4} rel="noreferrer" >{food4}</a><br/>
                                         {calorie4}<br/>
                                         {prep4}<br/><br/>
                                         <img src= {image4} alt = 'No image found :('/></span><br/>
                                 </div>
                                 <div className="food-list">
-                                    <span><a target="_blank" href={ingredient5}>{food5}</a><br/>
+                                    <span><a target="_blank" href={ingredient5} rel="noreferrer" >{food5}</a><br/>
                                         {calorie5}<br/>
                                         {prep5}<br/><br/>
                                         <img src= {image5} alt = 'No image found :('/></span><br/>
@@ -196,19 +196,19 @@ export function FoodSearch(props) {
                             </div>
                             <div className = 'food-result1'>
                                 <div className="food-list1">
-                                    <span><a target="_blank" href='http://www.foodista.com/recipe/3X3HYGB4/skirt-steak-fajitas'>Skirt Steak Fajitas</a><br/>
+                                    <span><a target="_blank" href='http://www.foodista.com/recipe/3X3HYGB4/skirt-steak-fajitas' rel="noreferrer" >Skirt Steak Fajitas</a><br/>
                                         696 calories<br/>
                                         45 minutes prep time<br/><br/>
                                         <img src= 'https://spoonacular.com/recipeImages/660234-312x150.jpg'/></span><br/>
                                 </div>
                                 <div className="food-list1">
-                                    <span><a target="_blank" href='https://www.foodista.com/recipe/Y5X6DRHT/pasta-with-chicken-and-broccoli'>Pasta With Chicken and Broccoli</a><br/>
+                                    <span><a target="_blank" href='https://www.foodista.com/recipe/Y5X6DRHT/pasta-with-chicken-and-broccoli' rel="noreferrer" >Pasta With Chicken and Broccoli</a><br/>
                                         331 calories<br/>
                                         45 minutes prep time<br/><br/>
                                         <img src= 'https://spoonacular.com/recipeImages/654901-312x150.jpg'/></span><br/>
                                 </div>
                                 <div className="food-list1">
-                                    <span><a target="_blank" href='https://www.foodista.com/recipe/C75THTG5/rice-pudding'>Rice Pudding</a><br/>
+                                    <span><a target="_blank" href='https://www.foodista.com/recipe/C75THTG5/rice-pudding' rel="noreferrer" >Rice Pudding</a><br/>
                                         407 calories<br/>
                                         45 minutes prep time<br/><br/>
                                         <img src= 'https://spoonacular.com/recipeImages/658276-312x150.jpg'/></span><br/>

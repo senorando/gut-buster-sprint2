@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+/* eslint react/prop-types: 0 */
+import React from 'react';
 
 import { UserForm } from '../UserForm';
-import { Socket } from '../Socket';
 import { WorkoutForm } from './WorkoutForm';
 import { WorkoutCalendar } from './WorkoutCalendar';
 
