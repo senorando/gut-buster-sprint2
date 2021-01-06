@@ -1,8 +1,9 @@
  ## Gut Buster
+We aim to provide healthy food options, meal plans, workout plans, and also deliver a live chat feature accessible from the browser. This web app provides a secure Google login that allows users to identify themselves, a custom statistical profile for body macros, workouts, and a food search tool that shows a meal, its calorie count, preparation time and a link to the recepie. This app also features a live chat platform through which users can communicate with each other.
 
 ***
 ### Heroku Link
-[Gut Buster](https://gut-buster.herokuapp.com)
+[Gut Buster](http://gut-buster-v2.herokuapp.com/)
 
 # To use this repository and deploy the app, you must follow these steps:
 1.Set up React
